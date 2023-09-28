@@ -81,7 +81,7 @@ export default function Home() {
                         <button
                             key={time}
                             type='button'
-                            className={`w-full hover:bg-gray-200 transition text-sm p-6 ${isReserved(day, time) ? 'bg-gray-100' : ''}`}
+                            className={`w-full  bg-white backdrop-blur-xl bg-opacity-50 transition text-md p-6 ${isReserved(day, time) ? 'bg-gray-200 bg-opacity-80' : 'hover:bg-opacity-70'}`}
                             onClick={() => toggleReservation(day, time)}
                         >
                             {time}
@@ -105,28 +105,25 @@ export default function Home() {
 
 
     return (
-        <div className='parent'>
+        <div className='parent h-screen bg-white backdrop-blur-sm bg-opacity-20'>
             <div className='bg-black text-white flex flex-col gap-4 items-center justify-center font-bold'>
                 <div className='text-9xl p-6 font-bold'>
                     {currentTime.toFormat('HH:mm')}
                 </div>
             </div>
-            <div className='flex items-center flex-col justify-center bg-white'>
-                <div className='text-5xl mt-2 p-4 font-bold'>
-                    Our Schedule
-                </div>
-                <div className='grid bg-white grid-cols-3 lg:grid-cols-6 items-center justify-center text-center'>
+            <div className='flex items-center flex-col justify-center '>
+                <div className='grid grid-cols-3 lg:grid-cols-6 items-center justify-center text-center'>
                     {Object.keys(schedule).map((day) => (
                         <button
                             key={day}
                             type='button'
-                            className={`px-10 py-4 bg-white cursor-default uppercase text-lg text-black tracking-tighter font-bold ${isReserved(day, '9:00 - 10:00') ? '' : ''}`}
+                            className={`bg-white backdrop-blur-sm bg-opacity-70 px-10 py-4 cursor-default uppercase text-xl text-black tracking-tighter font-semibold ${isReserved(day, '9:00 - 10:00') ? '' : ''}`}
                         >
                             {day}
                         </button>
                     ))}
                     {Object.keys(schedule).map((day) => (
-                        <div key={day} className='h-screen'>
+                        <div key={day} className=''>
                             {renderScheduler(day)}
                         </div>
                     ))}
