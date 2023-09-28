@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../views/Navbar'
+import Footer from '../views/Footer'
 
 export default function GuestLayout() {
   return (
@@ -8,6 +9,7 @@ export default function GuestLayout() {
         <div className='relative'>
             <Navbar />
             <Outlet />
+            <Footer />
         </div>
     </div>
   )
