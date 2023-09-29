@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import CheckForm from './CheckForm';
 
 export default function Navbar() {
     const buttons = [
@@ -35,9 +37,15 @@ export default function Navbar() {
     ];
 
     const [activeButtonIndex, setActiveButtonIndex] = useState(null);
+    const [showCheckForm, setShowCheckForm] = useState(false);
 
     const toggleSummary = (index) => {
         setActiveButtonIndex(index === activeButtonIndex ? null : index);
+        setShowCheckForm(index === activeButtonIndex);
+    };
+
+    const closeCheckForm = () => {
+        setShowCheckForm(false);
     };
 
     return (
@@ -65,16 +73,27 @@ export default function Navbar() {
                     </div>
                 )}
                 {activeButtonIndex === null && (
-                    <div className="bg-white p-9 text-start gap-2 flex items-start justify-between flex-col font-normal">
+                    <div className="relative bg-white p-9 text-start gap-2 flex items-start justify-between flex-col font-normal">
+                        {showCheckForm && (
+                        <div className='absolute top-2 right-2'>
+                            <button type="button" className='hover:bg-gray-50 active:scale-105 bg-transparent hover:shadow-sm p-2 rounded-full font-normal cursor-pointer transition' onClick={closeCheckForm}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="group active:rotate-90 duration-500 w-8 h-8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                            </button>
+                        </div>
+                        )}
                         <div>
-                            <h1 className='text-3xl'>Make reservation now</h1>
-                            <p className='text-lg text-sky-900 px-1'>If you have problems, get checked now and we will find a solution together!</p>
+                            <h1 className={`text-3xl transition ${showCheckForm ? "translate-y-10 duration-500" : ""}`}>Make reservation now</h1>
+                            <p className={`text-lg transition text-sky-900 px-1 ${showCheckForm ? "translate-y-10 duration-500" : ""}`}>If you have problems, get checked now and we will find a solution together!</p>
                             <div className='mt-2'>
-                                <button className='bg-gray-100 hover:bg-gray-200 transition text-black p-4'>Get checked</button>
+                                <button
+                                    onClick={() => setShowCheckForm(true)}
+                                    type="button" className={` ${showCheckForm ? "translate-y-4 duration-100 bg-transparent text-transparent cursor-default" : "hover:bg-gray-200"} bg-gray-100 transition text-black p-4`}>Get checked</button>
                             </div>
                         </div>
                     </div>
                 )}
+                {showCheckForm && <CheckForm isVisible={showCheckForm} onClose={closeCheckForm} />}
             </div>
         </div>
     );

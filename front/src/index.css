@@ -22,3 +22,21 @@ html {
     margin: 0;
     padding: 0;
 }
+
+
+input:focus,
+textarea:focus,
+select:focus {
+    @apply focus:outline-none focus:ring-sky-400 focus:ring-2 transition focus:border-sky-200 focus:border-2;
+}
+
+.appear-transition {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .appear-transition.appeared {
+    opacity: 1;
+    transform: translateY(0);
+  }

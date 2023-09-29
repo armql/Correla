@@ -2,6 +2,7 @@ import { Navigate, createBrowserRouter } from 'react-router-dom'
 import NotFound from '../error/NotFound';
 import Home from '../views/Home';
 import GuestLayout from '../layouts/GuestLayout';
+import CheckForm from '../views/CheckForm';
 
 const router = createBrowserRouter([
     {
@@ -18,7 +19,6 @@ const router = createBrowserRouter([
             },
         ]
     },
-
     {
         path: '*',
         element: <NotFound />
