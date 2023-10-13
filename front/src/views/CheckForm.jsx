@@ -21,7 +21,9 @@ export default function CheckForm({ isVisible, onClose }) {
       <div className="flex justify-between items-center bg-white px-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 justify-center items-center">
           <div
-            className="bg-white rounded-sm"
+            className={`bg-white rounded-sm ${
+              appeared ? "appeared translate-x-4 transition duration-200" : ""
+            }`}
             style={{ width: "100%", height: "100%" }}
           >
             <div
@@ -36,18 +38,22 @@ export default function CheckForm({ isVisible, onClose }) {
               <img
                 src={cardFamily}
                 alt=""
-                style={{ width: "240px", height: "100px" }}
+                style={{ width: "200px", height: "100px" }}
               />
-              <div className="font-normal">
-                <h1 className="font-semibold mb-2 border-b-2 border-gray-800 text-lg">
-                  Check Family
+              <div className="text-center">
+                <h1 className="font-semibold mt-6 mb-2 text-xl">
+                  Check+ Family
                 </h1>
-                <p className="text-gray-700">Always make sure to get checked</p>
+                <p className="font-normal text-gray-700">
+                  Always make sure to get checked
+                </p>
               </div>
             </div>
           </div>
           <div
-            className="bg-white rounded-sm"
+            className={`bg-white rounded-sm ${
+              appeared ? "appeared translate-x-4 transition duration-200" : ""
+            }`}
             style={{ width: "100%", height: "100%" }}
           >
             <div
@@ -62,20 +68,22 @@ export default function CheckForm({ isVisible, onClose }) {
               <img
                 src={cardDoctor}
                 alt=""
-                style={{ width: "100px", height: "100px" }}
+                style={{ width: "200px", height: "100px" }}
               />
-              <div className="font-normal">
-                <h1 className="font-semibold mb-2 border-b-2 border-gray-800 text-lg">
+              <div className="text-center">
+                <h1 className="font-semibold mt-6 mb-2 text-xl">
                   Assured quality
                 </h1>
-                <p className="text-gray-700">
+                <p className="font-normal text-gray-700">
                   Our crew is proven to be the best
                 </p>
               </div>
             </div>
           </div>
           <div
-            className="bg-white rounded-sm"
+            className={`bg-white rounded-sm ${
+              appeared ? "appeared translate-x-4 transition duration-200" : ""
+            }`}
             style={{ width: "100%", height: "100%" }}
           >
             <div
@@ -90,20 +98,19 @@ export default function CheckForm({ isVisible, onClose }) {
               <img
                 src={cardHealth}
                 alt=""
-                style={{ width: "100px", height: "100px" }}
+                style={{ width: "200px", height: "100px" }}
               />
-              <div className="font-normal">
-                <h1 className="font-semibold mb-2 border-b-2 border-gray-800 text-lg">
+              <div className="text-center">
+                <h1 className="font-semibold mt-6 mb-2 text-xl">
                   Stay healthy!
                 </h1>
-                <p className="text-gray-700">
+                <p className="font-normal text-gray-700">
                   Our crew is proven to be the best
                 </p>
               </div>
             </div>
           </div>
         </div>
-
         <div
           className={` p-16 px-14 appear-transition bg-white ${
             appeared ? "appeared" : ""

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DateTime } from "luxon";
+import calendar from "../assets/svg/calendar.svg";
+import Support from "../components/CrewInfo";
 
 export default function Home() {
   const initialSchedule = {
@@ -106,7 +108,7 @@ export default function Home() {
             <button
               key={time}
               type="button"
-              className={`w-full bg-white relative transition text-[18px] p-6 ${
+              className={`w-full bg-white relative transition text-[14px] p-6 ${
                 isReserved(day, time) || isBreakReserved(day, time)
                   ? "cursor-default bg-white"
                   : ""
@@ -116,6 +118,11 @@ export default function Home() {
               {(isReserved(day, time) || isBreakReserved(day, time)) && (
                 <div className="uppercase absolute text-red-900 bg-red-100 px-1 py-0.5 rounded-tl-sm text-sm right-0 bottom-0">
                   reserved
+                </div>
+              )}
+              {isBreakReserved(day, time) && (
+                <div className="uppercase absolute text-red-900 bg-red-100 px-1 py-0.5 rounded-tl-sm text-sm right-0 bottom-0">
+                  break
                 </div>
               )}
               {time}
@@ -141,9 +148,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="parent h-full bg-white backdrop-blur-sm bg-opacity-40">
+    <div className="parent h-full bg-white">
       <div className="text-black flex flex-col gap-4 items-center justify-center font-bold">
-        <div className={`text-9xl py-6 font-bold`}>
+        <div className={`text-9xl py-6 font-normal`}>
           {currentTime.toFormat("HH:mm")}
         </div>
       </div>
@@ -153,7 +160,7 @@ export default function Home() {
             <button
               key={day}
               type="button"
-              className={`bg-white backdrop-blur-sm bg-opacity-70 px-10 py-8 cursor-default uppercase text-lg text-black tracking-tighter font-semibold`}
+              className={`bg-white backdrop-blur-sm bg-opacity-70 px-10 py-8 cursor-default text-xl text-black tracking-tighter font-semibold`}
             >
               {day}
             </button>
@@ -166,10 +173,41 @@ export default function Home() {
         </div>
       </div>
       <div className="bg-white">
-        <div>
-          <h1>Extended full transparency with our customers</h1>
+        <div className="flex flex-col lg:flex-row gap-12 justify-center items-center">
+          <div className="flex justify-center items-center flex-col mt-12 gap-4 lg:py-2 text-center">
+            <h1 className="font-semibold text-4xl">
+              Extended full transparency with our customers
+            </h1>
+            <p className="font-light text-xl">
+              Check reservations at the date you want to leave a reservation.
+            </p>
+            <div className="flex flex-row gap-2 mt-6">
+              <button
+                type="button"
+                className="border font-light text-lg shadow-sm rounded-md hover:scale-95 hover:bg-sky-50 hover:border-sky-200 hover:text-sky-950 transition p-2 cursor-pointer active:scale-100 active:bg-sky-100 ring-4 ring-transparent active:ring-sky-200"
+              >
+                3 Month Schedules
+              </button>
+              <button
+                type="button"
+                className="border font-light text-lg shadow-sm rounded-md hover:scale-95 transition p-2 cursor-pointer hover:bg-sky-50 hover:border-sky-200 hover:text-sky-950 active:scale-100 active:bg-sky-100 ring-4 ring-transparent active:ring-sky-200"
+              >
+                6 Month Schedules
+              </button>
+              <button
+                type="button"
+                className="border font-light text-lg shadow-sm rounded-md hover:scale-95 hover:bg-sky-50 hover:border-sky-200 hover:text-sky-950 transition p-2 cursor-pointer hover: active:scale-100 active:bg-sky-100 ring-4 ring-transparent active:ring-sky-200"
+              >
+                1 Year Schedules
+              </button>
+            </div>
+          </div>
+          <div className="flex items-center justify-center w-96 h-96">
+            <img src={calendar} alt="" />
+          </div>
         </div>
       </div>
+      <Support />
     </div>
   );
 }
