@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { DateTime } from "luxon";
 import calendar from "../assets/svg/calendar.svg";
 import Support from "../components/CrewInfo";
+import smiley from "../assets/svg/smiley.svg";
 
 export default function Home() {
   const initialSchedule = {
@@ -149,8 +150,23 @@ export default function Home() {
 
   return (
     <div className="parent h-full bg-white">
-      <div className="text-black flex flex-col gap-4 items-center justify-center font-bold">
-        <div className={`text-9xl py-6 font-normal`}>
+      <div className="relative group flex flex-col items-center justify-center">
+        <div className="absolute top-64 text-center p-4 rounded-md">
+          <div className="flex flex-col text-sky-900 justify-center items-center text-lg">
+            Personalized appointments just a scroll away
+          </div>
+          <h1 className="font-semibold group-hover:translate-y-48 duration-700 transition group-hover:transition tracking-tighter text-4xl text-sky-300">
+            Seamless smiles your way
+          </h1>
+        </div>
+        <img
+          src={smiley}
+          alt=""
+          className="group-hover:scale-105 transition duration-700"
+        />
+      </div>
+      <div className="text-black text-center">
+        <div className={`text-9xl mb-4 mt-12`}>
           {currentTime.toFormat("HH:mm")}
         </div>
       </div>

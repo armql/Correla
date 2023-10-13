@@ -64,7 +64,7 @@ export default function CrewInfo() {
       <div className="font-semibold text-4xl py-4 text-center">Our Crew</div>
       <div
         ref={carouselRef}
-        className="items-center flex relative flex-row py-6 gap-6 justify-around px-4 overflow-x-auto overflow-auto active:cursor-grabbing"
+        className="items-center flex relative flex-col lg:flex-row py-6 gap-6 justify-center px-4 overflow-x-auto overflow-auto active:cursor-grabbing"
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
@@ -72,14 +72,14 @@ export default function CrewInfo() {
         {extendedCrewMembers.map((member, index) => (
           <div
             key={index}
-            className="select-none w-full flex flex-row lg:flex-col gap-6 items-center justify-between"
+            className="select-none w-full flex flex-row lg:flex-col gap-6 items-center justify-evenly"
           >
             <img
               src={member.image}
               alt=""
               className="w-64 h-64 pointer-events-none"
             />
-            <div className="flex flex-col items-center justify-center text-center">
+            <div className="flex flex-row md:flex-col items-center justify-center text-center">
               <h1 className="text-2xl py-1.5">{member.name}</h1>
               <div className="text-gray-700">
                 {member.specialization}

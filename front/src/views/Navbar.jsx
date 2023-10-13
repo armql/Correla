@@ -55,7 +55,7 @@ export default function Navbar() {
   return (
     <div className="bg-white">
       <div className="h-24 flex justify-center text-sky-500 items-center font-bold text-5xl">
-        Your company namezz
+        Your company name
       </div>
       <div className="w-full h-full mt-4">
         <div className="grid grid-cols-2 lg:grid-cols-5 text-center justify-evenly text-black items-center text-2xl">
@@ -65,7 +65,9 @@ export default function Navbar() {
               onClick={() => toggleSummary(index)}
               type="button"
               className={`p-4 transition ${
-                activeLink === index ? "text-sky-800" : "hover:text-sky-950"
+                activeLink === index
+                  ? "text-sky-800 bg-gray-100"
+                  : "hover:text-sky-950 hover:bg-gray-50"
               }`}
             >
               {button.text}
@@ -106,7 +108,7 @@ export default function Navbar() {
                 </button>
               </div>
             )}
-            <div>
+            <div className="fixed sm:relative z-20 right-0 left-0 top-0 ">
               <h1
                 className={`text-3xl transition font-semibold ${
                   showCheckForm ? "translate-y-10 duration-500" : ""
