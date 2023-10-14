@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { DateTime } from "luxon";
 import calendar from "../assets/svg/calendar.svg";
 import Support from "../components/CrewInfo";
 import smiley from "../assets/svg/smiley.svg";
+import Clock from "../components/Clock";
 
 export default function Home() {
   const initialSchedule = {
@@ -62,8 +62,6 @@ export default function Home() {
     },
   };
 
-  const [breaks, setBreak] = useState(false);
-  const [currentTime, setCurrentTime] = useState(DateTime.now());
   const [schedule, setSchedule] = useState(initialSchedule);
   const [breakSchedule, setBreakSchedule] = useState({});
 
@@ -103,13 +101,13 @@ export default function Home() {
 
   const renderScheduler = (day) => {
     return (
-      <div className="border">
+      <div className="">
         <div className="text-xl grid-cols-1">
           {Object.keys(schedule[day]).map((time) => (
             <button
               key={time}
               type="button"
-              className={`w-full bg-white relative transition text-[14px] p-6 ${
+              className={`w-full bg-white relative tracking-widest transition text-[14px] p-6 ${
                 isReserved(day, time) || isBreakReserved(day, time)
                   ? "cursor-default bg-white"
                   : ""
@@ -117,7 +115,7 @@ export default function Home() {
               onClick={() => toggleReservation(day, time)}
             >
               {(isReserved(day, time) || isBreakReserved(day, time)) && (
-                <div className="uppercase absolute text-red-900 bg-red-100 px-1 py-0.5 rounded-tl-sm text-sm right-0 bottom-0">
+                <div className="uppercase tracking-tighter absolute text-red-900 bg-red-100 px-1 py-0.5 rounded-tl-sm text-sm right-0 bottom-0">
                   reserved
                 </div>
               )}
@@ -134,49 +132,29 @@ export default function Home() {
     );
   };
 
-  const updateCurrentTime = () => {
-    const userTimeZone = "Europe/Belgrade";
-    const currentTimeInTimeZone = DateTime.now().setZone(userTimeZone);
-    setCurrentTime(currentTimeInTimeZone);
-  };
-
-  useEffect(() => {
-    updateCurrentTime();
-
-    const intervalId = setInterval(updateCurrentTime, 60000);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
   return (
     <div className="parent h-full bg-white">
-      <div className="relative group flex flex-col items-center justify-center">
-        <div className="absolute top-64 text-center p-4 rounded-md">
-          <div className="flex flex-col text-sky-900 justify-center items-center text-lg">
+      <div className="group flex flex-row items-center justify-evenly">
+        <div className="text-center p-4 rounded-md">
+          <div className="flex flex-col text-sky-900 tracking-tight justify-center items-center text-2xl">
             Personalized appointments just a scroll away
           </div>
-          <h1 className="font-semibold group-hover:translate-y-48 duration-700 transition group-hover:transition tracking-tighter text-4xl text-sky-300">
+          <h1 className="font-semibold tracking-tighter text-6xl text-sky-500">
             Seamless smiles your way
           </h1>
         </div>
-        <img
-          src={smiley}
-          alt=""
-          className="group-hover:scale-105 transition duration-700"
-        />
-      </div>
-      <div className="text-black text-center">
-        <div className={`text-9xl mb-4 mt-12`}>
-          {currentTime.toFormat("HH:mm")}
+        <div className="">
+          <img src={smiley} alt="" className="" />
         </div>
       </div>
-      <div className="flex items-center flex-col justify-center">
-        <div className="grid grid-cols-3 lg:grid-cols-6 items-center justify-center text-center">
+      <Clock />
+      <div className="flex items-center flex-col justify-center bg-white">
+        <div className="grid grid-cols-3 lg:grid-cols-6 items-center justify-center text-center bg-white">
           {Object.keys(schedule).map((day) => (
             <button
               key={day}
               type="button"
-              className={`bg-white backdrop-blur-sm bg-opacity-70 px-10 py-8 cursor-default text-xl text-black tracking-tighter font-semibold`}
+              className={`bg-white px-6 py-2.5 cursor-default text-2xl text-black font-semibold`}
             >
               {day}
             </button>

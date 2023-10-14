@@ -76,7 +76,7 @@ export default function CrewInfo() {
           >
             <img
               src={member.image}
-              alt=""
+              alt="member profile"
               className="w-64 h-64 pointer-events-none"
             />
             <div className="flex flex-row md:flex-col items-center justify-center text-center">

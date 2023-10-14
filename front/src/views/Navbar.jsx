@@ -117,7 +117,7 @@ export default function Navbar() {
                 Make a reservation now
               </h1>
               <p
-                className={`text-lg transition text-gray-800 px-1 ${
+                className={`text-lg transition tracking-tighter text-gray-800 px-1 ${
                   showCheckForm ? "translate-y-10 duration-500" : ""
                 }`}
               >
