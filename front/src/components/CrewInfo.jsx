@@ -1,11 +1,14 @@
 import React, { useState, useRef } from "react";
 import male from "../assets/svg/male-avatar.svg";
+import male2 from "../assets/svg/male2-avatar.svg";
 import female from "../assets/svg/female-avatar.svg";
+import female2 from "../assets/svg/female2-avatar.svg";
+import female3 from "../assets/svg/female3-avatar.svg";
 
 const crewMembers = [
   {
     name: "Robert Anthony",
-    image: male,
+    image: male2,
     specialization: "Orthodontist, Oral Surgeon, Endodontist",
     experience: "30+ years of experience",
   },
@@ -23,19 +26,25 @@ const crewMembers = [
   },
   {
     name: "Sierra Ardana",
-    image: female,
+    image: female2,
     specialization: "Dental Assistant, Receptionist",
     experience: "5+ years of experience",
   },
   {
     name: "Lisa Nelle",
-    image: female,
+    image: female3,
     specialization: "Dental Assistant, Receptionist",
     experience: "2+ years of experience",
   },
 ];
 
-const extendedCrewMembers = [...crewMembers, ...crewMembers, ...crewMembers];
+const extendCrewMembers = (members, count) => {
+  const extendedMembers = [];
+  for (let i = 0; i < count; i++) {
+    extendedMembers.push(...members);
+  }
+  return extendedMembers;
+};
 
 export default function CrewInfo() {
   const carouselRef = useRef(null);
@@ -58,6 +67,8 @@ export default function CrewInfo() {
     const x = e.clientX - startX;
     carouselRef.current.scrollLeft = scrollLeft - x;
   };
+
+  const extendedCrewMembers = extendCrewMembers(crewMembers, 3); // Extend the crew members as needed
 
   return (
     <div className="parent bg-white">

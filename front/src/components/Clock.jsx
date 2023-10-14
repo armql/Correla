@@ -30,17 +30,17 @@ export default function Clock() {
         <img
           src={molar}
           alt=""
-          className="absolute translate-x-10 translate-y-20 w-14 h-14"
+          className="absolute translate-x-10 translate-y-20 w-14 h-14 group-hover:-rotate-3 rotate-3 duration-300 transition"
         />
         <img
           src={canine}
           alt=""
-          className="absolute translate-x-40 translate-y-10 -rotate-12 w-12 h-12"
+          className="absolute translate-x-40 translate-y-10 duration-300 transition group-hover:-rotate-12 rotate-12 w-12 h-12"
         />
         <img
           src={premolar}
           alt=""
-          className="absolute translate-x-20 translate-y-0 -rotate-2 w-10 h-10"
+          className="absolute translate-x-20 translate-y-0 duration-300 transition group-hover:-rotate-2 group-hover:scale-110 rotate-2 w-10 h-10"
         />
       </div>
       {currentTime.toFormat("HH:mm")}
@@ -58,7 +58,7 @@ export default function Clock() {
         <img
           src={premolar}
           alt=""
-          className="absolute -translate-x-28 translate-y-0 group-hover:-rotate-2 group-hover:scale-150 duration-300 transition -rotate-0 w-10 h-10"
+          className="absolute -translate-x-28 translate-y-0 group-hover:rotate-2 group-hover:scale-110 duration-300 transition -rotate-2 w-10 h-10"
         />
       </div>
     </div>

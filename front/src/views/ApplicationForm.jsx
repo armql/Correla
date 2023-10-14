@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import joyride from "../assets/svg/joyride.svg";
+import Calendar from "../components/Calendar";
+
 const CustomDropdown = ({ options, selected, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -111,29 +113,6 @@ export default function ApplicationForm() {
 
   const [selectedProcedure, setSelectedProcedure] = useState(null);
 
-  // Function to generate an array of days in a month
-  const getDaysInMonth = (year, month) => {
-    return new Array(32 - new Date(year, month, 32).getDate())
-      .fill(null)
-      .map((_, index) => index + 1);
-  };
-
-  // Generate an array of month names
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
   return (
     <div className="bg-white">
       <div className="flex flex-col lg:flex-row justify-evenly">
@@ -210,67 +189,7 @@ export default function ApplicationForm() {
           </div>
         </form>
       </div>
-      <div className="flex w-full border-t-2 mt-6 flex-col p-4">
-        <div className="flex flex-row justify-between mb-4">
-          <h1 className="text-5xl font-semibold text-center">Calendar</h1>
-          <div className="flex gap-2 bg-white border border-gray-300 font-light text-lg py-2 px-4 hover:bg-gray-50 cursor-pointer rounded-md shadow-sm">
-            <div className="flex justify-center items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-4 h-4 transition hover:-translate-x-1 duration-500 active:-translate-x-3 hover:scale-110 active:scale-150"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
-            </div>
-            Year
-            <div className="flex justify-center items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-4 h-4 transition hover:translate-x-1 duration-500 active:translate-x-3 hover:scale-110 active:scale-150"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 p-6">
-        {monthNames.map((month, index) => (
-          <div key={index} className="search-center">
-            <header className="px-1.5 text-2xl p-2 font-semibold">
-              {month}
-            </header>
-            <div className="text-center ">
-              <ul className="grid grid-cols-4 text-md">
-                {getDaysInMonth(2023, index).map((day) => (
-                  <li
-                    key={day}
-                    className="border py-3 font-light px-6 hover:bg-gray-50"
-                  >
-                    {day}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        ))}
-      </div>
+      <Calendar />
     </div>
   );
 }
