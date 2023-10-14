@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import CheckForm from "./CheckForm";
+import molar from "../assets/svg/molar-tooth.svg";
+import canine from "../assets/svg/incisors-tooth.svg";
+import premolar from "../assets/svg/premolar-tooth.svg";
 
 export default function Navbar() {
   const buttons = [
@@ -136,6 +139,23 @@ export default function Navbar() {
                 >
                   Get checked
                 </button>
+                <div>
+                  <img
+                    src={molar}
+                    alt=""
+                    className="absolute -translate-x-24 translate-y-20 w-14 h-14 group-hover:rotate-3 -rotate-3 duration-300 transition"
+                  />
+                  <img
+                    src={canine}
+                    alt=""
+                    className="absolute -translate-x-48 translate-y-10 group-hover:rotate-12 duration-300 transition -rotate-12 w-12 h-12"
+                  />
+                  <img
+                    src={premolar}
+                    alt=""
+                    className="absolute -translate-x-28 translate-y-0 group-hover:rotate-2 group-hover:scale-110 duration-300 transition -rotate-2 w-10 h-10"
+                  />
+                </div>
               </div>
             </div>
           </div>
