@@ -43,7 +43,9 @@ export default function Clock() {
           className="absolute translate-x-20 translate-y-0 duration-300 transition group-hover:-rotate-2 group-hover:scale-110 rotate-2 w-10 h-10"
         />
       </div>
-      {currentTime.toFormat("HH:mm")}
+      <div className="group-hover:scale-110 duration-500 transition">
+        {currentTime.toFormat("HH:mm")}
+      </div>
       <div>
         <img
           src={molar}

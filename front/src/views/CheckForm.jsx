@@ -19,8 +19,8 @@ export default function CheckForm({ isVisible, onClose }) {
 
   return (
     <div className="h-full bg-transparent">
-      <div className="flex justify-between items-center bg-white px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 justify-center items-center">
+      <div className="flex flex-col md:flex-row justify-between items-center bg-white px-6">
+        <div className="grid-cols-3 hidden lg:grid lg:grid-cols-3 gap-6 justify-center items-center">
           <div
             className={`bg-white rounded-sm ${
               appeared ? "appeared translate-x-4 transition duration-200" : ""
@@ -143,6 +143,7 @@ export default function CheckForm({ isVisible, onClose }) {
                 or apply for a procedure here{" "}
                 <Link
                   to="form"
+                  onClick={() => setShowCheckForm(false)}
                   className="hover:border border py-0.5 px-1 hover:text-black border-gray-100 bg-transparent text-sm rounded-md text-black transition hover:scale-105 active:scale-100 hover:bg-gray-50"
                 >
                   Apply

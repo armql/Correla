@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../views/Navbar";
 import Footer from "../views/Footer";
-import background from "../assets/images/form-gray-background.svg";
+import background from "../assets/svg/form-gray-background.svg";
 import CustomerSupport from "../custom/CustomerSupport";
 
 const guestLayoutStyle = {

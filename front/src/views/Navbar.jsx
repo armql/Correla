@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import CheckForm from "./CheckForm";
+import molar2 from "../assets/svg/molar2-tooth.png";
 import molar from "../assets/svg/molar-tooth.svg";
 import canine from "../assets/svg/incisors-tooth.svg";
 import premolar from "../assets/svg/premolar-tooth.svg";
+import buildingbg from "../assets/images/building-bg.jpeg";
+import ServiceCards from "../components/ServiceCards";
 
 export default function Navbar() {
   const buttons = [
@@ -78,11 +81,31 @@ export default function Navbar() {
           ))}
         </div>
         {activeButtonIndex !== null && (
-          <div className="bg-white p-12 text-center gap-6 flex items-center justify-center flex-col font-normal">
-            <h1 className="text-2xl">
-              {buttons[activeButtonIndex].modalTitle}
-            </h1>
-            <p>{buttons[activeButtonIndex].modalContent}</p>
+          <div
+            className={`relative bg-white gap-6 grid grid-cols-2 font-normal ${
+              showCheckForm
+                ? "transform translate-x-40 duration-500 transition"
+                : "duration-500 transition"
+            }`}
+          >
+            <div
+              style={{
+                backgroundImage: `url(${buildingbg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "bottom",
+                width: "100vw", // Set the width to 100% of the viewport width
+                height: "100vh", // Set the height to 100% of the viewport height
+              }}
+              className="p-60 flex flex-col"
+            >
+              <h1 className="text-3xl py-2 px-1.5 text-white bg-sky-500 tracking-wide">
+                {buttons[activeButtonIndex].modalTitle}
+              </h1>
+              <p className="tracking-tighter py-2 px-2 text-lg bg-white font-light">
+                {buttons[activeButtonIndex].modalContent}
+              </p>
+              <ServiceCards />
+            </div>
           </div>
         )}
         {activeButtonIndex === null && (
@@ -111,51 +134,62 @@ export default function Navbar() {
                 </button>
               </div>
             )}
-            <div className="fixed sm:relative z-20 right-0 left-0 top-0 ">
-              <h1
-                className={`text-3xl transition font-semibold ${
-                  showCheckForm ? "translate-y-10 duration-500" : ""
-                }`}
-              >
-                Make a reservation now
-              </h1>
-              <p
-                className={`text-lg transition tracking-tighter text-gray-800 px-1 ${
-                  showCheckForm ? "translate-y-10 duration-500" : ""
-                }`}
-              >
-                If you have problems, get checked now and we will find a
-                solution together!
-              </p>
-              <div className="mt-2">
-                <button
-                  onClick={() => setShowCheckForm(true)}
-                  type="button"
-                  className={`${
-                    showCheckForm
-                      ? "translate-y-4 duration-100 bg-transparent text-transparent cursor-default"
-                      : "hover:bg-gray-200"
-                  } bg-gray-100 transition text-black p-4`}
+            <div className="flex flex-row justify-between">
+              <div className="">
+                <h1
+                  className={`text-3xl transition font-semibold ${
+                    showCheckForm ? "translate-y-10 duration-500" : ""
+                  }`}
                 >
-                  Get checked
-                </button>
-                <div>
-                  <img
-                    src={molar}
-                    alt=""
-                    className="absolute -translate-x-24 translate-y-20 w-14 h-14 group-hover:rotate-3 -rotate-3 duration-300 transition"
-                  />
-                  <img
-                    src={canine}
-                    alt=""
-                    className="absolute -translate-x-48 translate-y-10 group-hover:rotate-12 duration-300 transition -rotate-12 w-12 h-12"
-                  />
-                  <img
-                    src={premolar}
-                    alt=""
-                    className="absolute -translate-x-28 translate-y-0 group-hover:rotate-2 group-hover:scale-110 duration-300 transition -rotate-2 w-10 h-10"
-                  />
+                  Make a reservation now
+                </h1>
+                <p
+                  className={`text-lg transition tracking-tighter text-gray-800 px-1 ${
+                    showCheckForm ? "translate-y-10 duration-500" : ""
+                  }`}
+                >
+                  If you have problems, get checked now and we will find a
+                  solution together!
+                </p>
+                <div className="mt-2">
+                  <button
+                    onClick={() => setShowCheckForm(true)}
+                    type="button"
+                    className={`${
+                      showCheckForm
+                        ? "translate-y-4 duration-100 bg-transparent text-transparent cursor-default"
+                        : "hover:bg-gray-200"
+                    } bg-gray-100 transition text-black p-4`}
+                  >
+                    Get checked
+                  </button>
                 </div>
+              </div>
+              <div
+                className={`absolute right-0 z-10 flex items-center justify-center ${
+                  showCheckForm ? "transform translate-y-36 duration-500" : ""
+                }`}
+              >
+                <img
+                  src={molar}
+                  alt=""
+                  className="w-14 h-14 group-hover:rotate-3 -rotate-3 duration-300 transition"
+                />
+                <img
+                  src={canine}
+                  alt=""
+                  className="translate-x-2 translate-y-10 group-hover:rotate-12 duration-300 transition -rotate-12 w-12 h-12"
+                />
+                <img
+                  src={premolar}
+                  alt=""
+                  className="translate-x-8 group-hover:rotate-2 group-hover:scale-110 duration-300 transition -rotate-2 w-10 h-10"
+                />
+                <img
+                  src={molar2}
+                  alt=""
+                  className="-translate-x-6 translate-y-20 group-hover:rotate-2 group-hover:scale-110 duration-300 transition -rotate-2 w-12 h-12"
+                />
               </div>
             </div>
           </div>
