@@ -3,6 +3,7 @@ import Support from "../components/CrewInfo";
 import smiley from "../assets/svg/smiley.svg";
 import Clock from "../components/Clock";
 import Schedules from "../components/Schedules";
+import ServiceCards from "../components/ServiceCards";
 
 export default function Home() {
   const initialSchedule = {
@@ -148,14 +149,6 @@ export default function Home() {
         </div>
       </div>
       <Clock />
-      <div className="text-3xl group font-light h-24 tracking-tighter">
-        <h1 className="group-hover:text-black text-transparent duration-300 group-hover:translate-x-10 transition">
-          Our schedules for this week
-        </h1>
-        <p className="text-lg font-extralight group-hover:text-black text-transparent duration-300 group-hover:translate-x-8 transition">
-          There are breaks everyday around 12-13pm and
-        </p>
-      </div>
       <div className="flex items-center flex-col justify-center bg-white">
         <div className="grid grid-cols-3 lg:grid-cols-6 items-center justify-center text-center bg-white">
           {Object.keys(schedule).map((day) => (
@@ -175,6 +168,7 @@ export default function Home() {
         </div>
       </div>
       <Schedules />
+      <ServiceCards />
       <Support />
     </div>
   );

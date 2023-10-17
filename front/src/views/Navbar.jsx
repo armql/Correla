@@ -82,29 +82,34 @@ export default function Navbar() {
         </div>
         {activeButtonIndex !== null && (
           <div
-            className={`relative bg-white gap-6 grid grid-cols-2 font-normal ${
+            className={`relative bg-white gap-6 grid grid-cols-1 font-normal ${
               showCheckForm
                 ? "transform translate-x-40 duration-500 transition"
                 : "duration-500 transition"
             }`}
           >
-            <div
-              style={{
-                backgroundImage: `url(${buildingbg})`,
-                backgroundSize: "cover",
-                backgroundPosition: "bottom",
-                width: "100vw", // Set the width to 100% of the viewport width
-                height: "100vh", // Set the height to 100% of the viewport height
-              }}
-              className="p-60 flex flex-col"
-            >
-              <h1 className="text-3xl py-2 px-1.5 text-white bg-sky-500 tracking-wide">
-                {buttons[activeButtonIndex].modalTitle}
-              </h1>
-              <p className="tracking-tighter py-2 px-2 text-lg bg-white font-light">
-                {buttons[activeButtonIndex].modalContent}
-              </p>
-              <ServiceCards />
+            <div className="lg:block hidden h-full w-full bg-sky-50">
+              <div className="flex flex-col items-center justify-center">
+                <h1 className="text-3xl py-2 px-1.5 text-white bg-sky-500 bg-opacity-90 backdrop-blur-sm tracking-wide w-full text-center">
+                  {buttons[activeButtonIndex].modalTitle}
+                </h1>
+                <p className="tracking-tighter py-2 px-2 text-lg bg-sky-200 bg-opacity-40 backdrop-blur-sm font-light">
+                  {buttons[activeButtonIndex].modalContent}
+                </p>
+              </div>
+            </div>
+            <div className="absolute h-full w-full flex lg:hidden">
+              <div className="p-12 flex flex-col items-center justify-center">
+                <h1 className="text-3xl py-2 px-1.5 text-white bg-sky-500 bg-opacity-90 backdrop-blur-sm tracking-wide w-full text-center">
+                  {buttons[activeButtonIndex].modalTitle}
+                </h1>
+                <p className="tracking-tighter py-2 px-2 text-lg bg-white bg-opacity-30 backdrop-blur-sm font-light">
+                  {buttons[activeButtonIndex].modalContent}
+                </p>
+              </div>
+            </div>
+            <div className="w-full h-fit flex bg-sky-950 justify-center items-center">
+              <img src={buildingbg} alt="" className="lg:hidden block" />
             </div>
           </div>
         )}
@@ -157,9 +162,9 @@ export default function Navbar() {
                     type="button"
                     className={`${
                       showCheckForm
-                        ? "translate-y-4 duration-100 bg-transparent text-transparent cursor-default"
-                        : "hover:bg-gray-200"
-                    } bg-gray-100 transition text-black p-4`}
+                        ? "translate-y-4 duration-100 bg-transparent text-transparent cursor-default border-none shadow-none ring-none ring-transparent"
+                        : "hover:bg-gray-50"
+                    } rounded-md border shadow-sm transition text-black py-2 px-4 ring-4 ring-transparent active:ring-gray-100 font-light`}
                   >
                     Get checked
                   </button>
@@ -167,7 +172,7 @@ export default function Navbar() {
               </div>
               <div
                 className={`absolute right-0 z-10 flex items-center justify-center ${
-                  showCheckForm ? "transform translate-y-36 duration-500" : ""
+                  showCheckForm ? "transform translate-y-28 duration-500" : ""
                 }`}
               >
                 <img

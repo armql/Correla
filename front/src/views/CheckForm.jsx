@@ -120,10 +120,10 @@ export default function CheckForm({ isVisible, onClose }) {
           <div className="flex flex-col gap-4">
             <div className="flex flex-col justify-center items-start">
               <div className="flex justify-center gap-1 items-center">
-                <h1 className="font-medium text-lg">
+                <h1 className="font-medium text-2xl">
                   Schedule your smile assessment,
                 </h1>
-                <span className="flex text-lg flex-row gap-2 font-normal tracking-tighter text-sky-400">
+                <span className="flex text-2xl flex-row gap-2 font-normal tracking-tighter text-sky-400">
                   Quick and Easy
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -139,62 +139,17 @@ export default function CheckForm({ isVisible, onClose }) {
                   </svg>
                 </span>
               </div>
-              <h1 className="flex gap-1 justify-center items-center text-lg font-medium">
+              <h1 className="flex gap-4 justify-center items-center text-2xl font-medium">
                 or apply for a procedure here{" "}
                 <Link
                   to="form"
                   onClick={() => setShowCheckForm(false)}
-                  className="hover:border border py-0.5 px-1 hover:text-black border-gray-100 bg-transparent text-sm rounded-md text-black transition hover:scale-105 active:scale-100 hover:bg-gray-50"
+                  className="border font-normal text-lg shadow-sm rounded-md hover:scale-95 hover:bg-sky-50 hover:border-sky-200 hover:text-sky-950 transition py-1 px-4 cursor-pointer active:scale-100 active:bg-sky-100 ring-4 ring-transparent active:ring-sky-200"
                 >
                   Apply
                 </Link>
               </h1>
             </div>
-            <form action="">
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-row gap-2">
-                  <div className="flex flex-col gap-1 font-normal">
-                    <label htmlFor="firstName">First Name</label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      className="border-2 border-gray-100 rounded-md text-sm shadow-sm py-2 px-1.5 font-normal"
-                      id="firstName"
-                      placeholder="Your first name"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1 font-normal">
-                    <label htmlFor="lastName">Last Name</label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      className="border-2 border-gray-100 text-sm rounded-md shadow-sm py-2 px-1.5 font-normal"
-                      id="lastName"
-                      placeholder="Your last name"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col font-normal">
-                  <label htmlFor="checkDate" className="text-gray-800">
-                    Select Check Date
-                  </label>
-                  <input
-                    type="date"
-                    name="checkDate"
-                    id="checkDate"
-                    className="border-2 border-gray-100 rounded-md shadow-sm py-2 px-1.5 font-normal text-sm text-gray-800"
-                  />
-                </div>
-              </div>
-              <div className="flex justify-center items-center mt-6">
-                <button
-                  type="submit"
-                  className="bg-emerald-100 text-emerald-900 px-16 rounded-sm py-2 hover:scale-95 hover:bg-emerald-200 transition "
-                >
-                  Set Check
-                </button>
-              </div>
-            </form>
           </div>
         </div>
       </div>

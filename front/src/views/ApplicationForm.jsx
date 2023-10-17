@@ -119,24 +119,8 @@ export default function ApplicationForm() {
       .map((_, index) => index + 1);
   };
 
-  // Generate an array of month names
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
   return (
-    <div className="bg-white">
+    <div className="bg-white py-10">
       <div className="flex flex-col lg:flex-row justify-evenly">
         <div className="flex justify-center items-center lg:justify-around gap-6 flex-col lg:flex-row text-center pt-2 px-4">
           <div className="flex flex-col justify-center items-center">
