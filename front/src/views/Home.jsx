@@ -4,6 +4,8 @@ import smiley from "../assets/svg/smiley.svg";
 import Clock from "../components/Clock";
 import Schedules from "../components/Schedules";
 import ServiceCards from "../components/ServiceCards";
+import Questions from "../components/Questions";
+import ALLQuestions from "./ALLQuestions";
 
 export default function Home() {
   const initialSchedule = {
@@ -62,9 +64,20 @@ export default function Home() {
       "16:00 - 17:00": false,
     },
   };
-
   const [schedule, setSchedule] = useState(initialSchedule);
   const [breakSchedule, setBreakSchedule] = useState({});
+
+  // Load the break schedule from local storage when the component mounts
+  useEffect(() => {
+    const storedBreakSchedule = localStorage.getItem("breakSchedule");
+    if (storedBreakSchedule) {
+      setBreakSchedule(JSON.parse(storedBreakSchedule));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("breakSchedule", JSON.stringify(breakSchedule));
+  }, [breakSchedule]);
 
   const toggleReservation = (day, time) => {
     if (time.includes("BREAK")) {
@@ -104,30 +117,35 @@ export default function Home() {
     return (
       <div className="">
         <div className="text-xl grid-cols-1">
-          {Object.keys(schedule[day]).map((time) => (
-            <button
-              key={time}
-              type="button"
-              className={`w-full bg-white relative tracking-widest transition text-[18px] p-6 ${
-                isReserved(day, time) || isBreakReserved(day, time)
-                  ? "cursor-default bg-white"
-                  : ""
-              }`}
-              onClick={() => toggleReservation(day, time)}
-            >
-              {(isReserved(day, time) || isBreakReserved(day, time)) && (
-                <div className="uppercase tracking-tighter absolute text-red-900 bg-red-100 px-1 py-0.5 rounded-tl-sm text-sm right-0 bottom-0">
-                  reserved
-                </div>
-              )}
-              {isBreakReserved(day, time) && (
-                <div className="uppercase absolute text-red-900 bg-red-100 px-1 py-0.5 rounded-tl-sm text-sm right-0 bottom-0">
-                  break
-                </div>
-              )}
-              {time}
-            </button>
-          ))}
+          {Object.keys(schedule[day]).map((time) => {
+            const isBreakTime = time.includes("BREAK");
+            const displayedTime = isBreakTime
+              ? time.replace("BREAK", "")
+              : time;
+
+            return (
+              <button
+                key={time}
+                type="button"
+                className={`w-full relative tracking-widest transition text-[18px] p-6 ${
+                  isReserved(day, time) ? "cursor-default" : "bg-white"
+                } ${isBreakTime ? "bg-rose-50" : ""}`}
+                onClick={() => toggleReservation(day, time)}
+              >
+                {isReserved(day, time) && (
+                  <div className="uppercase tracking-tighter absolute text-rose-900 bg-rose-100 px-1 py-0.5 rounded-tl-sm text-sm right-0 bottom-0">
+                    reserved
+                  </div>
+                )}
+                {isBreakReserved(day, time) && (
+                  <div className="uppercase absolute text-white bg-red-900 px-1 py-0.5 rounded-tl-sm text-sm right-0 bottom-0">
+                    break
+                  </div>
+                )}
+                {displayedTime}
+              </button>
+            );
+          })}
         </div>
       </div>
     );
@@ -169,6 +187,7 @@ export default function Home() {
       </div>
       <Schedules />
       <ServiceCards />
+      <ALLQuestions />
       <Support />
     </div>
   );

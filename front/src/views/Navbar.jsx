@@ -164,7 +164,7 @@ export default function Navbar() {
                       showCheckForm
                         ? "translate-y-4 duration-100 bg-transparent text-transparent cursor-default border-none shadow-none ring-none ring-transparent"
                         : "hover:bg-gray-50"
-                    } rounded-md border shadow-sm transition text-black py-2 px-4 ring-4 ring-transparent active:ring-gray-100 font-light`}
+                    } rounded-md border transition text-black py-2 px-4 ring-4 ring-transparent active:ring-gray-100 font-light`}
                   >
                     Get checked
                   </button>

@@ -144,7 +144,7 @@ export default function CheckForm({ isVisible, onClose }) {
                 <Link
                   to="form"
                   onClick={() => setShowCheckForm(false)}
-                  className="border font-normal text-lg shadow-sm rounded-md hover:scale-95 hover:bg-sky-50 hover:border-sky-200 hover:text-sky-950 transition py-1 px-4 cursor-pointer active:scale-100 active:bg-sky-100 ring-4 ring-transparent active:ring-sky-200"
+                  className="border font-normal text-xl shadow-sm rounded-md hover:scale-95 hover:bg-sky-50 hover:border-sky-200 hover:text-sky-950 transition py-0.5 px-4 cursor-pointer active:scale-100 active:bg-sky-100 ring-4 ring-transparent active:ring-sky-200"
                 >
                   Apply
                 </Link>

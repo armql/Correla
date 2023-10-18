@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-export default function Calendar() {
-  const [selectedDate, setSelectedDate] = useState(new Date(2023, 9, 14)); // Initial date is October 14th, 2023
-  const [isSelectedDay, setIsSelectedDay] = useState(selectedDate.getDate()); // Sync the selected day with the initial date
+export default function Calendar({ toggleCalendar }) {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [isSelectedDay, setIsSelectedDay] = useState(selectedDate.getDate());
   const year = selectedDate.getFullYear();
   const month = selectedDate.getMonth();
   const currentDay = new Date().getDate();
@@ -32,7 +32,7 @@ export default function Calendar() {
   const changeDay = (day) => {
     if (day <= getDaysInMonth(year, month).length) {
       setSelectedDate(new Date(year, month, day));
-      setIsSelectedDay(day);
+      setIsSelectedDay(day); // Update isSelectedDay
     } else {
       const newDate = new Date(selectedDate);
       newDate.setMonth(selectedDate.getMonth() + 1);
@@ -61,11 +61,14 @@ export default function Calendar() {
   };
 
   return (
-    <div className="parent bg-white">
-      <div className="flex w-full border-t-2 mt-6 flex-col p-4">
-        <div className="flex flex-row justify-between mb-4">
+    <div className="absolute right-0 left-0 parent bg-gray-100 border-t-2">
+      <div onClick={toggleCalendar} className="absolute right-4 top-4 text-sm">
+        <button className="hover:text-black text-gray-600">Close</button>
+      </div>
+      <div className="flex w-full  mt-6 flex-col p-4">
+        <div className="flex lg:flex-row flex-col items-center gap-6 justify-between mb-4">
           <h1 className="text-5xl font-semibold text-center">Calendar</h1>
-          <div className="flex justify-center bg-gray-100 p-4 items-center">
+          <div className="flex lg:flex-row flex-col justify-center bg-gray-100 p-4 items-center">
             <div className="text-lg py-2 px-4">
               {selectedDate.toLocaleDateString("en-US", {
                 weekday: "long",
@@ -75,7 +78,7 @@ export default function Calendar() {
               })}
             </div>
             <div className="flex flex-row gap-1 justify-center items-center">
-              <div className="flex gap-2 bg-white border border-gray-300 font-light text-sm py-1.5 px-4 hover:bg-gray-50 cursor-pointer rounded-md shadow-sm">
+              <div className="flex gap-2 bg-white border border-gray-300 w-28 items-center justify-between font-light text-sm py-1.5 px-4 hover:bg-gray-50 cursor-pointer rounded-md shadow-sm">
                 <div className="flex justify-center items-center">
                   <button onClick={() => changeDay(selectedDate.getDate() - 1)}>
                     <svg
@@ -84,7 +87,7 @@ export default function Calendar() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-4 h-4 transition hover:-translate-x-1 duration-500 active:-translate-x-3 hover:scale-110 active:scale-150"
+                      className="w-4 h-4 transition hover:-translate-x-1 duration-300 active:-translate-x-2 hover:scale-105 active:scale-110"
                     >
                       <path
                         strokeLinecap="round"
@@ -103,7 +106,7 @@ export default function Calendar() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-4 h-4 transition hover:translate-x-1 duration-500 active:translate-x-3 hover:scale-110 active:scale-150"
+                      className="w-4 h-4 transition hover:translate-x-1 duration-300 active:translate-x-2 hover:scale-105 active:scale-110"
                     >
                       <path
                         strokeLinecap="round"
@@ -115,7 +118,7 @@ export default function Calendar() {
                 </div>
               </div>
 
-              <div className="flex gap-2 bg-white border border-gray-300 font-light text-sm py-1.5 px-4 hover:bg-gray-50 cursor-pointer rounded-md shadow-sm">
+              <div className="flex gap-2 bg-white border border-gray-300 font-light w-40 items-center justify-between text-sm py-1.5 px-4 hover:bg-gray-50 cursor-pointer rounded-md shadow-sm">
                 <div className="flex justify-center items-center">
                   <button onClick={() => changeMonth(-1)}>
                     <svg
@@ -124,7 +127,7 @@ export default function Calendar() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-4 h-4 transition hover:-translate-x-1 duration-500 active:-translate-x-3 hover:scale-110 active:scale-150"
+                      className="w-4 h-4 transition hover:-translate-x-1 duration-300 active:-translate-x-2 hover:scale-105 active:scale-110"
                     >
                       <path
                         strokeLinecap="round"
@@ -143,7 +146,7 @@ export default function Calendar() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-4 h-4 transition hover:translate-x-1 duration-500 active:translate-x-3 hover:scale-110 active:scale-150"
+                      className="w-4 h-4 transition hover:translate-x-1 duration-300 active:translate-x-2 hover:scale-105 active:scale-110"
                     >
                       <path
                         strokeLinecap="round"
@@ -155,8 +158,8 @@ export default function Calendar() {
                 </div>
               </div>
 
-              <div className="flex gap-2 bg-white border border-gray-300 font-light text-sm py-1.5 px-4 hover:bg-gray-50 cursor-pointer rounded-md shadow-sm">
-                <div className="flex justify-center items-center">
+              <div className="flex gap-2 bg-white border border-gray-300 w-32 items-center justify-center font-light text-sm py-1.5 px-4 hover:bg-gray-50 cursor-pointer rounded-md shadow-sm">
+                <div className="flex justify-center items-center ">
                   <button onClick={() => changeYear(-1)}>
                     <svg
                       xmlns="http://w3.org/2000/svg"
@@ -164,7 +167,7 @@ export default function Calendar() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-4 h-4 transition hover:-translate-x-1 duration-500 active:-translate-x-3 hover:scale-110 active:scale-150"
+                      className="w-4 h-4 transition hover:-translate-x-1 duration-300 active:-translate-x-2 hover:scale-105 active:scale-110"
                     >
                       <path
                         strokeLinecap="round"
@@ -183,7 +186,7 @@ export default function Calendar() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-4 h-4 transition hover:translate-x-1 duration-500 active:translate-x-3 hover:scale-110 active:scale-150"
+                      className="w-4 h-4 transition hover:translate-x-1 duration-300 active:translate-x-2 hover:scale-105 active:scale-110"
                     >
                       <path
                         strokeLinecap="round"
@@ -205,7 +208,7 @@ export default function Calendar() {
               {month}
             </header>
             <div className="text-center">
-              <ul className="grid grid-cols-4 text-md border">
+              <ul className="grid grid-cols-4 text-md border bg-gray-50">
                 {getDaysInMonth(year, index).map((day) => {
                   const isPassedDay =
                     year < currentDate.getFullYear() ||
@@ -218,14 +221,14 @@ export default function Calendar() {
                   return (
                     <li
                       key={day}
-                      className={`py-3 tracking-wide font-light px-6 hover:bg-gray-50 ${
+                      className={` py-3 bg-white tracking-wide font-light px-6 ${
                         index === selectedDate.getMonth() &&
                         day === isSelectedDay
-                          ? "bg-gray-200 border border-gray-200"
+                          ? "bg-gray-50 border border-slate-300"
                           : isPassedDay
-                          ? "bg-opacity-20"
-                          : ""
-                      } border border-transparent rounded-sm shadow-sm hover:border-gray-200 hover:cursor-pointer`}
+                          ? "opacity-50 bg-gray-50 hover:cursor-not-allowed"
+                          : "hover:bg-gray-50 hover:cursor-pointer hover:border-gray-200"
+                      } border border-transparent rounded-sm shadow-sm`}
                       onClick={() => {
                         if (
                           isPassedDay ||
@@ -233,11 +236,10 @@ export default function Calendar() {
                             index === selectedDate.getMonth() &&
                             day < currentDay)
                         ) {
-                          // Don't allow navigation to the current month or earlier
                           return;
                         }
 
-                        setDayAndMonth(day, index); // Set both day and month
+                        setDayAndMonth(day, index);
                       }}
                     >
                       {day}

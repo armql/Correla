@@ -24,7 +24,7 @@ const CustomDropdown = ({ options, selected, onSelect }) => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className={`w-6 h-6 transition duration-500 ${
+            className={`w-5 h-5 transition duration-500 ${
               isOpen ? "rotate-180 text-transparent" : "rotate-0"
             }`}
           >
@@ -61,6 +61,7 @@ const CustomDropdown = ({ options, selected, onSelect }) => {
 };
 
 export default function ApplicationForm() {
+  const [isCalendar, setIsCalendar] = useState(false);
   const procedureOptions = [
     {
       value: "twtn",
@@ -103,6 +104,10 @@ export default function ApplicationForm() {
       description: "Immediate dental care for emergencies.",
     },
   ];
+
+  const toggleCalendar = () => {
+    setIsCalendar(!isCalendar);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission
@@ -176,26 +181,35 @@ export default function ApplicationForm() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center">
-            <div className="p-4">
-              <label htmlFor="calendar">Choose your reservation date</label>
-              <input
-                type="date"
-                className="text-center tracking-widest text-sm bg-white px-2.5 py-1.5 border rounded-md shadow-sm w-full text-black placeholder-black caret-black"
-              />
-            </div>
+          <div
+            className={`flex mb-4 transition justify-center items-center py-8 ${
+              isCalendar ? "bg-gray-50" : "bg-gray-200"
+            }`}
+          >
+            <button
+              onClick={toggleCalendar}
+              className={`p-2 text-gray-500 bg-gray-200 py-2 px-4  transition ${
+                isCalendar
+                  ? "active:scale-100 hover:scale-90 "
+                  : "hover:bg-gray-300 duration-100"
+              }`}
+            >
+              Choose a date
+            </button>
           </div>
-          <div className="flex justify-center">
+          <div className={`right-0 left-0 ${isCalendar ? "hidden" : "block"}`}>
+            <Calendar toggleCalendar={toggleCalendar} />
+          </div>
+          <div className="flex justify-center items-center">
             <button
               type="submit"
-              className="border bg-gray-100 cursor-pointer shadow-sm py-3 px-6 rounded-sm hover:bg-gray-300 active:bg-gray-100 transition"
+              className="border bg-white cursor-pointer shadow-sm py-1.5 px-12 rounded-sm hover:bg-gray-300 active:bg-gray-100 transition"
             >
               Reserve
             </button>
           </div>
         </form>
       </div>
-      <Calendar />
     </div>
   );
 }
