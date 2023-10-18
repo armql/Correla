@@ -127,7 +127,7 @@ export default function Home() {
               <button
                 key={time}
                 type="button"
-                className={`w-full relative tracking-widest transition text-[18px] p-6 ${
+                className={`w-full relative tracking-widest transition sm:text-[18px] text-xs sm:p-6 px-0.5 ${
                   isReserved(day, time) ? "cursor-default" : "bg-white"
                 } ${isBreakTime ? "bg-rose-50" : ""}`}
                 onClick={() => toggleReservation(day, time)}
@@ -153,7 +153,7 @@ export default function Home() {
 
   return (
     <div className="parent h-full py-2 bg-white">
-      <div className="group flex flex-row items-center justify-evenly">
+      <div className="group flex sm:flex-row flex-col items-center justify-evenly">
         <div className="text-center p-4 rounded-md">
           <div className="flex flex-col text-sky-900 tracking-tight justify-center items-center text-2xl">
             Personalized appointments just a scroll away
@@ -168,12 +168,12 @@ export default function Home() {
       </div>
       <Clock />
       <div className="flex items-center flex-col justify-center bg-white">
-        <div className="grid grid-cols-3 lg:grid-cols-6 items-center justify-center text-center bg-white">
+        <div className="grid grid-cols-6 items-center justify-center text-center bg-white">
           {Object.keys(schedule).map((day) => (
             <button
               key={day}
               type="button"
-              className={`bg-white px-6 py-2.5 cursor-default text-2xl text-black font-semibold`}
+              className={`bg-white px-6 py-2.5 cursor-default sm:text-2xl text-xs text-black font-semibold`}
             >
               {day}
             </button>
