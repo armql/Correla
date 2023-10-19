@@ -7,6 +7,11 @@ import ApplicationForm from "../views/ApplicationForm";
 import AdminLayout from "../layouts/AdminLayout";
 import Dashboard from "../views/managing/Dashboard";
 import Login from "../auth/Login";
+import ProcedureList from "../views/managing/ProcedureList";
+import Patient from "../views/managing/Patient";
+import EmployeeList from "../views/managing/EmployeeList";
+import PatientList from "../views/managing/PatientList";
+import ChairCRT from "../views/managing/ChairCRT";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +43,26 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "procedureslist",
+        element: <ProcedureList />,
+      },
+      {
+        path: "employeeslist",
+        element: <EmployeeList />,
+      },
+      {
+        path: "patient",
+        element: <Patient />,
+      },
+      {
+        path: "patientlist",
+        element: <PatientList />,
+      },
+      {
+        path: "managecrt",
+        element: <ChairCRT />,
       },
     ],
   },
