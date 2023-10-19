@@ -4,6 +4,9 @@ import Home from "../views/Home";
 import GuestLayout from "../layouts/GuestLayout";
 import CheckForm from "../views/CheckForm";
 import ApplicationForm from "../views/ApplicationForm";
+import AdminLayout from "../layouts/AdminLayout";
+import Dashboard from "../views/managing/Dashboard";
+import Login from "../auth/Login";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,20 @@ const router = createBrowserRouter([
       {
         path: "form",
         element: <ApplicationForm />,
+      },
+    ],
+  },
+  {
+    path: "123",
+    element: <AdminLayout />,
+    children: [
+      {
+        path: "dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "login",
+        element: <Login />,
       },
     ],
   },
