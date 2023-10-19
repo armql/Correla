@@ -170,6 +170,7 @@ export default function Navbar() {
                   </button>
                 </div>
               </div>
+
               <div
                 className={`absolute right-0 z-10 flex items-center justify-center ${
                   showCheckForm ? "transform translate-y-28 duration-500" : ""

@@ -5,7 +5,8 @@ import Clock from "../components/Clock";
 import Schedules from "../components/Schedules";
 import ServiceCards from "../components/ServiceCards";
 import Questions from "../components/Questions";
-import ALLQuestions from "./ALLQuestions";
+import ALLQuestions from "../components/ALLQuestions";
+import AdVideo from "../components/AdVideo";
 
 export default function Home() {
   const initialSchedule = {
@@ -152,7 +153,7 @@ export default function Home() {
   };
 
   return (
-    <div className="parent h-full py-2 bg-white">
+    <div className="parent h-full bg-white">
       <div className="group flex sm:flex-row flex-col items-center justify-evenly">
         <div className="text-center p-4 rounded-md">
           <div className="flex flex-col text-sky-900 tracking-tight justify-center items-center text-2xl">
@@ -186,7 +187,7 @@ export default function Home() {
         </div>
       </div>
       <Schedules />
-      <ServiceCards />
+      <AdVideo />
       <ALLQuestions />
       <Support />
     </div>

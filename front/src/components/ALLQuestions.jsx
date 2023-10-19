@@ -1,9 +1,9 @@
 import React from "react";
-import Questions from "../components/Questions";
+import Questions from "./Questions";
 
 export default function ALLQuestions() {
   return (
-    <div className="grid xl:grid-cols-3 grid-cols-1">
+    <div className="grid grid-cols-1 sm:grid-cols-3">
       <Questions
         questionTitle={"What services do you offer at your dental clinic?"}
         questionAnswer={

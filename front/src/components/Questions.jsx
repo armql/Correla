@@ -8,11 +8,11 @@ export default function Questions({ questionTitle, questionAnswer }) {
   };
 
   return (
-    <div className="p-4">
+    <div className="">
       <div className="">
         <button
           onClick={toggleQuestion}
-          className="flex items-center justify-between text-lg w-full font-light text-gray-800 text-start border p-2 active:bg-gray-100 transition duration-300"
+          className="h-24 hover:bg-gray-50 hover:border-gray-300 flex items-center justify-between text-lg w-full font-light text-gray-800 text-start border p-2 active:bg-gray-100 transition duration-300"
         >
           {questionTitle}
         </button>
