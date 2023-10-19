@@ -3,7 +3,7 @@ import React from "react";
 export default function QuickCards() {
   return (
     <div>
-      <div className="mt-2 p-4 grid grid-cols-4 gap-2">
+      <div className="mt-2 p-4 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2">
         <div className="bg-slate-300 flex flex-col justify-center items-center shadow-md">
           <div className="bg-white w-full text-center py-4">Schedules</div>
           <div className="text-gray-100 p-2 select-none cursor-pointer bg-gray-900 w-full font-light hover:translate-x-4 hover:bg-slate-800 transition duration-300">

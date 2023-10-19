@@ -3,6 +3,7 @@ import QuickCards from "../../components/QuickCards";
 import { Link } from "react-router-dom";
 import ActivityChart from "../../components/ActivityChart";
 import ProcedureChart from "../../components/ProcedureChart";
+import EmergencyCard from "../../components/EmergencyCard";
 
 export default function Dashboard() {
   return (
@@ -21,7 +22,7 @@ export default function Dashboard() {
         </div>
 
         {/* TODO: Charts */}
-        <div className="border-t-2 p-4 grid grid-cols-3 gap-2">
+        <div className="border-t-2 p-4 grid xl:grid-cols-3 grid-cols-1 gap-2">
           <div className="flex flex-col gap-3 border justify-center p-4 bg-white items-center rounded-lg shadow-sm">
             <h1>Activity Chart</h1>
             <ActivityChart />
@@ -29,6 +30,12 @@ export default function Dashboard() {
           <div className="flex border flex-col gap-3 justify-center p-4 bg-white items-center rounded-lg shadow-sm">
             <h1>Procedure Chart</h1>
             <ProcedureChart />
+          </div>
+          <div className="flex border flex-col gap-3 justify-center bg-white items-center rounded-lg shadow-sm">
+            <h1 className="p-4">Incoming Emergencies</h1>
+            <div className="w-full h-full p-2">
+              <EmergencyCard />
+            </div>
           </div>
         </div>
       </div>

@@ -10,29 +10,26 @@ const ActivityChart = () => {
     const endDate = new Date("2023-12-31 17:00:00");
     const data = [];
     let patientCount = 0;
-    let isIncreasing = true;
 
     for (let date = startDate; date <= endDate; ) {
       if (
-        date.getDay() >= 1 && // Monday to Saturday
+        date.getDay() >= 1 &&
         date.getDay() <= 6 &&
         date.getHours() >= 9 &&
-        date.getHours() < 12 // 9:00 AM to 12:00 PM
+        date.getHours() < 12
       ) {
-        // Add or subtract a random number to create fluctuations
         const fluctuation = Math.random() > 0.5 ? 1 : -1;
         patientCount += fluctuation;
 
-        // Ensure patient count remains within a reasonable range
         patientCount = Math.max(0, patientCount);
 
         data.push({ x: date.toISOString(), y: patientCount });
       }
 
       if (date.getHours() === 12) {
-        date.setHours(13); // Move to 1:00 PM
+        date.setHours(13);
       } else {
-        date.setMinutes(date.getMinutes() + 15); // Increment by 15 minutes
+        date.setMinutes(date.getMinutes() + 15);
       }
     }
 
