@@ -55,7 +55,7 @@ const ProcedureChart = () => {
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: "3%",
+        columnWidth: "100%",
         endingShape: "rounded",
       },
     },

@@ -7,7 +7,7 @@ import EmergencyCard from "../../components/EmergencyCard";
 
 export default function Dashboard() {
   return (
-    <div className="w-screen h-screen text-4xl mt-10">
+    <div className="w-full h-full text-4xl mt-10">
       <QuickCards />
       <div className=" bg-gray-200 w-full h-full">
         <div className="font-light text-2xl p-2 bg-white shadow-sm">
@@ -36,6 +36,11 @@ export default function Dashboard() {
             <div className="w-full h-full p-2">
               <EmergencyCard />
             </div>
+          </div>
+        </div>
+        <div className="p-4 h-full w-full">
+          <div className="border p-4 bg-white items-center rounded-lg shadow-sm w-full h-full">
+            <h1>CRT System</h1>
           </div>
         </div>
       </div>
