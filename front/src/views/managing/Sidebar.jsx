@@ -22,7 +22,7 @@ export default function Sidebar() {
 
   return (
     <div>
-      <div className="fixed top-0 right-0 left-0 border-b-2 shadow-md bg-white h-10 flex group">
+      <div className="fixed z-40 top-0 right-0 left-0 border-b-2 bg-white h-10 flex group">
         {sidebar === false && (
           <button
             type="button"
@@ -52,7 +52,7 @@ export default function Sidebar() {
         )}
       </div>
       <div
-        className={`fixed flex flex-col border-r-2 shadow-md duration-500 transition justify-between left-0 top-0 bottom-0 bg-white z-20 w-52 ${
+        className={`fixed flex flex-col border-r-2 shadow-md duration-500 transition justify-between left-0 top-0 bottom-0 bg-white z-40 w-52 ${
           sidebar
             ? "translate-x-0 duration-500 transition"
             : "-translate-x-52 duration-500 transition"

@@ -31,8 +31,8 @@ export default function Dashboard() {
             <h1>Procedure Chart</h1>
             <ProcedureChart />
           </div>
-          <div className="flex border flex-col gap-3 justify-center bg-white items-center rounded-lg shadow-sm">
-            <h1 className="p-4">Incoming Emergencies</h1>
+          <div className="flex border flex-col gap-3 justify-center bg-black items-center rounded-lg shadow-sm">
+            <h1 className="p-4 text-white">Incoming Emergencies</h1>
             <div className="w-full h-full p-2">
               <EmergencyCard />
             </div>
