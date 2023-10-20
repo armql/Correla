@@ -1,64 +1,7 @@
 import React, { useState } from "react";
 import joyride from "../assets/svg/joyride.svg";
 import Calendar from "../components/Calendar";
-const CustomDropdown = ({ options, selected, onSelect }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleSelect = (option) => {
-    onSelect(option);
-    setIsOpen(false);
-  };
-
-  return (
-    <div className="relative inline-block text-left">
-      <div className="relative">
-        <button
-          type="button"
-          onClick={() => setIsOpen(!isOpen)}
-          className={`py-1.5 px-2.5 flex flex-row justify-between items-center active:bg-gray-300 transition bg-gray-50 w-full text-start border border-gray-200 rounded-md shadow-sm text-sm`}
-        >
-          {selected ? selected.label : "Select a procedure"}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className={`w-5 h-5 transition duration-500 ${
-              isOpen ? "rotate-180 text-transparent" : "rotate-0"
-            }`}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-            />
-          </svg>
-        </button>
-        <ul
-          className={`absolute z-10 ${
-            isOpen ? "" : "hidden"
-          } bg-white border border-gray-300 mt-1 w-full rounded-md`}
-        >
-          {options.map((option) => (
-            <li key={option.value}>
-              <button
-                type="button" // Use type="button" to prevent form submission
-                onClick={() => handleSelect(option)}
-                className="block w-full hover:bg-sky-100 text-start hover:text-sky-900 hover:cursor-pointer px-4 py-2"
-              >
-                {option.label}
-                <div className="font-light text-xs text-gray-500">
-                  {option.description}
-                </div>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-};
+import ProcedureDropdown from "../components/core/components/ProcedureDropdown";
 
 export default function ApplicationForm() {
   const [isCalendar, setIsCalendar] = useState(false);
@@ -117,13 +60,6 @@ export default function ApplicationForm() {
 
   const [selectedProcedure, setSelectedProcedure] = useState(null);
 
-  // Function to generate an array of days in a month
-  const getDaysInMonth = (year, month) => {
-    return new Array(32 - new Date(year, month, 32).getDate())
-      .fill(null)
-      .map((_, index) => index + 1);
-  };
-
   return (
     <div className="bg-white py-10">
       <div className="flex flex-col lg:flex-row justify-evenly">
@@ -163,7 +99,7 @@ export default function ApplicationForm() {
             <div className="gap-2 flex flex-col">
               <div className="flex flex-col gap-2 justify-center">
                 <label htmlFor="procedure">Procedure</label>
-                <CustomDropdown
+                <ProcedureDropdown
                   options={procedureOptions}
                   selected={selectedProcedure}
                   onSelect={(option) => setSelectedProcedure(option)}
@@ -182,11 +118,12 @@ export default function ApplicationForm() {
             </div>
           </div>
           <div
-            className={`flex mb-4 transition justify-center items-center py-8 ${
-              isCalendar ? "bg-gray-50" : "bg-gray-200"
+            className={`flex mb-4 transition w-full h-full mt-4 justify-center items-center py-8 ${
+              isCalendar ? "bg-gray-50" : "bg-white"
             }`}
           >
             <button
+              type="button"
               onClick={toggleCalendar}
               className={`p-2 text-gray-500 bg-gray-200 py-2 px-4  transition ${
                 isCalendar
@@ -197,9 +134,11 @@ export default function ApplicationForm() {
               Choose a date
             </button>
           </div>
-          <div className={`right-0 left-0 ${isCalendar ? "hidden" : "block"}`}>
-            <Calendar toggleCalendar={toggleCalendar} />
-          </div>
+          {isCalendar && (
+            <div className={`right-0 left-0 `}>
+              <Calendar toggleCalendar={toggleCalendar} />
+            </div>
+          )}
           <div className="flex justify-center items-center">
             <button
               type="submit"

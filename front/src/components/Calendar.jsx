@@ -1,6 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
-export default function Calendar({ toggleCalendar }) {
+const DateCell = ({ day, isSelected, isPassedDay, onClick }) => (
+  <li
+    className={`py-3 bg-white tracking-wide font-light px-6 shadow-sm select-none ${
+      isSelected
+        ? "bg-gray-50 font-bold border border-slate-300"
+        : isPassedDay
+        ? "opacity-50 bg-gray-50 hover:cursor-not-allowed"
+        : "hover:bg-gray-50 hover:cursor-pointer border border-transparent hover:border-gray-200"
+    } `}
+    onClick={onClick}
+  >
+    {day}
+  </li>
+);
+
+const Calendar = ({ toggleCalendar }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isSelectedDay, setIsSelectedDay] = useState(selectedDate.getDate());
   const year = selectedDate.getFullYear();
@@ -23,16 +38,22 @@ export default function Calendar({ toggleCalendar }) {
     "December",
   ];
 
-  const getDaysInMonth = (year, month) => {
-    return new Array(32 - new Date(year, month, 32).getDate())
-      .fill(null)
-      .map((_, index) => index + 1);
-  };
+  const monthsData = useMemo(() => {
+    const data = [];
+    for (let i = 0; i < 12; i++) {
+      const daysInMonth = new Array(32 - new Date(year, i, 32).getDate())
+        .fill(null)
+        .map((_, index) => index + 1);
+
+      data.push(daysInMonth);
+    }
+    return data;
+  }, [year]);
 
   const changeDay = (day) => {
-    if (day <= getDaysInMonth(year, month).length) {
+    if (day >= 1 && day <= monthsData[month].length) {
       setSelectedDate(new Date(year, month, day));
-      setIsSelectedDay(day); // Update isSelectedDay
+      setIsSelectedDay(day);
     } else {
       const newDate = new Date(selectedDate);
       newDate.setMonth(selectedDate.getMonth() + 1);
@@ -55,9 +76,11 @@ export default function Calendar({ toggleCalendar }) {
     setIsSelectedDay(newDate.getDate());
   };
 
-  const setDayAndMonth = (day, month) => {
-    setSelectedDate(new Date(year, month, day));
-    setIsSelectedDay(day);
+  const setDayAndMonth = (day, newMonth) => {
+    if (day >= 1 && day <= monthsData[newMonth].length) {
+      setSelectedDate(new Date(year, newMonth, day));
+      setIsSelectedDay(day);
+    }
   };
 
   return (
@@ -65,7 +88,7 @@ export default function Calendar({ toggleCalendar }) {
       <div onClick={toggleCalendar} className="absolute right-4 top-4 text-sm">
         <button className="hover:text-black text-gray-600">Close</button>
       </div>
-      <div className="flex w-full  mt-6 flex-col p-4">
+      <div className="flex w-full mt-6 flex-col p-4">
         <div className="flex lg:flex-row flex-col items-center gap-6 justify-between mb-4">
           <h1 className="text-5xl font-semibold text-center">Calendar</h1>
           <div className="flex lg:flex-row flex-col justify-center bg-gray-100 p-4 items-center">
@@ -82,7 +105,7 @@ export default function Calendar({ toggleCalendar }) {
                 <div className="flex justify-center items-center">
                   <button onClick={() => changeDay(selectedDate.getDate() - 1)}>
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns="http://w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
@@ -112,7 +135,7 @@ export default function Calendar({ toggleCalendar }) {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                      />
+                      ></path>
                     </svg>
                   </button>
                 </div>
@@ -202,14 +225,14 @@ export default function Calendar({ toggleCalendar }) {
         </div>
       </div>
       <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 p-6">
-        {monthNames.map((month, index) => (
+        {monthsData.map((monthData, index) => (
           <div key={index} className="search-center">
             <header className="px-1.5 tracking-tighter text-3xl p-2 font-semibold">
-              {month}
+              {monthNames[index]}
             </header>
             <div className="text-center">
               <ul className="grid grid-cols-4 text-md border bg-gray-50">
-                {getDaysInMonth(year, index).map((day) => {
+                {monthData.map((day) => {
                   const isPassedDay =
                     year < currentDate.getFullYear() ||
                     (year === currentDate.getFullYear() &&
@@ -219,16 +242,14 @@ export default function Calendar({ toggleCalendar }) {
                       day < currentDay);
 
                   return (
-                    <li
+                    <DateCell
                       key={day}
-                      className={` py-3 bg-white tracking-wide font-light px-6 ${
+                      day={day}
+                      isSelected={
                         index === selectedDate.getMonth() &&
                         day === isSelectedDay
-                          ? "bg-gray-50 border border-slate-300"
-                          : isPassedDay
-                          ? "opacity-50 bg-gray-50 hover:cursor-not-allowed"
-                          : "hover:bg-gray-50 hover:cursor-pointer hover:border-gray-200"
-                      } border border-transparent rounded-sm shadow-sm`}
+                      }
+                      isPassedDay={isPassedDay}
                       onClick={() => {
                         if (
                           isPassedDay ||
@@ -241,9 +262,7 @@ export default function Calendar({ toggleCalendar }) {
 
                         setDayAndMonth(day, index);
                       }}
-                    >
-                      {day}
-                    </li>
+                    />
                   );
                 })}
               </ul>
@@ -253,4 +272,6 @@ export default function Calendar({ toggleCalendar }) {
       </div>
     </div>
   );
-}
+};
+
+export default Calendar;

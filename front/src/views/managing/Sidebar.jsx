@@ -32,7 +32,7 @@ export default function Sidebar() {
             <img
               src={sidebar_inactive}
               alt=""
-              className="w-6 h-6 hover:scale-105"
+              className="w-6 h-6 opacity-60 hover:scale-105 active:opacity-80"
             />
           </button>
         )}
@@ -45,7 +45,7 @@ export default function Sidebar() {
               <img
                 src={sidebar_active}
                 alt=""
-                className="w-7 h-7 hover:scale-105"
+                className="w-7 h-7 hover:scale-105 opacity-80 active:opacity-100"
               />
             </button>
           </div>
@@ -85,8 +85,8 @@ export default function Sidebar() {
                   className={`text-black ${
                     activeLink === linkItem.to
                       ? "translate-x-4 text-sky-900"
-                      : "-translate-x-0"
-                  } py-2 pr-2.5 pl-2 text-lg transition duration-300 hover:text-sky-800`}
+                      : "-translate-x-0 text-gray-600"
+                  } py-2 pt-3 pr-2.5 pl-2 text-lg transition duration-300 hover:text-sky-800`}
                 >
                   {linkItem.text}
                 </Link>

@@ -10,7 +10,7 @@ export default function PatientList() {
             type="search"
             name="search"
             id="search"
-            placeholder="Search procedure"
+            placeholder="Search for patient"
             className="border-2 py-[7px] z-10 px-2 shadow-sm rounded-l-md bg-white font-light ring-2 ring-transparent"
           />
           <button className="bg-gray-200 border ring-2 ring-transparent text-black py-2 px-4 rounded-r-md hover:bg-sky-100 hover:ring-sky-100 hover:border-sky-100">
