@@ -6,7 +6,7 @@ export default function QuickCards() {
       <div className="mt-2 p-4 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2">
         <div className="bg-slate-300 flex flex-col justify-center items-center shadow-md">
           <div className="bg-white w-full text-center py-4">Schedules</div>
-          <div className="text-gray-100 p-2 select-none cursor-pointer bg-gray-900 w-full font-light hover:translate-x-4 hover:bg-slate-800 transition duration-300">
+          <div className="text-sky-100 p-2 select-none cursor-pointer bg-sky-700 w-full font-light hover:translate-x-4 hover:bg-sky-600 transition duration-300">
             <div className="flex justify-between items-center">
               <div>CRT</div>
               <div>
@@ -28,7 +28,7 @@ export default function QuickCards() {
         </div>
         <div className="bg-stone-200 flex flex-col justify-center items-center shadow-md">
           <div className="bg-white w-full text-center py-4">Procedure</div>
-          <div className="text-stone-100 p-2 select-none cursor-pointer bg-stone-900 w-full font-light hover:translate-x-4 hover:bg-stone-800 transition duration-300">
+          <div className="text-emerald-100 p-2 select-none cursor-pointer bg-emerald-900 w-full font-light hover:translate-x-4 hover:bg-emerald-800 transition duration-300">
             <div className="flex justify-between items-center">
               <div>Create</div>
               <div>
