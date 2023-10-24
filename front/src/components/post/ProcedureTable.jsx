@@ -1,5 +1,5 @@
 import React from "react";
-import ProcedureRow from "./core/components/ProcedureRow";
+import ProcedureRow from "../core/components/ProcedureRow";
 
 export default function ProcedureTable() {
   const rows = [

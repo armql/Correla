@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import video from "../assets/videos/ad-video.mp4";
-import ServiceCards from "./ServiceCards";
+import ServiceCards from "./card/ServiceCards";
 
 export default function HeroSection() {
   const serviceItems = [

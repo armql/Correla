@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import joyride from "../assets/svg/joyride.svg";
-import Calendar from "../components/Calendar";
-import ProcedureDropdown from "../components/core/components/ProcedureDropdown";
+import Calendar from "../components/common/Calendar";
+import ProcedureDropdown from "../components/common/ProcedureDropdown";
 
 export default function ApplicationForm() {
   const [isCalendar, setIsCalendar] = useState(false);

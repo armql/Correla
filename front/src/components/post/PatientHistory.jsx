@@ -1,5 +1,5 @@
 import React from "react";
-import PatHistoryRow from "./core/components/PatHistoryRow";
+import PatHistoryRow from "../core/components/PatHistoryRow";
 
 export default function PatientHistory() {
   const rows = [

@@ -12,7 +12,7 @@ import Patient from "../views/managing/Patient";
 import EmployeeList from "../views/managing/EmployeeList";
 import PatientList from "../views/managing/PatientList";
 import ChairCRT from "../views/managing/ChairCRT";
-import PatientHistory from "../components/PatientHistory";
+import PatientHistory from "../components/post/PatientHistory";
 
 const router = createBrowserRouter([
   {

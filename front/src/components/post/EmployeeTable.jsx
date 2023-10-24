@@ -1,73 +1,73 @@
 import React from "react";
-import PatientRow from "./core/components/PatientRow";
+import EmployeeRow from "../core/components/EmployeeRow";
 
-export default function PatientTable() {
+export default function EmployeeTable() {
   const rows = [
     {
-      patientName: "John Doe",
-      procedureName: "Dental Checkup",
+      employeeName: "John Doe",
+      employeeRole: "Dental Assistant",
       creationDate: "2023-10-20",
-      createdBy: "Dr. Smith",
+      createdBy: "Administrator",
     },
     {
-      patientName: "Alice Johnson",
-      procedureName: "Teeth Cleaning",
+      employeeName: "Alice Johnson",
+      employeeRole: "Dental Assistant",
       creationDate: "2023-10-21",
-      createdBy: "Dr. Johnson",
+      createdBy: "Administrator",
     },
     {
-      patientName: "Robert Brown",
-      procedureName: "Tooth Extraction",
+      employeeName: "Robert Brown",
+      employeeRole: "Dental Assistant",
       creationDate: "2023-10-22",
-      createdBy: "Dr. Brown",
+      createdBy: "Administrator",
     },
     {
-      patientName: "Emily Davis",
-      procedureName: "Root Canal Therapy",
+      employeeName: "Emily Davis",
+      employeeRole: "Dental Assistant",
       creationDate: "2023-10-23",
-      createdBy: "Dr. Davis",
+      createdBy: "Administrator",
     },
     {
-      patientName: "Sarah Wilson",
-      procedureName: "Dental Fillings",
+      employeeName: "Sarah Wilson",
+      employeeRole: "Dental Assistant",
       creationDate: "2023-10-24",
-      createdBy: "Dr. Wilson",
+      createdBy: "Administrator",
     },
     {
-      patientName: "Russ Collins",
-      procedureName: "Braces Installation",
+      employeeName: "Russ Collins",
+      employeeRole: "Orthodontist",
       creationDate: "2023-10-25",
-      createdBy: "Dr. Martinez",
+      createdBy: "Administrator",
     },
     {
-      patientName: "Olivia Anderson",
-      procedureName: "Teeth Whitening",
+      employeeName: "Olivia Anderson",
+      employeeRole: "Dental Assistant",
       creationDate: "2023-10-26",
-      createdBy: "Dr. Anderson",
+      createdBy: "Administrator",
     },
     {
-      patientName: "David Taylor",
-      procedureName: "Dental Implants",
+      employeeName: "David Taylor",
+      employeeRole: "Oral Surgeon",
       creationDate: "2023-10-27",
-      createdBy: "Dr. Taylor",
+      createdBy: "Administrator",
     },
     {
-      patientName: "Linda Lewis",
-      procedureName: "Wisdom Tooth Removal",
+      employeeName: "Linda Lewis",
+      employeeRole: "Oral Surgeon",
       creationDate: "2023-10-28",
-      createdBy: "Dr. Lewis",
+      createdBy: "Administrator",
     },
     {
-      patientName: "James Clark",
-      procedureName: "Gum Disease Treatment",
+      employeeName: "James Clark",
+      employeeRole: "Periodontist",
       creationDate: "2023-10-29",
-      createdBy: "Dr. Clark",
+      createdBy: "Administrator",
     },
     {
-      patientName: "Emma Turner",
-      procedureName: "Orthodontic Consultation",
+      employeeName: "Emma Turner",
+      employeeRole: "Orthodontist",
       creationDate: "2023-10-30",
-      createdBy: "Dr. Turner",
+      createdBy: "Administrator",
     },
   ];
 
@@ -75,10 +75,10 @@ export default function PatientTable() {
     <div className="bg-white">
       <div className="grid grid-cols-6 text-center border-t-2 border-b-2">
         <div className="shadow-sm p-4 font-normal tracking-wide">
-          Patient Name
+          Employee Name
         </div>
         <div className="shadow-sm p-4 font-normal tracking-wide">
-          Patient History
+          Employee Role
         </div>
         <div className="shadow-sm p-4 font-normal tracking-wide">
           Creation Date
@@ -95,9 +95,10 @@ export default function PatientTable() {
       </div>
 
       {rows.map((row, index) => (
-        <PatientRow
+        <EmployeeRow
           key={index}
-          patientName={row.patientName}
+          employeeName={row.employeeName}
+          employeeRole={row.employeeRole}
           creationDate={row.creationDate}
           createdBy={row.createdBy}
           onEdit={() => handleEdit(row.id)}

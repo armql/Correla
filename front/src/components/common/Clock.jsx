@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { DateTime } from "luxon";
-import molar from "../assets/svg/molar-tooth.svg";
-import canine from "../assets/svg/incisors-tooth.svg";
-import premolar from "../assets/svg/premolar-tooth.svg";
+import molar from "../../assets/svg/molar-tooth.svg";
+import canine from "../../assets/svg/incisors-tooth.svg";
+import premolar from "../../assets/svg/premolar-tooth.svg";
 
 export default function Clock() {
   const [breaks, setBreak] = useState(false);
