@@ -1,9 +1,9 @@
 import React from "react";
-import QuickCards from "../../components/QuickCards";
 import { Link } from "react-router-dom";
 import ActivityChart from "../../components/ActivityChart";
 import ProcedureChart from "../../components/ProcedureChart";
-import EmergencyCard from "../../components/EmergencyCard";
+import EmergencyCard from "../../components/card/EmergencyCard";
+import QuickCards from "../../components/card/QuickCards";
 
 export default function Dashboard() {
   return (

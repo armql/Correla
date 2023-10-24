@@ -1,5 +1,5 @@
 import React from "react";
-import PatientTable from "../../components/PatientTable";
+import PatientTable from "../../components/post/PatientTable";
 
 export default function PatientList() {
   return (

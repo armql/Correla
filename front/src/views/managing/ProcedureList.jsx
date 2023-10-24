@@ -1,5 +1,5 @@
 import React from "react";
-import ProcedureTable from "../../components/ProcedureTable";
+import ProcedureTable from "../../components/post/ProcedureTable";
 
 export default function ProcedureList() {
   return (

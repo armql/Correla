@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import working_bg from "../../assets/svg/working-form.svg";
-import Calendar from "../../components/Calendar";
-import ProcedureDropdown from "../../components/core/components/ProcedureDropdown";
+import Calendar from "../../components/common/Calendar";
+import ProcedureDropdown from "../../components/common/ProcedureDropdown";
+import Input from "../../components/common/Input";
+import NewPatient from "../../components/post/NewPatient";
+import RegisteredPatient from "../../components/post/RegisteredPatient";
 
 export default function Patient() {
   const [isCalendar, setIsCalendar] = useState(false);
@@ -10,44 +13,234 @@ export default function Patient() {
 
   const procedureOptions = [
     {
-      value: "twtn",
+      type: "Oral Surgery",
+      value: "implant",
+      label: "Dental Implant",
+      description: "Implanting a dental prosthesis to replace missing teeth.",
+    },
+    {
+      type: "Oral Surgery",
+      value: "toothremoval",
+      label: "Tooth Removal",
+      description: "Extraction of a problematic tooth.",
+    },
+    {
+      type: "Oral Surgery",
+      value: "orthognathicsurgery",
+      label: "Orthognathic Surgery",
+      description: "Surgical correction of jaw and facial deformities.",
+    },
+    {
+      type: "Oral Surgery",
+      value: "gumsurgery",
+      label: "Gum Surgery",
+      description: "Treatment of gum disease and gum-related issues.",
+    },
+    {
+      type: "Oral Surgery",
+      value: "extractions",
+      label: "Tooth Extractions",
+      description: "Removal of damaged or problematic teeth.",
+    },
+    {
+      type: "Preventive Dentistry",
+      value: "fluoridetreatment",
+      label: "Fluoride Treatment",
+      description: "Application of fluoride to strengthen tooth enamel.",
+    },
+    {
+      type: "Orthodontics",
+      value: "braces",
+      label: "Orthodontic Braces",
+      description: "Orthodontic treatment with braces for teeth alignment.",
+    },
+    {
+      type: "Orthodontics",
+      value: "pediatricorthodontics",
+      label: "Pediatric Orthodontics",
+      description: "Orthodontic treatments specifically for children.",
+    },
+    {
+      type: "Restorative Dentistry",
+      value: "crowns",
+      label: "Dental Crowns",
+      description: "Restoration of damaged or weakened teeth with crowns.",
+    },
+    {
+      type: "Restorative Dentistry",
+      value: "fillings",
+      label: "Dental Fillings",
+      description: "Filling cavities with dental restorative materials.",
+    },
+    {
+      type: "Restorative Dentistry",
+      value: "inlaysandonlays",
+      label: "Dental Inlays and Onlays",
+      description: "Restorative procedures for damaged or decayed teeth.",
+    },
+    {
+      type: "Cosmetic Dentistry",
+      value: "cosmeticsurgery",
+      label: "Cosmetic Dentistry",
+      description: "Procedures to enhance the appearance of teeth and smile.",
+    },
+    {
+      type: "Cosmetic Dentistry",
+      value: "veneers",
+      label: "Dental Veneers",
+      description: "Thin shells to improve the appearance of teeth.",
+    },
+    {
+      type: "Cosmetic Dentistry",
+      value: "teethwhitening",
       label: "Teeth Whitening",
-      description: "Whiten your teeth.",
+      description: "Professional teeth whitening for a brighter smile.",
     },
     {
-      value: "tcln",
-      label: "Teeth Cleaning",
-      description: "Clean and remove plaque from teeth.",
+      type: "Periodontics",
+      value: "periodontics",
+      label: "Periodontics",
+      description: "Treatment of gum and supporting tissue diseases.",
     },
     {
-      value: "wstx",
-      label: "Wisdom Teeth Extraction",
-      description: "Remove troublesome wisdom teeth.",
+      type: "Endodontics",
+      value: "rootcanal",
+      label: "Root Canal Therapy",
+      description: "Treatment for infected or damaged tooth roots.",
     },
     {
-      value: "impc",
-      label: "Implant Consultation",
-      description: "Consultation for dental implants.",
+      type: "Endodontics",
+      value: "endodontics",
+      label: "Endodontics",
+      description: "Diagnosis and treatment of dental pulp issues.",
     },
     {
-      value: "denx",
-      label: "Dental Consultation",
-      description: "General dental consultation.",
+      type: "Prosthodontics",
+      value: "dentures",
+      label: "Dentures",
+      description: "Replacement of missing teeth with removable dentures.",
     },
     {
-      value: "ortc",
+      type: "Prosthodontics",
+      value: "bridges",
+      label: "Dental Bridges",
+      description: "Fixed prosthetic devices to replace missing teeth.",
+    },
+    {
+      type: "Pediatric Dentistry",
+      value: "pediatricdentistry",
+      label: "Pediatric Dentistry",
+      description: "Dental care and treatments for children.",
+    },
+    {
+      type: "Oral Medicine",
+      value: "snoringtreatment",
+      label: "Snoring Treatment",
+      description: "Non-surgical treatments for snoring issues.",
+    },
+    {
+      type: "Dental Hygiene",
+      value: "cleaning",
+      label: "Dental Cleaning",
+      description: "Routine cleaning and plaque removal for oral hygiene.",
+    },
+    {
+      type: "Dental Sleep Medicine",
+      value: "dentalsleepmedicine",
+      label: "Dental Sleep Medicine",
+      description:
+        "Treatment of sleep-related breathing disorders, such as snoring and sleep apnea.",
+    },
+    {
+      type: "Orthodontics",
+      value: "orthodonticconsultation",
       label: "Orthodontic Consultation",
       description: "Consultation for braces or orthodontic treatment.",
     },
     {
-      value: "dentc",
+      type: "Prosthodontics",
+      value: "prosthodontics",
+      label: "Prosthodontics",
+      description: "Restoration and replacement of teeth and oral structures.",
+    },
+    {
+      type: "General Dentistry",
+      value: "emergencycare",
+      label: "Emergency Care",
+      description: "Immediate dental care for emergencies.",
+    },
+    {
+      type: "General Dentistry",
+      value: "dentalsealants",
+      label: "Dental Sealants",
+      description:
+        "Protective coatings to prevent cavities on molars and premolars.",
+    },
+    {
+      type: "Orthodontics",
+      value: "orthodonticbraces",
+      label: "Orthodontic Braces",
+      description: "Orthodontic treatment with braces for teeth alignment.",
+    },
+    {
+      type: "Orthodontics",
+      value: "orthodonticconsultation",
+      label: "Orthodontic Consultation",
+      description: "Consultation for braces or orthodontic treatment.",
+    },
+    {
+      type: "Prosthodontics",
+      value: "prosthodontics",
+      label: "Prosthodontics",
+      description: "Restoration and replacement of teeth and oral structures.",
+    },
+    {
+      type: "Pediatric Dentistry",
+      value: "pediatricdentistry",
+      label: "Pediatric Dentistry",
+      description: "Dental care and treatments for children.",
+    },
+    {
+      type: "Restorative Dentistry",
+      value: "fillings",
+      label: "Dental Fillings",
+      description: "Filling cavities with dental restorative materials.",
+    },
+    {
+      type: "General Dentistry",
+      value: "dentalconsultation",
+      label: "Dental Consultation",
+      description: "General dental consultation.",
+    },
+    {
+      type: "General Dentistry",
+      value: "dentureconsultation",
       label: "Denture Consultation",
       description: "Consultation for dentures.",
     },
     {
-      value: "emgc",
-      label: "Emergency Care",
-      description: "Immediate dental care for emergencies.",
+      type: "General Dentistry",
+      value: "oralhygieneinstruction",
+      label: "Oral Hygiene Instruction",
+      description: "Education on proper oral care and hygiene practices.",
+    },
+    {
+      type: "Prosthodontics",
+      value: "inlaysandonlays",
+      label: "Dental Inlays and Onlays",
+      description: "Restorative procedures for damaged or decayed teeth.",
+    },
+    {
+      type: "Oral Surgery",
+      value: "dentalsedation",
+      label: "Dental Sedation",
+      description: "Sedation options for anxious or fearful patients.",
+    },
+    {
+      type: "General Dentistry",
+      value: "bruxismtreatment",
+      label: "Bruxism (Teeth Grinding) Treatment",
+      description: "Treatment for teeth grinding and clenching issues.",
     },
   ];
 
@@ -61,12 +254,6 @@ export default function Patient() {
 
   const toggleNewPatient = () => {
     setIsNewPatient(!isNewPatient);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission
-    // Here, you can handle form submission logic or make an API call
-    // based on the selectedProcedure and other form fields.
   };
 
   const [selectedProcedure, setSelectedProcedure] = useState(null);
@@ -106,215 +293,23 @@ export default function Patient() {
           </div>
         )}
         {isPatient && (
-          <>
-            <div className="flex items-center justify-center shadow-sm border bg-white w-full h-full">
-              <form action="">
-                <h1 className="text-2xl font-semibold">
-                  Patient Application Form
-                </h1>
-                <div className="flex flex-row gap-4">
-                  <div className="flex gap-2 flex-col mt-4">
-                    <label htmlFor="firstName">First Name</label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
-                      placeholder="Enter your first name"
-                      className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-                    />
-                  </div>
-                  <div className="flex gap-2 flex-col mt-4">
-                    <label htmlFor="lastName">Last Name</label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      id="lastName"
-                      placeholder="Enter your last name"
-                      className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-row gap-4">
-                  <div className="flex gap-2 flex-col mt-4">
-                    <label htmlFor="firstName">Phone Number</label>
-                    <input
-                      type="number"
-                      name="firstName"
-                      id="firstName"
-                      placeholder="Enter your phone number"
-                      className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-2 justify-center mt-4 w-full">
-                    <label htmlFor="procedure">Procedure</label>
-                    <ProcedureDropdown
-                      options={procedureOptions}
-                      selected={selectedProcedure}
-                      onSelect={(option) => setSelectedProcedure(option)}
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-row gap-4 w-full h-full">
-                  <div
-                    className={`flex mb-4 transition w-full h-full mt-4 justify-center items-center py-8 ${
-                      isCalendar ? "bg-gray-50" : "bg-white"
-                    }`}
-                  >
-                    <button
-                      type="button"
-                      onClick={toggleCalendar}
-                      className={`p-2 text-gray-500 bg-gray-200 py-2 px-4  transition ${
-                        isCalendar
-                          ? "active:scale-100 hover:scale-90 "
-                          : "hover:bg-gray-300 duration-100"
-                      }`}
-                    >
-                      Choose a date
-                    </button>
-                  </div>
-                  <div className="flex gap-2 flex-col mt-4">
-                    <label htmlFor="firstName">Will be performed by</label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
-                      placeholder="Enter your first name"
-                      className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-                    />
-                  </div>
-                </div>
-                <div className="flex gap-2 flex-col mt-4">
-                  <label htmlFor="demandResources">Demand Resources</label>
-                  <input
-                    type="number"
-                    name="demandResources"
-                    id="demandResources"
-                    className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-                  />
-                </div>
-                <div className="flex justify-center items-center mt-7">
-                  <button
-                    type="submit"
-                    className="py-2 px-6 border rounded-md w-80 hover:bg-gray-50"
-                  >
-                    Register
-                  </button>
-                </div>
-              </form>
-            </div>
-            {isCalendar && (
-              <div className={`right-0 left-0 `}>
-                <Calendar toggleCalendar={toggleCalendar} />
-              </div>
-            )}
-          </>
+          <RegisteredPatient
+            togglePatient={togglePatient}
+            toggleCalendar={toggleCalendar}
+            procedureOptions={procedureOptions}
+            selectedProcedure={selectedProcedure}
+            setSelectedProcedure={setSelectedProcedure}
+          />
         )}
 
         {isNewPatient && (
-          <>
-            <div className="flex items-center justify-center shadow-sm border bg-white w-full h-full">
-              <form action="">
-                <h1 className="text-2xl font-semibold">
-                  Patient Application Form
-                </h1>
-                <div className="flex flex-row gap-4">
-                  <div className="flex gap-2 flex-col mt-4">
-                    <label htmlFor="firstName">First Name</label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
-                      placeholder="Enter your first name"
-                      className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-                    />
-                  </div>
-                  <div className="flex gap-2 flex-col mt-4">
-                    <label htmlFor="lastName">Last Name</label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      id="lastName"
-                      placeholder="Enter your last name"
-                      className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-row gap-4">
-                  <div className="flex gap-2 flex-col mt-4">
-                    <label htmlFor="firstName">Phone Number</label>
-                    <input
-                      type="number"
-                      name="firstName"
-                      id="firstName"
-                      placeholder="Enter your phone number"
-                      className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-2 justify-center mt-4 w-full">
-                    <label htmlFor="procedure">Procedure</label>
-                    <ProcedureDropdown
-                      options={procedureOptions}
-                      selected={selectedProcedure}
-                      onSelect={(option) => setSelectedProcedure(option)}
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-row gap-4 w-full h-full">
-                  <div
-                    className={`flex mb-4 transition w-full h-full mt-4 justify-center items-center py-8 ${
-                      isCalendar ? "bg-gray-50" : "bg-white"
-                    }`}
-                  >
-                    <button
-                      type="button"
-                      onClick={toggleCalendar}
-                      className={`p-2 text-gray-500 bg-gray-200 py-2 px-4  transition ${
-                        isCalendar
-                          ? "active:scale-100 hover:scale-90 "
-                          : "hover:bg-gray-300 duration-100"
-                      }`}
-                    >
-                      Choose a date
-                    </button>
-                  </div>
-                  <div className="flex gap-2 flex-col mt-4">
-                    <label htmlFor="firstName">Will be performed by</label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
-                      placeholder="Enter your first name"
-                      className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-                    />
-                  </div>
-                </div>
-                <div className="flex gap-2 flex-col mt-4">
-                  <label htmlFor="demandResources">Demand Resources</label>
-                  <input
-                    type="number"
-                    name="demandResources"
-                    id="demandResources"
-                    className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-                  />
-                </div>
-                <div className="flex justify-center items-center mt-7">
-                  <button
-                    type="submit"
-                    className="py-2 px-6 border rounded-md w-80 hover:bg-gray-50"
-                  >
-                    Register
-                  </button>
-                </div>
-              </form>
-            </div>
-            {isCalendar && (
-              <div className={`right-0 left-0 `}>
-                <Calendar toggleCalendar={toggleCalendar} />
-              </div>
-            )}
-          </>
+          <NewPatient
+            toggleNewPatient={toggleNewPatient}
+            toggleCalendar={toggleCalendar}
+            procedureOptions={procedureOptions}
+            selectedProcedure={selectedProcedure}
+            setSelectedProcedure={setSelectedProcedure}
+          />
         )}
       </div>
     </div>

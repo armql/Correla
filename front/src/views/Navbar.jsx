@@ -6,7 +6,7 @@ import molar from "../assets/svg/molar-tooth.svg";
 import canine from "../assets/svg/incisors-tooth.svg";
 import premolar from "../assets/svg/premolar-tooth.svg";
 import buildingbg from "../assets/images/building-bg.jpeg";
-import ServiceCards from "../components/ServiceCards";
+import ServiceCards from "../components/card/ServiceCards";
 
 export default function Navbar() {
   const buttons = [

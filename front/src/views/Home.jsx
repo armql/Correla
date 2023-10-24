@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Support from "../components/CrewInfo";
 import smiley from "../assets/svg/smiley.svg";
-import Clock from "../components/Clock";
+import Clock from "../components/common/Clock";
 import Schedules from "../components/Schedules";
-import ServiceCards from "../components/ServiceCards";
-import Questions from "../components/Questions";
 import ALLQuestions from "../components/ALLQuestions";
 import AdVideo from "../components/AdVideo";
 
