@@ -14,6 +14,70 @@ export default function NewPatient({
     setIsCalendar(!isCalendar);
   };
 
+  const doctors = [
+    {
+      doctorName: "Dr. John Smith",
+      canPerform: [
+        "Oral Surgery",
+        "Implant Surgery",
+        "Orthodontist",
+        "Root Canal Therapy",
+      ],
+    },
+    {
+      doctorName: "Dr. Emily White",
+      canPerform: ["Orthodontist", "Pediatric Dentistry"],
+    },
+    {
+      doctorName: "Dr. Sarah Johnson",
+      canPerform: ["Cosmetic Dentist", "Teeth Whitening", "Dental Fillings"],
+    },
+    {
+      doctorName: "Dr. Michael Brown",
+      canPerform: ["Periodontist", "Gum Surgery", "Dental Implant"],
+    },
+    {
+      doctorName: "Dr. Jennifer Lee",
+      canPerform: ["Endodontist", "Root Canal Therapy", "Dental Fillings"],
+    },
+    {
+      doctorName: "Dr. Laura Miller",
+      canPerform: [
+        "Prosthodontist",
+        "Dental Crowns",
+        "Dental Bridges",
+        "Orthodontic Braces",
+      ],
+    },
+    {
+      doctorName: "Dr. Robert Davis",
+      canPerform: ["Orthodontist", "Orthognathic Surgery"],
+    },
+    {
+      doctorName: "Dr. Lisa Clark",
+      canPerform: [
+        "Oral Surgeon",
+        "Tooth Extractions",
+        "Dental Implant",
+        "Orthognathic Surgery",
+      ],
+    },
+    {
+      doctorName: "Dr. David Anderson",
+      canPerform: ["Orthodontist", "Pediatric Dentistry"],
+    },
+  ];
+
+  const getDoctorsForProcedure = (selectedProcedure) => {
+    return doctors.filter((doctor) => {
+      return doctor.canPerform.includes(selectedProcedure.canPerform);
+    });
+  };
+
+  const filteredDoctors = selectedProcedure
+    ? getDoctorsForProcedure(selectedProcedure)
+    : [];
+
   return (
     <>
       <div className="relative flex items-center justify-center shadow-sm border bg-white w-full h-full">
@@ -93,11 +157,21 @@ export default function NewPatient({
               </button>
             </div>
           </div>
-          <div className="border w-full h-60 grid grid-cols-3  p-2">
-            <div className="border flex transition duration-300 hover:bg-teal-200 cursor-pointer justify-evenly items-center shadow-sm bg-teal-100 flex-col">
-              <div className="w-24 h-24 border rounded-full p-4 bg-teal-500"></div>
-              <div>Dr Arlind Maliqi</div>
-            </div>
+          <div className="border-2 overflow-x-auto rounded-md w-full h-full grid grid-cols-3 gap-2 p-2">
+            {filteredDoctors.map((doctor) => (
+              <div
+                key={doctor.doctorName}
+                className="flex w-full h-52 transition duration-300 hover:bg-teal-100 cursor-pointer justify-evenly items-center shadow-sm bg-teal-50 flex-col"
+              >
+                <div className="w-24 h-24 rounded-full bg-teal-900"></div>
+                <div className="text-teal-900">
+                  {doctor.doctorName}
+                  <p className="px-0.5 font-light text-teal-400 text-xs">
+                    {selectedProcedure.canPerform}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
           <div className="flex gap-2 flex-col mt-4">
             <label htmlFor="demandResources">Demand Resources</label>

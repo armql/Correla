@@ -1,22 +1,29 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function PatientRow({
   patientName,
   creationDate,
   createdBy,
+  phoneNumber,
   onEdit,
   onDelete,
 }) {
   return (
-    <div className="grid grid-cols-6 text-gray-600 text-center">
+    <div className="grid overflow-y-auto grid-cols-7 text-gray-600 text-center">
       <div className="shadow-sm p-4 font-light tracking-wide">
         {patientName}
       </div>
-      <div className="shadow-sm p-4 font-light tracking-wide underline text-black">
-        View History
+      <div className="shadow-sm p-4 font-light tracking-wide underline">
+        <Link to="#" className="hover:text-black text-gray-600">
+          View History
+        </Link>
       </div>
       <div className="shadow-sm p-4 font-light tracking-wide">
         {creationDate}
+      </div>
+      <div className="shadow-sm p-4 font-light tracking-wide">
+        {phoneNumber}
       </div>
       <div className="shadow-sm p-4 font-light tracking-wide">{createdBy}</div>
       <div className="shadow-sm px-2 font-light text-gray-600 tracking-wide flex justify-center items-center">
