@@ -1,5 +1,6 @@
 import React from "react";
 import PatientRow from "../core/components/PatientRow";
+import Pagination from "../common/Pagination";
 
 export default function PatientTable() {
   const rows = [
@@ -95,10 +96,10 @@ export default function PatientTable() {
           Creation Date
         </div>
         <div className="shadow-sm p-4 font-normal tracking-wide">
-          Created by
+          Phone Number
         </div>
         <div className="shadow-sm p-4 font-normal tracking-wide">
-          Phone Number
+          Created by
         </div>
         <div className="shadow-sm p-4 font-normal tracking-wide">
           Edit Patient Data
@@ -119,6 +120,7 @@ export default function PatientTable() {
           onDelete={() => handleDelete(row.id)}
         />
       ))}
+      <Pagination />
     </div>
   );
 }
