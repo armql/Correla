@@ -4,17 +4,22 @@ export default function QuickCards() {
   return (
     <div>
       <div className="mt-2 p-4 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2">
-        <div className="bg-slate-300 flex flex-col justify-center items-center shadow-md">
-          <div className="bg-white w-full text-center py-4">Schedules</div>
-          <div className="text-sky-100 p-2 select-none cursor-pointer bg-sky-700 w-full font-light hover:translate-x-4 hover:bg-sky-600 transition duration-300">
-            <div className="flex justify-between items-center">
-              <div>CRT</div>
+        <div className="bg-white rounded-md flex flex-row justify-around w-full h-full p-2 gap-2 items-center shadow-md">
+          <div className="tracking-wide text-emerald-950 bg-white flex flex-col justify-center items-center text-center py-1 text-[26px]">
+            Schedule
+            <p className="text-xs text-gray-600 font-light tracking-normal">
+              Make a schedule
+            </p>
+          </div>
+          <div className="bg-emerald-50 bg-opacity-40 hover:text-emerald-700 hover:bg-emerald-50 hover:border-emerald-200 py-1.5 text-emerald-950 px-6 select-none text-[12px] cursor-pointer font-light border rounded-md shadow-sm transition">
+            <div className="flex justify-around items-center gap-4">
+              <div>Create</div>
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-8 h-8"
+                  className="w-4 h-4"
                 >
                   <path
                     fillRule="evenodd"
@@ -26,17 +31,22 @@ export default function QuickCards() {
             </div>
           </div>
         </div>
-        <div className="bg-stone-200 flex flex-col justify-center items-center shadow-md">
-          <div className="bg-white w-full text-center py-4">Procedure</div>
-          <div className="text-emerald-100 p-2 select-none cursor-pointer bg-emerald-900 w-full font-light hover:translate-x-4 hover:bg-emerald-800 transition duration-300">
-            <div className="flex justify-between items-center">
+        <div className="bg-white rounded-md flex flex-row justify-around w-full h-full p-2 gap-2 items-center shadow-md">
+          <div className="tracking-wide text-rose-950 bg-white flex flex-col justify-center items-center text-center py-1 text-[26px]">
+            Procedure
+            <p className="text-xs text-gray-600 font-light tracking-normal">
+              Create a procedure
+            </p>
+          </div>
+          <div className="bg-rose-50 bg-opacity-40 hover:text-rose-700 hover:bg-rose-50 hover:border-rose-200 py-1.5 text-rose-950 px-6 select-none text-[12px] cursor-pointer font-light border rounded-md shadow-sm transition">
+            <div className="flex justify-around items-center gap-4">
               <div>Create</div>
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-8 h-8"
+                  className="w-4 h-4"
                 >
                   <path
                     fillRule="evenodd"
@@ -53,37 +63,55 @@ export default function QuickCards() {
             </div>
           </div>
         </div>
-        <div className="bg-amber-200 flex flex-col justify-center items-center shadow-md">
-          <div className="bg-white w-full text-center py-4">Patient</div>
-          <div className="text-amber-100 p-2 select-none cursor-pointer bg-amber-950 w-full font-light hover:translate-x-4 hover:bg-yellow-900 transition duration-300">
-            <div className="flex justify-between items-center">
-              <div>Add</div>
+        <div className="bg-white rounded-md flex flex-row justify-around w-full h-full p-2 gap-2 items-center shadow-md">
+          <div className="tracking-wide text-amber-950 bg-white flex flex-col justify-center items-center text-center py-1 text-[26px]">
+            Programme
+            <p className="text-xs text-gray-600 font-light tracking-normal">
+              Weekly planprogram
+            </p>
+          </div>
+          <div className="bg-amber-50 bg-opacity-40 hover:text-amber-700 hover:bg-amber-50 hover:border-amber-200 py-1.5 text-amber-950 px-6 select-none text-[12px] cursor-pointer font-light border rounded-md shadow-sm transition">
+            <div className="flex justify-around items-center gap-4">
+              <div>View</div>
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-8 h-8ß"
+                  className="w-4 h-4"
                 >
-                  <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
+                  <path
+                    fillRule="evenodd"
+                    d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
             </div>
           </div>
         </div>
-        <div className="bg-sky-200 flex flex-col justify-center items-center shadow-md">
-          <div className="bg-white w-full text-center py-4">Crew</div>
-          <div className="text-sky-100 p-2 select-none cursor-pointer bg-sky-950 w-full font-light hover:translate-x-4 hover:bg-blue-950 transition duration-300">
-            <div className="flex justify-between items-center">
-              <div>Add</div>
+        <div className="bg-white rounded-md flex flex-row justify-around w-full h-full p-2 gap-2 items-center shadow-md">
+          <div className="tracking-wide text-sky-950 bg-white flex flex-col justify-center items-center text-center py-1 text-[26px]">
+            ChairCRT
+            <p className="text-xs text-gray-600 font-light tracking-normal">
+              idel System
+            </p>
+          </div>
+          <div className="bg-sky-50 bg-opacity-40 hover:text-sky-700 hover:bg-sky-50 hover:border-sky-200 py-1.5 text-sky-950 px-6 select-none text-[12px] cursor-pointer font-light border rounded-md shadow-sm transition">
+            <div className="flex justify-around items-center gap-4">
+              <div>View</div>
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-8 h-8ß"
+                  className="w-4 h-4"
                 >
-                  <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
+                  <path
+                    fillRule="evenodd"
+                    d="M11.622 1.602a.75.75 0 01.756 0l2.25 1.313a.75.75 0 01-.756 1.295L12 3.118 10.128 4.21a.75.75 0 11-.756-1.295l2.25-1.313zM5.898 5.81a.75.75 0 01-.27 1.025l-1.14.665 1.14.665a.75.75 0 11-.756 1.295L3.75 8.806v.944a.75.75 0 01-1.5 0V7.5a.75.75 0 01.372-.648l2.25-1.312a.75.75 0 011.026.27zm12.204 0a.75.75 0 011.026-.27l2.25 1.312a.75.75 0 01.372.648v2.25a.75.75 0 01-1.5 0v-.944l-1.122.654a.75.75 0 11-.756-1.295l1.14-.665-1.14-.665a.75.75 0 01-.27-1.025zm-9 5.25a.75.75 0 011.026-.27L12 11.882l1.872-1.092a.75.75 0 11.756 1.295l-1.878 1.096V15a.75.75 0 01-1.5 0v-1.82l-1.878-1.095a.75.75 0 01-.27-1.025zM3 13.5a.75.75 0 01.75.75v1.82l1.878 1.095a.75.75 0 11-.756 1.295l-2.25-1.312a.75.75 0 01-.372-.648v-2.25A.75.75 0 013 13.5zm18 0a.75.75 0 01.75.75v2.25a.75.75 0 01-.372.648l-2.25 1.312a.75.75 0 11-.756-1.295l1.878-1.096V14.25a.75.75 0 01.75-.75zm-9 5.25a.75.75 0 01.75.75v.944l1.122-.654a.75.75 0 11.756 1.295l-2.25 1.313a.75.75 0 01-.756 0l-2.25-1.313a.75.75 0 11.756-1.295l1.122.654V19.5a.75.75 0 01.75-.75z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
             </div>
