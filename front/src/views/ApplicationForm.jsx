@@ -118,7 +118,7 @@ export default function ApplicationForm() {
             </div>
           </div>
           <div
-            className={`flex mb-4 transition w-full h-full mt-4 justify-center items-center py-8 ${
+            className={`flex mb-4 transition mt-4 justify-center items-center py-8 ${
               isCalendar ? "bg-gray-50" : "bg-white"
             }`}
           >
