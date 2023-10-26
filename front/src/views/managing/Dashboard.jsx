@@ -4,15 +4,16 @@ import ActivityChart from "../../components/ActivityChart";
 import ProcedureChart from "../../components/ProcedureChart";
 import EmergencyCard from "../../components/card/EmergencyCard";
 import QuickCards from "../../components/card/QuickCards";
+import teamwork from "../../assets/svg/teamwork.svg";
 
 export default function Dashboard() {
   return (
-    <div className="w-full h-full text-4xl mt-10">
+    <div className="w-full h-full mt-10 bg-gray-100">
       <QuickCards />
-      <div className=" bg-gray-200 w-full h-full">
-        <div className="font-light text-2xl p-2 bg-white shadow-sm">
+      <div className="flex justify-between items-center py-4 px-2">
+        <div className="flex flex-col tracking-wide text-3xl text-center">
           <h1>Statistics containing our activity and overall in clinic.</h1>
-          <p className="text-[15px] tracking-tighter font-extralight">
+          <p className="text-sm font-light text-gray-700 tracking-normal">
             For more statistics go into{" "}
             <Link className="underline hover:text-gray-600">
               Statistics Page
@@ -20,9 +21,12 @@ export default function Dashboard() {
             employees can fully manage their activity ambient by ChairCRT.
           </p>
         </div>
-
+        <img src={teamwork} alt="" />
+      </div>
+      <div className="w-full h-full">
         {/* TODO: Charts */}
-        <div className="border-t-2 p-4 grid xl:grid-cols-3 grid-cols-1 gap-2">
+
+        <div className="p-4 grid xl:grid-cols-3 grid-cols-1 gap-2 font-light text-2xl">
           <div className="flex flex-col gap-3 border justify-center p-4 bg-white items-center rounded-lg shadow-sm">
             <h1>Activity Chart</h1>
             <ActivityChart />
@@ -31,8 +35,8 @@ export default function Dashboard() {
             <h1>Procedure Chart</h1>
             <ProcedureChart />
           </div>
-          <div className="flex border flex-col gap-3 justify-center bg-black items-center rounded-lg shadow-sm">
-            <h1 className="p-4 text-white">Incoming Emergencies</h1>
+          <div className="flex border flex-col gap-3 justify-center bg-white items-center rounded-lg shadow-sm">
+            <h1 className="p-4 text-black">Incoming Emergencies</h1>
             <div className="w-full h-full p-2">
               <EmergencyCard />
             </div>
