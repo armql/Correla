@@ -10,9 +10,79 @@ export default function RegisteredPatient({
   setSelectedProcedure,
 }) {
   const [isCalendar, setIsCalendar] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+
+  const toggleDoctor = (doctorName) => {
+    setSelectedDoctor(doctorName === selectedDoctor ? null : doctorName);
+  };
+
   const toggleCalendar = () => {
     setIsCalendar(!isCalendar);
   };
+
+  const doctors = [
+    {
+      doctorName: "Dr. John Smith",
+      canPerform: [
+        "Oral Surgery",
+        "Implant Surgery",
+        "Orthodontist",
+        "Root Canal Therapy",
+      ],
+    },
+    {
+      doctorName: "Dr. Emily White",
+      canPerform: ["Orthodontist", "Pediatric Dentistry"],
+    },
+    {
+      doctorName: "Dr. Sarah Johnson",
+      canPerform: ["Cosmetic Dentist", "Teeth Whitening", "Dental Fillings"],
+    },
+    {
+      doctorName: "Dr. Michael Brown",
+      canPerform: ["Periodontist", "Gum Surgery", "Dental Implant"],
+    },
+    {
+      doctorName: "Dr. Jennifer Lee",
+      canPerform: ["Endodontist", "Root Canal Therapy", "Dental Fillings"],
+    },
+    {
+      doctorName: "Dr. Laura Miller",
+      canPerform: [
+        "Prosthodontist",
+        "Dental Crowns",
+        "Dental Bridges",
+        "Orthodontic Braces",
+      ],
+    },
+    {
+      doctorName: "Dr. Robert Davis",
+      canPerform: ["Orthodontist", "Orthognathic Surgery"],
+    },
+    {
+      doctorName: "Dr. Lisa Clark",
+      canPerform: [
+        "Oral Surgeon",
+        "Tooth Extractions",
+        "Dental Implant",
+        "Orthognathic Surgery",
+      ],
+    },
+    {
+      doctorName: "Dr. David Anderson",
+      canPerform: ["Orthodontist", "Pediatric Dentistry"],
+    },
+  ];
+
+  const getDoctorsForProcedure = (selectedProcedure) => {
+    return doctors.filter((doctor) => {
+      return doctor.canPerform.includes(selectedProcedure.canPerform);
+    });
+  };
+
+  const filteredDoctors = selectedProcedure
+    ? getDoctorsForProcedure(selectedProcedure)
+    : [];
 
   return (
     <>
@@ -37,24 +107,26 @@ export default function RegisteredPatient({
         </div>
         <form action="">
           <h1 className="text-2xl font-semibold">Patient Application Form</h1>
-          <div className="flex gap-2 flex-col mt-4 w-full">
-            <label htmlFor="searchName">Search Patient</label>
-            <input
-              type="search"
-              name="searchName"
-              id="searchName"
-              placeholder="Search patient by name"
-              className="border-2 ring-2 ring-transparent w-full shadow-sm rounded-md py-1.5 px-4"
-            />
-          </div>
-          <div className="flex flex-col gap-2 justify-center mt-4 w-full">
-            <label htmlFor="procedure">Procedure</label>
-            <InputDropdown
-              options={procedureOptions}
-              selected={selectedProcedure}
-              onSelect={(option) => setSelectedProcedure(option)}
-              data={procedureOptions}
-            />
+          <div className="flex flex-row gap-4">
+            <div className="flex gap-2 flex-col mt-4 w-72">
+              <label htmlFor="searchName">Search Patient</label>
+              <input
+                type="search"
+                name="searchName"
+                id="searchName"
+                placeholder="Search patient by name"
+                className="border-2 ring-2 ring-transparent w-full shadow-sm rounded-md py-1.5 px-4"
+              />
+            </div>
+            <div className="flex flex-col gap-2 justify-center mt-4 w-80">
+              <label htmlFor="procedure">Procedure</label>
+              <InputDropdown
+                options={procedureOptions}
+                selected={selectedProcedure}
+                onSelect={(option) => setSelectedProcedure(option)}
+                data={procedureOptions}
+              />
+            </div>
           </div>
           <div className="flex flex-row gap-4 w-full h-full">
             <div
@@ -74,16 +146,35 @@ export default function RegisteredPatient({
                 Choose a date
               </button>
             </div>
-            <div className="flex gap-2 flex-col mt-4">
-              <label htmlFor="firstName">Will be performed by</label>
-              <input
-                type="text"
-                name="firstName"
-                id="firstName"
-                placeholder="Enter your first name"
-                className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-              />
-            </div>
+          </div>
+          <div className="border-2 overflow-y-auto rounded-md w-full h-60 grid grid-cols-3 gap-2 p-2 justify-center items-center bg-white">
+            {filteredDoctors.map((doctor) => (
+              <button
+                key={doctor.doctorName}
+                type="button"
+                onClick={() => toggleDoctor(doctor.doctorName)}
+                className={`flex text-select w-full h-52 rounded-sm transition duration-300 cursor-pointer justify-evenly items-center shadow-sm flex-col ${
+                  doctor.doctorName === selectedDoctor
+                    ? "bg-teal-100 border border-teal-200"
+                    : "bg-teal-50 hover:bg-teal-100"
+                }`}
+              >
+                <div className="w-24 h-24 rounded-full bg-teal-900"></div>
+                <div className="text-teal-900">{doctor.doctorName}</div>
+                <div className="flex">
+                  {doctor.canPerform.slice(0, 2).map((performTitle, index) => (
+                    <p
+                      key={index}
+                      className="px-0.5 font-light text-teal-400 text-xs truncate-text"
+                    >
+                      {performTitle.length > 12
+                        ? `${performTitle.slice(0, 12)}...`
+                        : performTitle}
+                    </p>
+                  ))}
+                </div>
+              </button>
+            ))}
           </div>
           <div className="flex gap-2 flex-col mt-4">
             <label htmlFor="demandResources">Demand Resources</label>

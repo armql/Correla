@@ -10,6 +10,12 @@ export default function NewPatient({
   setSelectedProcedure,
 }) {
   const [isCalendar, setIsCalendar] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+
+  const toggleDoctor = (doctorName) => {
+    setSelectedDoctor(doctorName === selectedDoctor ? null : doctorName);
+  };
+
   const toggleCalendar = () => {
     setIsCalendar(!isCalendar);
   };
@@ -157,20 +163,33 @@ export default function NewPatient({
               </button>
             </div>
           </div>
-          <div className="border-2 overflow-x-auto rounded-md w-full h-full grid grid-cols-3 gap-2 p-2">
+          <div className="border-2 overflow-y-auto rounded-md w-full h-60 grid grid-cols-3 gap-2 p-2 justify-center items-center bg-white">
             {filteredDoctors.map((doctor) => (
-              <div
+              <button
                 key={doctor.doctorName}
-                className="flex w-full h-52 transition duration-300 hover:bg-teal-100 cursor-pointer justify-evenly items-center shadow-sm bg-teal-50 flex-col"
+                type="button"
+                onClick={() => toggleDoctor(doctor.doctorName)}
+                className={`flex text-select w-full h-52 rounded-sm transition duration-300 cursor-pointer justify-evenly items-center shadow-sm flex-col ${
+                  doctor.doctorName === selectedDoctor
+                    ? "bg-teal-100 border border-teal-200"
+                    : "bg-teal-50 hover:bg-teal-100"
+                }`}
               >
                 <div className="w-24 h-24 rounded-full bg-teal-900"></div>
-                <div className="text-teal-900">
-                  {doctor.doctorName}
-                  <p className="px-0.5 font-light text-teal-400 text-xs">
-                    {selectedProcedure.canPerform}
-                  </p>
+                <div className="text-teal-900">{doctor.doctorName}</div>
+                <div className="flex">
+                  {doctor.canPerform.slice(0, 2).map((performTitle, index) => (
+                    <p
+                      key={index}
+                      className="px-0.5 font-light text-teal-400 text-xs truncate-text"
+                    >
+                      {performTitle.length > 12
+                        ? `${performTitle.slice(0, 12)}...`
+                        : performTitle}
+                    </p>
+                  ))}
                 </div>
-              </div>
+              </button>
             ))}
           </div>
           <div className="flex gap-2 flex-col mt-4">
