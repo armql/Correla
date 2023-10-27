@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import chatbot from "../assets/svg/chatbot.svg";
+import chatbot from "../../assets/svg/chatbot.svg";
 
 export default function CustomerSupport() {
   const [isChatOpen, setIsChatOpen] = useState(false);

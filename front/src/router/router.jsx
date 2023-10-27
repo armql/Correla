@@ -1,9 +1,9 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import NotFound from "../error/NotFound";
-import Home from "../views/Home";
+import Home from "../views/home/Home";
 import GuestLayout from "../layouts/GuestLayout";
-import CheckForm from "../views/CheckForm";
-import ApplicationForm from "../views/ApplicationForm";
+import CheckForm from "../views/forms/CheckForm";
+import ApplicationForm from "../views/forms/ApplicationForm";
 import AdminLayout from "../layouts/AdminLayout";
 import Dashboard from "../views/managing/Dashboard";
 import Login from "../auth/Login";

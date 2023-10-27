@@ -1,5 +1,5 @@
 import React from "react";
-import EmployeeRow from "../core/components/EmployeeRow";
+import EmployeeRow from "../core/EmployeeRow";
 
 export default function EmployeeTable() {
   const rows = [

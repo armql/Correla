@@ -1,5 +1,5 @@
 import React from "react";
-import PatientRow from "../core/components/PatientRow";
+import PatientRow from "../core/PatientRow";
 import Pagination from "../common/Pagination";
 
 export default function PatientTable() {

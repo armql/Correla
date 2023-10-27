@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import cardDoctor from "../assets/svg/doctors.svg";
-import cardFamily from "../assets/svg/family.svg";
-import cardHealth from "../assets/svg/health.svg";
+import cardDoctor from "../../assets/svg/doctors.svg";
+import cardFamily from "../../assets/svg/family.svg";
+import cardHealth from "../../assets/svg/health.svg";
 import { Link } from "react-router-dom";
 
 export default function CheckForm({ isVisible, onClose }) {

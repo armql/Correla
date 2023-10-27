@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import CheckForm from "./CheckForm";
+import CheckForm from "./forms/CheckForm";
 import molar2 from "../assets/svg/molar2-tooth.png";
 import molar from "../assets/svg/molar-tooth.svg";
 import canine from "../assets/svg/incisors-tooth.svg";

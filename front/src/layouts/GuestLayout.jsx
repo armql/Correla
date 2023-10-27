@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../views/Navbar";
 import Footer from "../views/Footer";
 import background from "../assets/svg/form-gray-background.svg";
-import CustomerSupport from "../custom/CustomerSupport";
+import CustomerSupport from "../components/custom/CustomerSupport";
 
 const guestLayoutStyle = {
   backgroundImage: `url(${background})`,

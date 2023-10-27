@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
-import male from "../assets/svg/male-avatar.svg";
-import male2 from "../assets/svg/male2-avatar.svg";
-import female from "../assets/svg/female-avatar.svg";
-import female2 from "../assets/svg/female2-avatar.svg";
-import female3 from "../assets/svg/female3-avatar.svg";
+import male from "../../assets/svg/male-avatar.svg";
+import male2 from "../../assets/svg/male2-avatar.svg";
+import female from "../../assets/svg/female-avatar.svg";
+import female2 from "../../assets/svg/female2-avatar.svg";
+import female3 from "../../assets/svg/female3-avatar.svg";
 
 const crewMembers = [
   {

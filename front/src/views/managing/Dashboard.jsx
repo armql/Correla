@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ActivityChart from "../../components/ActivityChart";
-import ProcedureChart from "../../components/ProcedureChart";
+import ActivityChart from "../../components/custom/ActivityChart";
+import ProcedureChart from "../../components/custom/ProcedureChart";
 import EmergencyCard from "../../components/card/EmergencyCard";
 import QuickCards from "../../components/card/QuickCards";
 import teamwork from "../../assets/svg/teamwork.svg";

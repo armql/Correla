@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import Input from "../common/Input";
 import Calendar from "../common/Calendar";
 import InputDropdown from "../common/InputDropdown";
+import DentalCrownCard from "../card/DentalCrownCard";
+import ImplantCard from "../card/ImplantCard";
+import VeneersCard from "../card/VeneersCard";
+import RootCanalCard from "../card/RootCanalCard";
+import FillingCrownsCard from "../card/FillingCrownsCard";
+import FillingToothCard from "../card/FillingToothCard";
 
 export default function RegisteredPatient({
   togglePatient,

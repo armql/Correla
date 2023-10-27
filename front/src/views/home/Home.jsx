@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Support from "../components/CrewInfo";
-import smiley from "../assets/svg/smiley.svg";
-import Clock from "../components/common/Clock";
-import Schedules from "../components/Schedules";
-import ALLQuestions from "../components/ALLQuestions";
-import AdVideo from "../components/AdVideo";
+import Support from "../../components/custom/CrewInfo";
+import smiley from "../../assets/svg/smiley.svg";
+import Clock from "../../components/common/Clock";
+import Schedules from "../../components/custom/Schedules";
+import ALLQuestions from "../../components/custom/ALLQuestions";
+import AdVideo from "../../components/custom/AdVideo";
 
 export default function Home() {
   const initialSchedule = {

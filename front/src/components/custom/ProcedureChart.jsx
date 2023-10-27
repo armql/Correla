@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Chart from "react-apexcharts";
-import data from "./data/procedureData";
+import data from "../data/procedureData";
 
 const ProcedureChart = () => {
   const [timePeriod, setTimePeriod] = useState("all");

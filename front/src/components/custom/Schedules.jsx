@@ -1,5 +1,5 @@
 import React from "react";
-import calendar from "../assets/svg/calendar.svg";
+import calendar from "../../assets/svg/calendar.svg";
 
 export default function Schedules() {
   return (

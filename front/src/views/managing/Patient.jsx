@@ -327,8 +327,8 @@ export default function Patient() {
   const [selectedProcedure, setSelectedProcedure] = useState(null);
 
   return (
-    <div className="w-screen h-screen mt-10">
-      <div className="bg-gray-50 p-4 gap-4 w-full h-full rounded-sm flex justify-center items-center flex-row">
+    <div className="w-full h-full mt-10">
+      <div className="bg-gray-50 p-4 gap-4 w-screen h-screen rounded-sm flex justify-center items-center flex-row">
         <img src={working_bg} alt="working background" />
 
         {isPatient === false && isNewPatient === false && (
