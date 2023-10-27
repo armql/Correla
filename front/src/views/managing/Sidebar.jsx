@@ -32,11 +32,23 @@ const linkPages = [
 ];
 
 export default function Sidebar() {
+  const [recentLinks, setRecentLinks] = useState(linkRecent);
   const [sidebar, setSidebar] = useState(false);
   const [activeLink, setActiveLink] = useState("dashboard");
   const [management, setManagement] = useState(false);
   const [data, setData] = useState(false);
   const [pages, setPages] = useState(false);
+  const [recent, setRecent] = useState(false);
+
+  const addRecentLink = (link) => {
+    // Check if the link is already in the recent links
+    if (!recentLinks.some((recentLink) => recentLink.to === link.to)) {
+      // Add the link to the beginning of the recent links
+      const updatedLinks = [link, ...recentLinks.slice(0, 2)]; // Limit to 2-3 links
+      setRecentLinks(updatedLinks);
+      setRecent(true); // Show the "Recent Links" section
+    }
+  };
 
   const toggleManagement = () => {
     setManagement(!management);
@@ -55,7 +67,7 @@ export default function Sidebar() {
   };
 
   return (
-    <div>
+    <div className="select-none">
       <div className="fixed z-40 top-0 right-0 left-0 border-b-2 bg-white h-10 flex group">
         {sidebar === false && (
           <button
@@ -99,45 +111,72 @@ export default function Sidebar() {
             </div>
             <div className="text-[15px] font-light">Username</div>
           </div>
-          <div className="px-1.5 text-gray-400 font-light text-sm mt-4">
-            Recent
-          </div>
-          <div className="flex flex-col gap-2 py-1 px-2">
-            {linkRecent.map((linkItem) => (
-              <div
-                key={linkItem.to}
-                onClick={() => setActiveLink(linkItem.to)}
-                className={`${
-                  activeLink === linkItem.to ? "bg-sky-50" : ""
-                } relative flex flex-col hover:text-sky-900 rounded-lg`}
-              >
-                <div
-                  className={`${
-                    activeLink === linkItem.to ? "" : ""
-                  } absolute bottom-0 top-0 left-0.5 duration-300 transition flex justify-center items-center`}
-                >
-                  <div
-                    className={`${
-                      activeLink === linkItem.to ? "translate-x-2" : ""
-                    } duration-300 transition absolute w-1.5 h-1.5 rounded-full bg-gray-300 animate-pulse`}
-                  ></div>
-                </div>
-                <div className="flex flex-row justify-between">
-                  <Link
-                    to={linkItem.to}
-                    className={`text-black ${
-                      activeLink === linkItem.to
-                        ? "translate-x-2 text-gray-900"
-                        : " text-gray-600 hover:text-gray-800"
-                    } py-2 px-4 text-[13px] font-normal text-start rounded-lg transition duration-300 `}
-                  >
-                    {linkItem.text}
-                  </Link>
-                  <div></div>
-                </div>
+          {recent && recentLinks.length > 0 && (
+            <>
+              <div className="px-1.5 text-gray-400 font-light text-sm mt-4">
+                Recent Links
               </div>
-            ))}
-          </div>
+              <div className="flex flex-col gap-2 py-1 px-2">
+                {recentLinks.map((linkItem) => (
+                  <div
+                    key={linkItem.to}
+                    onClick={() => setActiveLink(linkItem.to)}
+                    className={`${
+                      activeLink === linkItem.to ? "" : ""
+                    } relative flex flex-row group justify-between px-2 hover:text-sky-900 rounded-lg`}
+                  >
+                    <div
+                      className={`${
+                        activeLink === linkItem.to ? "" : ""
+                      } absolute bottom-0 top-0 left-1.5 duration-300 transition flex justify-center items-center`}
+                    >
+                      <div
+                        className={`${
+                          activeLink === linkItem.to ? "" : ""
+                        } duration-300 transition absolute w-1.5 h-1.5 rounded-full bg-gray-300 animate-pulse`}
+                      ></div>
+                    </div>
+                    <Link
+                      to={linkItem.to}
+                      className={`text-black ${
+                        activeLink === linkItem.to
+                          ? " text-gray-900"
+                          : " text-gray-500 group-hover:text-gray-800"
+                      } py-2 px-4 text-[13px] font-normal text-start rounded-lg transition duration-300 `}
+                    >
+                      {linkItem.text}
+                    </Link>
+                    <div
+                      className={`flex justify-center items-center text-gray-300 hover:text-red-200 cursor-pointer ${
+                        activeLink === linkItem.to
+                          ? "text-gray-900"
+                          : "text-transparent "
+                      }`}
+                      onClick={() => {
+                        const updatedLinks = recentLinks.filter(
+                          (recentLink) => recentLink.to !== linkItem.to
+                        );
+                        setRecentLinks(updatedLinks);
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-5 h-5 text-transparent group-hover:text-gray-700 hover:text-black"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
           <div className="px-1.5 text-gray-400 font-light text-sm mt-2">
             Dashboard
           </div>
@@ -145,12 +184,12 @@ export default function Sidebar() {
             type="button"
             onClick={toggleManagement}
             className={`text-sm px-2 py-2 w-full active:bg-gray-50 select-none flex justify-evenly text-black items-center ${
-              management ? "bg-gray-100" : ""
+              management ? "" : ""
             }`}
           >
             <div
               className={`duration-500 transition ${
-                management ? "rotate-90" : ""
+                management ? "rotate-90 text-black" : "text-gray-400"
               }`}
             >
               <svg
@@ -166,7 +205,11 @@ export default function Sidebar() {
                 />
               </svg>
             </div>
-            <div className="flex justify-center items-center gap-1">
+            <div
+              className={`flex justify-center items-center gap-1 ${
+                management ? "text-black" : "text-neutral-600"
+              }`}
+            >
               <img src={managementIcon} alt="" className="w-5 h-5" />
               Management
             </div>
@@ -176,7 +219,10 @@ export default function Sidebar() {
               {linkDashboard.map((linkItem) => (
                 <div
                   key={linkItem.to}
-                  onClick={() => setActiveLink(linkItem.to)}
+                  onClick={() => {
+                    addRecentLink(linkItem);
+                    setActiveLink(linkItem.to);
+                  }}
                   className="relative flex flex-col hover:text-sky-900"
                 >
                   <div
@@ -209,11 +255,13 @@ export default function Sidebar() {
             type="button"
             onClick={toggleData}
             className={`text-sm px-2 py-2 w-full active:bg-gray-50 select-none flex justify-evenly text-black items-center ${
-              data ? "bg-gray-100" : ""
+              data ? "" : ""
             }`}
           >
             <div
-              className={`duration-500 transition ${data ? "rotate-90" : ""}`}
+              className={`duration-500 transition ${
+                data ? "rotate-90 text-black" : "text-gray-400"
+              }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -228,7 +276,11 @@ export default function Sidebar() {
                 />
               </svg>
             </div>
-            <div className="flex justify-center items-center gap-1">
+            <div
+              className={`flex justify-center items-center gap-1 ${
+                management ? "text-black" : "text-neutral-600"
+              }`}
+            >
               <img src={dataManage} alt="" className="w-5 h-5" />
               Data Manage
             </div>
@@ -238,7 +290,10 @@ export default function Sidebar() {
               {linkData.map((linkItem) => (
                 <div
                   key={linkItem.to}
-                  onClick={() => setActiveLink(linkItem.to)}
+                  onClick={() => {
+                    addRecentLink(linkItem);
+                    setActiveLink(linkItem.to);
+                  }}
                   className="relative flex flex-col hover:text-sky-900"
                 >
                   <div
@@ -271,11 +326,13 @@ export default function Sidebar() {
             type="button"
             onClick={togglePages}
             className={`text-sm px-2 py-2 w-full active:bg-gray-50 select-none flex justify-evenly text-black items-center ${
-              pages ? "bg-gray-100" : ""
+              pages ? "" : ""
             }`}
           >
             <div
-              className={`duration-500 transition ${pages ? "rotate-90" : ""}`}
+              className={`duration-500 transition ${
+                pages ? "rotate-90 text-black" : "text-gray-400"
+              }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -290,7 +347,11 @@ export default function Sidebar() {
                 />
               </svg>
             </div>
-            <div className="flex justify-center items-center gap-1">
+            <div
+              className={`flex justify-center duration-300 transition items-center gap-1 ${
+                management ? "text-black" : "text-neutral-600"
+              }`}
+            >
               <img src={pageManage} alt="" className="w-5 h-5" />
               Page Manage
             </div>
@@ -300,7 +361,10 @@ export default function Sidebar() {
               {linkPages.map((linkItem) => (
                 <div
                   key={linkItem.to}
-                  onClick={() => setActiveLink(linkItem.to)}
+                  onClick={() => {
+                    addRecentLink(linkItem);
+                    setActiveLink(linkItem.to);
+                  }}
                   className="relative flex flex-col hover:text-sky-900"
                 >
                   <div
