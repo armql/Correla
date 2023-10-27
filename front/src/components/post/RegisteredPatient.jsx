@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../common/Input";
 import Calendar from "../common/Calendar";
 import InputDropdown from "../common/InputDropdown";
@@ -11,7 +11,7 @@ export default function RegisteredPatient({
 }) {
   const [isCalendar, setIsCalendar] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
-
+  const [demandsResources, setDemandsResources] = useState(false);
   const toggleDoctor = (doctorName) => {
     setSelectedDoctor(doctorName === selectedDoctor ? null : doctorName);
   };
@@ -80,13 +80,19 @@ export default function RegisteredPatient({
     });
   };
 
+  useEffect(() => {
+    if (selectedProcedure) {
+      setDemandsResources(selectedProcedure.demandsResources);
+    }
+  }, [selectedProcedure]);
+
   const filteredDoctors = selectedProcedure
     ? getDoctorsForProcedure(selectedProcedure)
     : [];
 
   return (
     <>
-      <div className="relative flex items-center justify-center shadow-sm border bg-white w-full h-full">
+      <div className="relative select-none flex items-center justify-center shadow-sm border bg-white w-full h-full">
         <div className="absolute top-0 right-0 p-4">
           <button type="button" onClick={togglePatient}>
             <svg
@@ -176,15 +182,104 @@ export default function RegisteredPatient({
               </button>
             ))}
           </div>
-          <div className="flex gap-2 flex-col mt-4">
-            <label htmlFor="demandResources">Demand Resources</label>
-            <input
-              type="number"
-              name="demandResources"
-              id="demandResources"
-              className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-            />
+          {demandsResources && (
+            <div className="flex gap-2 flex-col mt-4">
+              <label htmlFor="demandResources">Resources</label>
+              <div className="flex flex-row gap-2 items-center py-3 px-4">
+                <button
+                  type="button"
+                  className="rounded-md shadow-sm border border-sky-200 bg-sky-50 w-8 h-8 text-sky-600 transition hover:border-sky-300 hover:bg-sky-200 active:bg-sky-300"
+                >
+                  1
+                </button>
+                <button
+                  type="button"
+                  className="rounded-md shadow-sm border border-sky-200 bg-sky-50 w-8 h-8 text-sky-600 transition hover:border-sky-300 hover:bg-sky-200 active:bg-sky-300"
+                >
+                  2
+                </button>
+                <button
+                  type="button"
+                  className="rounded-md shadow-sm border border-sky-200 bg-sky-50 w-8 h-8 text-sky-600 transition hover:border-sky-300 hover:bg-sky-200 active:bg-sky-300"
+                >
+                  3
+                </button>
+                <button
+                  type="button"
+                  className="rounded-md shadow-sm border border-sky-200 bg-sky-50 w-8 h-8 text-sky-600 transition hover:border-sky-300 hover:bg-sky-200 active:bg-sky-300"
+                >
+                  4
+                </button>
+              </div>
+            </div>
+          )}
+          <div className="border rounded-md text-sm mt-4 shadow-sm p-2 bg-teal-50 border-teal-200 text-teal-800 flex flex-col gap-2">
+            <div className="font-semibold text-lg">Dental Implant</div>
+            <p className="text-gray-700">
+              Implanting a dental prosthesis to replace missing teeth.
+            </p>
+            <div className="text-teal-600">
+              <h2 className="ml-4 mb-1 text-lg">Resources:</h2>
+              <ul className="ml-6 font-light grid grid-cols-2 gap-2">
+                <li className="flex gap-2">
+                  Implant Fixtures:
+                  <div className="flex flex-row gap-1">
+                    <button className="bg-white border rounded-md py-0 px-2 shadow-sm">
+                      1
+                    </button>
+                    <button className="bg-white border rounded-md py-0 px-2 shadow-sm">
+                      2
+                    </button>
+                    <button className="bg-white border rounded-md py-0 px-2 shadow-sm">
+                      3
+                    </button>
+                    <button className="bg-white border rounded-md py-0 px-2 shadow-sm">
+                      more
+                    </button>
+                  </div>
+                </li>
+                <li className="flex flex-row gap-1">
+                  Abutments:
+                  <div className="flex flex-row gap-1">
+                    <button className="bg-white border rounded-md py-0 px-2 shadow-sm">
+                      1
+                    </button>
+                    <button className="bg-white border rounded-md py-0 px-2 shadow-sm">
+                      2
+                    </button>
+                    <button className="bg-white border rounded-md py-0 px-2 shadow-sm">
+                      3
+                    </button>
+                    <button className="bg-white border rounded-md py-0 px-2 shadow-sm">
+                      more
+                    </button>
+                  </div>
+                </li>
+                <li className="flex flex-row gap-1">
+                  Prosthetic Components:
+                  <div className="flex flex-row gap-1">
+                    <button className="bg-white border rounded-md py-0 px-2 shadow-sm">
+                      1
+                    </button>
+                    <button className="bg-white border rounded-md py-0 px-2 shadow-sm">
+                      2
+                    </button>
+                    <button className="bg-white border rounded-md py-0 px-2 shadow-sm">
+                      3
+                    </button>
+                    <button className="bg-white border rounded-md py-0 px-2 shadow-sm">
+                      more
+                    </button>
+                  </div>
+                </li>
+              </ul>
+              <div className="ml-6 mt-1 font-light">
+                Common: Anesthesia Local and Surgical Instruments Scalpel, bone
+                drill, etc.
+              </div>
+            </div>
           </div>
+
           <div className="flex justify-center items-center mt-7">
             <button
               type="submit"

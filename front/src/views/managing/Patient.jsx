@@ -18,6 +18,7 @@ export default function Patient() {
       label: "Dental Implant",
       description: "Implanting a dental prosthesis to replace missing teeth.",
       canPerform: "Oral Surgeon",
+      demandsResources: true,
     },
     {
       type: "Oral Surgery",
@@ -25,6 +26,7 @@ export default function Patient() {
       label: "Tooth Removal",
       description: "Extraction of a problematic tooth.",
       canPerform: "Oral Surgeon",
+      demandsResources: true,
     },
     {
       type: "Oral Surgery",
@@ -32,6 +34,7 @@ export default function Patient() {
       label: "Orthognathic Surgery",
       description: "Surgical correction of jaw and facial deformities.",
       canPerform: "Oral Surgeon",
+      demandsResources: true,
     },
     {
       type: "Oral Surgery",
@@ -39,6 +42,7 @@ export default function Patient() {
       label: "Gum Surgery",
       description: "Treatment of gum disease and gum-related issues.",
       canPerform: "Oral Surgeon",
+      demandsResources: true,
     },
     {
       type: "Oral Surgery",
@@ -46,6 +50,7 @@ export default function Patient() {
       label: "Tooth Extractions",
       description: "Removal of damaged or problematic teeth.",
       canPerform: "Oral Surgeon",
+      demandsResources: true,
     },
     {
       type: "Preventive Dentistry",
@@ -53,6 +58,7 @@ export default function Patient() {
       label: "Fluoride Treatment",
       description: "Application of fluoride to strengthen tooth enamel.",
       canPerform: "Dentist",
+      demandsResources: false,
     },
     {
       type: "Orthodontics",
@@ -60,6 +66,7 @@ export default function Patient() {
       label: "Orthodontic Braces",
       description: "Orthodontic treatment with braces for teeth alignment.",
       canPerform: "Orthodontist",
+      demandsResources: false,
     },
     {
       type: "Orthodontics",
@@ -67,6 +74,7 @@ export default function Patient() {
       label: "Pediatric Orthodontics",
       description: "Orthodontic treatments specifically for children.",
       canPerform: "Pediatric Dentist",
+      demandsResources: false,
     },
     {
       type: "Restorative Dentistry",
@@ -74,6 +82,7 @@ export default function Patient() {
       label: "Dental Crowns",
       description: "Restoration of damaged or weakened teeth with crowns.",
       canPerform: "Prosthodontist",
+      demandsResources: true,
     },
     {
       type: "Restorative Dentistry",
@@ -81,6 +90,7 @@ export default function Patient() {
       label: "Dental Fillings",
       description: "Filling cavities with dental restorative materials.",
       canPerform: "Dentist",
+      demandsResources: true,
     },
     {
       type: "Restorative Dentistry",
@@ -88,6 +98,7 @@ export default function Patient() {
       label: "Dental Inlays and Onlays",
       description: "Restorative procedures for damaged or decayed teeth.",
       canPerform: "Prosthodontist",
+      demandsResources: true,
     },
     {
       type: "Cosmetic Dentistry",
@@ -95,6 +106,7 @@ export default function Patient() {
       label: "Cosmetic Dentistry",
       description: "Procedures to enhance the appearance of teeth and smile.",
       canPerform: "Cosmetic Dentist",
+      demandsResources: true,
     },
     {
       type: "Cosmetic Dentistry",
@@ -102,6 +114,7 @@ export default function Patient() {
       label: "Dental Veneers",
       description: "Thin shells to improve the appearance of teeth.",
       canPerform: "Cosmetic Dentist",
+      demandsResources: true,
     },
     {
       type: "Cosmetic Dentistry",
@@ -109,6 +122,7 @@ export default function Patient() {
       label: "Teeth Whitening",
       description: "Professional teeth whitening for a brighter smile.",
       canPerform: "Cosmetic Dentist",
+      demandsResources: true,
     },
     {
       type: "Periodontics",
@@ -116,6 +130,7 @@ export default function Patient() {
       label: "Periodontics",
       description: "Treatment of gum and supporting tissue diseases.",
       canPerform: "Periodontist",
+      demandsResources: true,
     },
     {
       type: "Endodontics",
@@ -123,6 +138,7 @@ export default function Patient() {
       label: "Root Canal Therapy",
       description: "Treatment for infected or damaged tooth roots.",
       canPerform: "Endodontist",
+      demandsResources: true,
     },
     {
       type: "Endodontics",
@@ -130,6 +146,7 @@ export default function Patient() {
       label: "Endodontics",
       description: "Diagnosis and treatment of dental pulp issues.",
       canPerform: "Endodontist",
+      demandsResources: true,
     },
     {
       type: "Prosthodontics",
@@ -137,6 +154,7 @@ export default function Patient() {
       label: "Dentures",
       description: "Replacement of missing teeth with removable dentures.",
       canPerform: "Prosthodontist",
+      demandsResources: true,
     },
     {
       type: "Prosthodontics",
@@ -144,6 +162,7 @@ export default function Patient() {
       label: "Dental Bridges",
       description: "Fixed prosthetic devices to replace missing teeth.",
       canPerform: "Prosthodontist",
+      demandsResources: true,
     },
     {
       type: "Pediatric Dentistry",
@@ -151,6 +170,7 @@ export default function Patient() {
       label: "Pediatric Dentistry",
       description: "Dental care and treatments for children.",
       canPerform: "Pediatric Dentist",
+      demandsResources: true,
     },
     {
       type: "Oral Medicine",
@@ -158,6 +178,7 @@ export default function Patient() {
       label: "Snoring Treatment",
       description: "Non-surgical treatments for snoring issues.",
       canPerform: "Oral Medicine Specialist",
+      demandsResources: false,
     },
     {
       type: "Dental Hygiene",
@@ -165,6 +186,7 @@ export default function Patient() {
       label: "Dental Cleaning",
       description: "Routine cleaning and plaque removal for oral hygiene.",
       canPerform: "Dental Hygienist",
+      demandsResources: false,
     },
     {
       type: "Dental Sleep Medicine",
@@ -173,6 +195,7 @@ export default function Patient() {
       description:
         "Treatment of sleep-related breathing disorders, such as snoring and sleep apnea.",
       canPerform: "Dental Sleep Medicine Specialist",
+      demandsResources: true,
     },
     {
       type: "Orthodontics",
@@ -180,6 +203,7 @@ export default function Patient() {
       label: "Orthodontic Consultation",
       description: "Consultation for braces or orthodontic treatment.",
       canPerform: "Orthodontist",
+      demandsResources: false,
     },
     {
       type: "Prosthodontics",
@@ -187,6 +211,7 @@ export default function Patient() {
       label: "Prosthodontics",
       description: "Restoration and replacement of teeth and oral structures.",
       canPerform: "Prosthodontist",
+      demandsResources: true,
     },
     {
       type: "General Dentistry",
@@ -194,6 +219,7 @@ export default function Patient() {
       label: "Emergency Care",
       description: "Immediate dental care for emergencies.",
       canPerform: "Dentist",
+      demandsResources: false,
     },
     {
       type: "General Dentistry",
@@ -202,6 +228,7 @@ export default function Patient() {
       description:
         "Protective coatings to prevent cavities on molars and premolars.",
       canPerform: "Dentist",
+      demandsResources: false,
     },
     {
       type: "Orthodontics",
@@ -209,6 +236,7 @@ export default function Patient() {
       label: "Orthodontic Braces",
       description: "Orthodontic treatment with braces for teeth alignment.",
       canPerform: "Orthodontist",
+      demandsResources: false,
     },
     {
       type: "Orthodontics",
@@ -216,13 +244,7 @@ export default function Patient() {
       label: "Orthodontic Consultation",
       description: "Consultation for braces or orthodontic treatment.",
       canPerform: "Orthodontist",
-    },
-    {
-      type: "Prosthodontics",
-      value: "prosthodontics",
-      label: "Prosthodontics",
-      description: "Restoration and replacement of teeth and oral structures.",
-      canPerform: "Prosthodontist",
+      demandsResources: false,
     },
     {
       type: "Pediatric Dentistry",
@@ -230,6 +252,7 @@ export default function Patient() {
       label: "Pediatric Dentistry",
       description: "Dental care and treatments for children.",
       canPerform: "Pediatric Dentist",
+      demandsResources: true,
     },
     {
       type: "Restorative Dentistry",
@@ -237,6 +260,7 @@ export default function Patient() {
       label: "Dental Fillings",
       description: "Filling cavities with dental restorative materials.",
       canPerform: "Dentist",
+      demandsResources: true,
     },
     {
       type: "General Dentistry",
@@ -244,6 +268,7 @@ export default function Patient() {
       label: "Dental Consultation",
       description: "General dental consultation.",
       canPerform: "Dentist",
+      demandsResources: false,
     },
     {
       type: "General Dentistry",
@@ -251,6 +276,7 @@ export default function Patient() {
       label: "Denture Consultation",
       description: "Consultation for dentures.",
       canPerform: "Dentist",
+      demandsResources: false,
     },
     {
       type: "General Dentistry",
@@ -258,6 +284,7 @@ export default function Patient() {
       label: "Oral Hygiene Instruction",
       description: "Education on proper oral care and hygiene practices.",
       canPerform: "Dental Hygienist",
+      demandsResources: false,
     },
     {
       type: "Prosthodontics",
@@ -265,6 +292,7 @@ export default function Patient() {
       label: "Dental Inlays and Onlays",
       description: "Restorative procedures for damaged or decayed teeth.",
       canPerform: "Prosthodontist",
+      demandsResources: true,
     },
     {
       type: "Oral Surgery",
@@ -272,6 +300,7 @@ export default function Patient() {
       label: "Dental Sedation",
       description: "Sedation options for anxious or fearful patients.",
       canPerform: "Oral Surgeon",
+      demandsResources: true,
     },
     {
       type: "General Dentistry",
@@ -279,6 +308,7 @@ export default function Patient() {
       label: "Bruxism (Teeth Grinding) Treatment",
       description: "Treatment for teeth grinding and clenching issues.",
       canPerform: "Dentist",
+      demandsResources: true,
     },
   ];
 
