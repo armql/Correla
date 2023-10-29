@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../common/Input";
 import Calendar from "../common/Calendar";
 import InputDropdown from "../common/InputDropdown";
+import DentalCrownCard from "../card/DentalCrownCard";
+import ImplantCard from "../card/ImplantCard";
+import VeneersCard from "../card/VeneersCard";
+import RootCanalCard from "../card/RootCanalCard";
+import FillingCrownsCard from "../card/FillingCrownsCard";
+import FillingToothCard from "../card/FillingToothCard";
 
 export default function NewPatient({
   toggleNewPatient,
@@ -11,15 +17,33 @@ export default function NewPatient({
 }) {
   const [isCalendar, setIsCalendar] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
+  const [demandsResources, setDemandsResources] = useState(false);
+  const [card, setCard] = useState(null);
 
   const toggleDoctor = (doctorName) => {
     setSelectedDoctor(doctorName === selectedDoctor ? null : doctorName);
   };
 
+  const determineCardComponent = (value) => {
+    switch (value) {
+      case "implant":
+        return ImplantCard;
+      case "veneers":
+        return VeneersCard;
+      case "rootcanal":
+        return RootCanalCard;
+      case "fillingcrowns":
+        return FillingCrownsCard;
+      case "fillingtooth":
+        return FillingToothCard;
+      default:
+        return null;
+    }
+  };
+
   const toggleCalendar = () => {
     setIsCalendar(!isCalendar);
   };
-
   const doctors = [
     {
       doctorName: "Dr. John Smith",
@@ -80,9 +104,18 @@ export default function NewPatient({
     });
   };
 
+  useEffect(() => {
+    if (selectedProcedure) {
+      setDemandsResources(selectedProcedure.demandsResources);
+      setCard(selectedProcedure.value);
+    }
+  }, [selectedProcedure]);
+
   const filteredDoctors = selectedProcedure
     ? getDoctorsForProcedure(selectedProcedure)
     : [];
+
+  const CardComponent = determineCardComponent(card);
 
   return (
     <>
@@ -192,15 +225,13 @@ export default function NewPatient({
               </button>
             ))}
           </div>
-          <div className="flex gap-2 flex-col mt-4">
-            <label htmlFor="demandResources">Demand Resources</label>
-            <input
-              type="number"
-              name="demandResources"
-              id="demandResources"
-              className="border-2 ring-2 ring-transparent shadow-sm rounded-md py-1.5 px-4"
-            />
-          </div>
+          {demandsResources && CardComponent && (
+            <div className="mt-6">
+              <div className="">
+                <CardComponent />
+              </div>
+            </div>
+          )}
           <div className="flex justify-center items-center mt-7">
             <button
               type="submit"
