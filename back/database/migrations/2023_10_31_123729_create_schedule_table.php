@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('schedule', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('curve_id')->nullable(); // Nullable curve ID
+            $table->string('day'); // Day of the week (e.g., Monday, Tuesday)
+            $table->string('time_slot'); // Time slot (e.g., "9:00 - 10:00")
+            $table->boolean('isReserved')->default(false); // Is the slot reserved (true/false)
+            $table->unsignedBigInteger('patient_id')->nullable(); // Nullable patient ID
+
+            // Foreign key constraints
+            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('curve_id')->references('id')->on('curve')->nullable(); // Create a foreign key to link with the curve table
+
+            $table->timestamps(); // Created at and Updated at timestamps
         });
     }
 
@@ -25,3 +35,4 @@ return new class extends Migration
         Schema::dropIfExists('schedule');
     }
 };
+
