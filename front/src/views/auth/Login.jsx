@@ -1,5 +1,5 @@
 import React from "react";
-import authentication from "../assets/svg/authentication.svg";
+import authentication from "../../assets/svg/authentication.svg";
 
 export default function Login() {
   return (

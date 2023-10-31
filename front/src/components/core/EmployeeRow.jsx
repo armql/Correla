@@ -24,7 +24,7 @@ function EmployeeRow({
         <div className="flex justify-center items-center">
           <button
             type="button"
-            className="border shadow-sm rounded-md py-1 px-6 text-center bg-amber-50 bg-opacity-40 hover:bg-amber-50 hover:text-amber-500 hover:border-amber-100 flex justify-between items-center gap-2"
+            className="border shadow-sm rounded-md py-1 px-6 text-center bg-amber-50 bg-opacity-40 hover:bg-amber-50 hover:text-amber-500 hover:border-amber-100 active:border-amber-200 active:bg-amber-100 flex justify-between items-center gap-2"
             onClick={onEdit}
           >
             <svg
@@ -49,7 +49,7 @@ function EmployeeRow({
         <div className="flex justify-center items-center">
           <button
             type="button"
-            className="border shadow-sm rounded-md py-1 px-6 text-center bg-red-50 bg-opacity-40 hover:bg-red-50 hover:text-red-500 hover:border-red-100 flex justify-between items-center gap-2"
+            className="border shadow-sm rounded-md py-1 px-6 text-center bg-red-50 bg-opacity-40 hover:bg-red-50 hover:text-red-500 hover:border-red-100 active:border-red-200 active:bg-red-100 flex justify-between items-center gap-2"
             onClick={onDelete}
           >
             <svg

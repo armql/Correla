@@ -15,7 +15,7 @@ export default function FillingCrownsCard() {
         <h2 className="ml-4 mb-1 text-lg">Resources:</h2>
         <ul className="ml-6 font-light grid grid-cols-2 gap-2">
           <li className="flex gap-2">
-            Composite resin or amalgam:
+            Amalgam:
             <div className="flex flex-row gap-1">
               <button
                 type="button"
