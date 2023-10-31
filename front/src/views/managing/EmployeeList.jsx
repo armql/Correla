@@ -3,7 +3,7 @@ import EmployeeTable from "../../components/post/EmployeeTable";
 
 export default function EmployeeList() {
   return (
-    <div className="w-full h-screen mt-12 bg-gray-200">
+    <div className="w-full h-screen mt-10 bg-gray-200">
       <div className="bg-white p-4">
         <div className="flex justify-start items-center flex-row">
           <input
