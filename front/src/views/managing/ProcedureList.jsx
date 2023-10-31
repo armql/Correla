@@ -3,7 +3,7 @@ import ProcedureTable from "../../components/post/ProcedureTable";
 
 export default function ProcedureList() {
   return (
-    <div className="w-full h-screen mt-12 bg-gray-200">
+    <div className="w-full h-screen mt-10 bg-gray-200">
       <div className="bg-white p-4">
         <div className="flex justify-start items-center flex-row">
           <input
