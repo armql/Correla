@@ -5,11 +5,19 @@ import ProcedureDropdown from "../../components/common/ProcedureDropdown";
 import Input from "../../components/common/Input";
 import NewPatient from "../../components/post/NewPatient";
 import RegisteredPatient from "../../components/post/RegisteredPatient";
+import { useStateContext } from "../../contexts/ContextProvider";
+import { useNavigate } from "react-router-dom";
 
 export default function Patient() {
+  const { currentUser, userToken } = useStateContext();
+  const navigate = useNavigate();
   const [isCalendar, setIsCalendar] = useState(false);
   const [isPatient, setIsPatient] = useState(false);
   const [isNewPatient, setIsNewPatient] = useState(false);
+
+  if (!userToken) {
+    navigate("123/login");
+  }
 
   const procedureOptions = [
     {
