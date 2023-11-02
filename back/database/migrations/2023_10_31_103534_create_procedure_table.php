@@ -10,7 +10,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('procedure', function (Blueprint $table) {
+        Schema::create('procedures', function (Blueprint $table) {
             $table->id();
             $table->string('type'); // Type of Procedure (e.g., Oral Surgery, Preventive Dentistry)
             $table->string('value')->unique(); // Unique value identifier for the procedure
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('procedure');
+        Schema::dropIfExists('procedures');
     }
 };

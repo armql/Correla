@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('checkup', function (Blueprint $table) {
+        Schema::create('checkups', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
@@ -19,13 +19,13 @@ return new class extends Migration
         });
 
         // Add foreign key constraint for the procedure_id
-        Schema::table('checkup', function (Blueprint $table) {
+        Schema::table('checkups', function (Blueprint $table) {
             $table->foreign('procedure_id')->references('id')->on('procedures');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('checkup');
+        Schema::dropIfExists('checkups');
     }
 };

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('schedule', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('curve_id')->nullable(); // Nullable curve ID
             $table->string('day'); // Day of the week (e.g., Monday, Tuesday)
@@ -25,6 +25,7 @@ return new class extends Migration
 
             $table->timestamps(); // Created at and Updated at timestamps
         });
+
     }
 
     /**
@@ -32,7 +33,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('schedule');
+        Schema::dropIfExists('schedules');
     }
 };
 
