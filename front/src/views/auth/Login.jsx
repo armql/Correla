@@ -1,6 +1,6 @@
 import React from "react";
 import authentication from "../../assets/svg/authentication.svg";
-import Input from "../../components/common/Input";
+import InputFilter from "../../components/common/InputFilter";
 
 export default function Login() {
   return (
@@ -26,22 +26,25 @@ export default function Login() {
           <h1 className="font-medium text-4xl text-black">
             Admin Authentication
           </h1>
-          <Input
+          <InputFilter
             htmlFor={"username"}
             labelName={"Username"}
             type={"username"}
             name={"username"}
             id={"username"}
             placeholder={"Type your username"}
+            inputLimit={14}
           />
-          <Input
+          <InputFilter
             htmlFor={"password"}
             labelName={"Password"}
             type={"password"}
             name={"password"}
             id={"password"}
             placeholder={"Type your password"}
+            inputLimit={12}
           />
+
           <div className="flex flex-col">
             <label htmlFor="authenticating">Authenticate</label>
             <div className="flex items-center justify-evenly gap-2 bg-sky-400 text-white font-semibold py-1">
