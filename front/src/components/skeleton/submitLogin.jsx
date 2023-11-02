@@ -2,7 +2,7 @@ import React from "react";
 import InputFilter from "../common/InputFilter";
 import authentication from "../../assets/svg/authentication.svg";
 
-export default function submitLogin() {
+export default function SubmitLogin() {
   return (
     <div className="parent flex items-center justify-center w-screen h-screen">
       <form
