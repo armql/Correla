@@ -1,5 +1,6 @@
 import React from "react";
 import authentication from "../../assets/svg/authentication.svg";
+import Input from "../../components/common/Input";
 
 export default function Login() {
   return (
@@ -25,26 +26,22 @@ export default function Login() {
           <h1 className="font-medium text-4xl text-black">
             Admin Authentication
           </h1>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="password">Username</label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              className="border px-2.5 py-1.5 rounded-sm shadow-sm"
-              placeholder="Type your username"
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              className="border px-2.5 py-1.5 rounded-sm shadow-sm"
-              placeholder="Type your password"
-            />
-          </div>
+          <Input
+            htmlFor={"username"}
+            labelName={"Username"}
+            type={"username"}
+            name={"username"}
+            id={"username"}
+            placeholder={"Type your username"}
+          />
+          <Input
+            htmlFor={"password"}
+            labelName={"Password"}
+            type={"password"}
+            name={"password"}
+            id={"password"}
+            placeholder={"Type your password"}
+          />
           <div className="flex flex-col">
             <label htmlFor="authenticating">Authenticate</label>
             <div className="flex items-center justify-evenly gap-2 bg-sky-400 text-white font-semibold py-1">

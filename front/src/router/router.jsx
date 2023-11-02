@@ -38,6 +38,10 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
+        path: "123",
+        element: <Navigate to="dashboard" />,
+      },
+      {
         path: "dashboard",
         element: <Dashboard />,
       },
