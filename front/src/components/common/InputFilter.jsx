@@ -59,7 +59,7 @@ export default function InputFilter({
         <div className="absolute h-7 rounded-full rotate-180 right-1.5 top-1.5 w-2 bg-gray-100">
           <div
             className={`${
-              activa || chars > 0 ? "bg-emerald-200" : "bg-red-400"
+              activa || chars > 0 ? "bg-emerald-200" : " bg-red-400 "
             } transition duration-1000 rounded-full ${progressBarHeight()} w-2 ${
               chars === inputLimit ? "bg-emerald-500" : ""
             } `}
