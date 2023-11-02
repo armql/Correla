@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import InputFilter from "../../components/common/InputFilter";
-import submitSignup from "../../components/skeleton/submitSignup";
 import { useNavigate } from "react-router-dom";
+import axiosClient from "../../api/axios";
+import SubmitSignup from "../../components/skeleton/submitSignup";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [password_confirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState({ __html: "" });
   const [submitting, setSubmitting] = useState(false);
 
@@ -17,21 +16,19 @@ export default function Signup() {
 
   const validation = (ev) => {
     ev.preventDefault();
+    console.log("validating");
     setError({ __html: "" });
     setSubmitting(true);
-
+    console.log(username, email, password, password_confirmation);
     axiosClient
       .post("/signup", {
         name: username,
         email,
         password,
-        password_confirmation: passwordConfirmation,
-        city,
-        address,
+        password_confirmation: password_confirmation,
       })
       .then(() => {
-        showAlert();
-        navigate("/home");
+        navigate("../home");
       })
       .catch((error) => {
         if (
@@ -48,8 +45,6 @@ export default function Signup() {
             password_confirmation: errors.password_confirmation
               ? errors.password_confirmation.join("<br>")
               : "",
-            city: errors.city ? errors.city.join("<br>") : "",
-            address: errors.address ? errors.address.join("<br>") : "",
             other: errors.error ? errors.error.join("<br>") : "",
           });
         } else if (
@@ -72,7 +67,7 @@ export default function Signup() {
   };
 
   if (submitting) {
-    return <submitSignup />;
+    return <SubmitSignup />;
   }
 
   return (
@@ -83,7 +78,7 @@ export default function Signup() {
             <InputFilter
               htmlFor={"username"}
               labelName={"Username"}
-              type={"username"}
+              type={"text"}
               name={"username"}
               id={"username"}
               placeholder={"Type your username"}
@@ -118,14 +113,98 @@ export default function Signup() {
                 htmlFor={"password"}
                 labelName={"Password Confirmation"}
                 type={"password"}
-                name={"passwordConfirmation"}
-                id={"passwordConfirmation"}
+                name={"password_confirmation"}
+                id={"password_confirmation"}
                 placeholder={"Type your password again"}
                 inputLimit={14}
-                value={passwordConfirmation}
+                value={password_confirmation}
                 onChange={(ev) => setPasswordConfirmation(ev.target.value)}
               />
             </div>
+
+            {error.password && (
+              <div
+                className="flex p-2 mt-4 text-sm text-red-600 rounded-lg bg-red-50"
+                role="alert"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="flex-shrink-0 inline w-5 h-5 mr-3"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+                <span className="sr-only">Danger</span>
+                <div>
+                  <span className="font-medium">
+                    Ensure that these requirements are met:
+                  </span>
+                  <ul className="mt-1.5 ml-4 list-disc list-inside">
+                    {error.name && (
+                      <li dangerouslySetInnerHTML={{ __html: error.name }}></li>
+                    )}
+                    {error.email && (
+                      <li
+                        dangerouslySetInnerHTML={{ __html: error.email }}
+                      ></li>
+                    )}
+                    {error.city && (
+                      <li dangerouslySetInnerHTML={{ __html: error.city }}></li>
+                    )}
+                    {error.address && (
+                      <li
+                        dangerouslySetInnerHTML={{ __html: error.address }}
+                      ></li>
+                    )}
+                    {error.password && (
+                      <li
+                        dangerouslySetInnerHTML={{ __html: error.password }}
+                      ></li>
+                    )}
+                  </ul>
+                </div>
+              </div>
+            )}
+            {error.other && (
+              <div
+                className="flex p-2 mt-4 text-sm text-red-600 rounded-lg bg-red-50"
+                role="alert"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="flex-shrink-0 inline w-5 h-5 mr-3"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+                <span className="sr-only">Danger</span>
+                <div>
+                  <span className="font-medium">
+                    Ensure that these requirements are met:
+                  </span>
+                  <ul className="mt-1.5 ml-4 list-disc list-inside">
+                    {error.other && (
+                      <li
+                        dangerouslySetInnerHTML={{ __html: error.other }}
+                      ></li>
+                    )}
+                  </ul>
+                </div>
+              </div>
+            )}
+
             <div className="p-4 flex justify-center items-center w-full h-full">
               <button
                 type="submit"
