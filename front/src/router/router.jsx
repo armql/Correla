@@ -14,6 +14,7 @@ import ChairCRT from "../views/managing/ChairCRT";
 import PatientHistory from "../components/post/PatientHistory";
 import Create from "../components/common/Create";
 import Signup from "../views/auth/Signup";
+import CreateProcedure from "../components/crud/CreateProcedure";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: "procedureslist",
         element: <ProcedureList />,
+      },
+      {
+        path: "procedureslist/createprocedure",
+        element: <CreateProcedure />,
       },
       {
         path: "employeeslist",
