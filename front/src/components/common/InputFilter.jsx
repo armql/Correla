@@ -8,6 +8,8 @@ export default function InputFilter({
   id,
   placeholder,
   inputLimit,
+  onChange,
+  value,
 }) {
   const [activa, setActiva] = useState(false);
   const [chars, setChars] = useState(0);
@@ -18,18 +20,20 @@ export default function InputFilter({
 
   const handleInputChange = (e) => {
     const inputText = e.target.value;
-    const limitedInput = inputText.slice(0, inputLimit); // Limit to 12 characters
+    const limitedInput = inputText.slice(0, inputLimit);
     setChars(limitedInput.length);
 
-    // Update the input value to the limited input
-    e.target.value = limitedInput;
+    // Call your custom onChange handler, if provided
+    if (onChange) {
+      onChange(e);
+    }
   };
 
   // Calculate the height of the progress bar based on the character count
   const progressBarHeight = () => {
-    const maxChars = inputLimit; // Limit to 12 characters
-    const maxHeight = 7; // h-7 corresponds to 12 chars
-    const minHeight = 2; // h-2 corresponds to 0 chars
+    const maxChars = inputLimit;
+    const maxHeight = 7;
+    const minHeight = 2;
     const calculatedHeight = (
       (chars / maxChars) * (maxHeight - minHeight) +
       minHeight
@@ -49,7 +53,8 @@ export default function InputFilter({
           id={id}
           placeholder={placeholder}
           className="w-full border-2 ring-2 transition ring-transparent shadow-sm rounded-md py-1.5 px-4"
-          onChange={handleInputChange}
+          onChange={handleInputChange} // Use your custom onChange handler
+          value={value}
         />
         <div className="absolute h-7 rounded-full rotate-180 right-1.5 top-1.5 w-2 bg-gray-100">
           <div

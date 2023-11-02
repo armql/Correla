@@ -13,6 +13,7 @@ import PatientList from "../views/managing/PatientList";
 import ChairCRT from "../views/managing/ChairCRT";
 import PatientHistory from "../components/post/PatientHistory";
 import Create from "../components/common/Create";
+import Signup from "../views/auth/Signup";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
       },
       {
         path: "procedureslist",

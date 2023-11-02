@@ -1,12 +1,109 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import authentication from "../../assets/svg/authentication.svg";
 import InputFilter from "../../components/common/InputFilter";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useStateContext } from "../../contexts/ContextProvider";
+import axiosClient from "../../api/axios";
 
 export default function Login() {
+  const { setCurrentUser, setUserToken } = useStateContext();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState({ __html: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    clearURLParameters();
+  }, []);
+
+  const clearURLParameters = () => {
+    const url = window.location.href.split("?")[0];
+    window.history.replaceState({}, document.title, url);
+  };
+
+  const logging = (ev) => {
+    ev.preventDefault();
+    setError({ __html: "" });
+    setSubmitting(true);
+
+    const request = {
+      email,
+      password,
+    };
+
+    axiosClient
+      .post("/login", request)
+      .then(({ data }) => {
+        setCurrentUser(data.user);
+        setUserToken(data.token);
+        if (data.user.role === "manager") {
+          clearURLParameters();
+          navigate("/management");
+          Swal.fire(
+            `Hello ${data.user.name}!`,
+            `Welcome back ${data.user.role}.`,
+            "info"
+          );
+        } else if (data.user.role === "employee") {
+          clearURLParameters();
+          navigate("/workspace");
+          Swal.fire(
+            `Hello ${data.user.name}!`,
+            `Welcome back ${data.user.role}.`,
+            "info"
+          );
+        } else if (data.user.role === "customer") {
+          clearURLParameters();
+          navigate("/app");
+        } else if (data.user.role === "driver") {
+          clearURLParameters();
+          navigate("/workdrive");
+          Swal.fire(
+            `Hello ${data.user.name}!`,
+            `Welcome back ${data.user.role}.`,
+            "info"
+          );
+        }
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.errors
+        ) {
+          const errors = error.response.data.errors;
+          setError({
+            name: errors.name ? errors.name.join("<br>") : "",
+            email: errors.email ? errors.email.join("<br>") : "",
+            emailex: errors.email ? errors.email[0] : "",
+            password: errors.password ? errors.password.join("<br>") : "",
+            other: errors.error ? errors.error.join("<br>") : "",
+          });
+        } else if (
+          error.response &&
+          error.response.data &&
+          error.response.data.error
+        ) {
+          setError({
+            email: "",
+            password: "",
+            other: error.response.data.error,
+          });
+        } else {
+          setError({ other: "An error occurred. Please try again later." });
+        }
+      })
+      .finally(() => {
+        setSubmitting(false);
+      });
+  };
+
   return (
     <div className="parent flex items-center justify-center w-screen h-screen">
       <form
-        action=""
+        onSubmit={logging}
         className="flex lg:flex-row flex-col w-full justify-around bg-gray-100 shadow-sm items-center border py-10 px-4 gap-4"
       >
         <div className="flex items-center gap-4 justify-start flex-col md:flex-row">
@@ -27,13 +124,13 @@ export default function Login() {
             Admin Authentication
           </h1>
           <InputFilter
-            htmlFor={"username"}
-            labelName={"Username"}
-            type={"username"}
-            name={"username"}
-            id={"username"}
-            placeholder={"Type your username"}
-            inputLimit={14}
+            htmlFor={"email"}
+            labelName={"Email"}
+            type={"email"}
+            name={"email"}
+            id={"email"}
+            placeholder={"Type your email"}
+            inputLimit={28}
           />
           <InputFilter
             htmlFor={"password"}
@@ -42,7 +139,7 @@ export default function Login() {
             name={"password"}
             id={"password"}
             placeholder={"Type your password"}
-            inputLimit={12}
+            inputLimit={14}
           />
 
           <div className="flex flex-col">
