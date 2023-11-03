@@ -1,15 +1,79 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Create from "../common/Create";
 import InputFilter from "../common/InputFilter";
 import RoleDropdown from "../common/RoleDropdown";
+import { useStateContext } from "../../contexts/ContextProvider";
+import axiosClient from "../../api/axios";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateProcedure() {
+  const { currentUser } = useStateContext();
   const [name, setName] = useState("");
   const [uniqueValue, setUniqueValue] = useState("");
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
   const [selectedProcedure, setSelectedProcedure] = useState(null);
   const [canPerform, setCanPerform] = useState(false);
+  const navigate = useNavigate();
+  const [inputErrorList, setInputErrorList] = useState({});
+  const [procedure, setProcedure] = useState({
+    value: "",
+    name: "",
+    description: "",
+    type: "",
+    canPerform: "",
+    user_id: "",
+  });
+
+  const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (currentUser) {
+      setProcedure({ ...procedure, user_id: currentUser.id });
+    }
+  }, [currentUser]);
+
+  const handleInput = (event) => {
+    event.persist();
+    setProcedure({ ...category, [event.target.name]: event.target.value });
+  };
+
+  const createProcedure = (event) => {
+    event.preventDefault();
+    setSubmitting(true);
+
+    const formData = new FormData();
+    formData.append("value", procedure.value);
+    formData.append("name", procedure.name);
+    formData.append("description", procedure.description);
+    formData.append("type", procedure.type);
+    formData.append("canPerform", procedure.canPerform);
+    formData.append("user_id", category.user_id);
+
+    axiosClient
+      .post(`/createprocedure`, formData)
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          text: res.data.message,
+        }).then(() => {
+          navigate("../procedurelist");
+        });
+      })
+      .catch(function (error) {
+        if (error.response) {
+          if (error.response.status === 422) {
+            setInputErrorList(error.response.data.errors);
+          }
+          if (error.response.status === 500) {
+            alert(error.response.data);
+          }
+        }
+      })
+      .finally(() => {
+        setSubmitting(false);
+      });
+  };
 
   const toggleCanPerform = () => {
     setCanPerform(true);
@@ -26,7 +90,12 @@ export default function CreateProcedure() {
           <h1 className="text-2xl text-sky-400 text-center">
             Create Procedure
           </h1>
-          <form method="" className="w-full h-full">
+          <form
+            onSubmit={(event) =>
+              addCategory(event, currentUser ? currentUser.id : "")
+            }
+            className="w-full h-full"
+          >
             <div className="flex flex-col sm:flex-row mt-4 items-center gap-4 sm:gap-10 justify-start">
               <div className="flex flex-col">
                 <InputFilter
