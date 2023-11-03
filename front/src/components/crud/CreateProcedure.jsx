@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 import Create from "../common/Create";
 import InputFilter from "../common/InputFilter";
+import RoleDropdown from "../common/RoleDropdown";
 
 export default function CreateProcedure() {
   const [name, setName] = useState("");
   const [uniqueValue, setUniqueValue] = useState("");
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
-  const [valcanPerform, setValCanPerform] = useState("");
-
+  const [selectedProcedure, setSelectedProcedure] = useState(null);
   const [canPerform, setCanPerform] = useState(false);
-  const [whoPerforms, setWhoPerforms] = useState(false);
-
-  const toggleWhoPerforms = () => {
-    setWhoPerforms(!whoPerforms);
-  };
 
   const toggleCanPerform = () => {
     setCanPerform(true);
@@ -31,8 +26,8 @@ export default function CreateProcedure() {
           <h1 className="text-2xl text-sky-400 text-center">
             Create Procedure
           </h1>
-          <form method="">
-            <div className="flex flex-row items-center gap-10 justify-center">
+          <form method="" className="w-full h-full">
+            <div className="flex flex-col sm:flex-row mt-4 items-center gap-4 sm:gap-10 justify-start">
               <div className="flex flex-col">
                 <InputFilter
                   htmlFor={"value"}
@@ -52,7 +47,7 @@ export default function CreateProcedure() {
                   name={"type"}
                   id={"type"}
                   placeholder={"Type your procedure type"}
-                  inputLimit={48}
+                  inputLimit={24}
                   value={type}
                   onChange={(ev) => setType(ev.target.value)}
                 />
@@ -64,49 +59,13 @@ export default function CreateProcedure() {
                   name={"name"}
                   id={"name"}
                   placeholder={"Type your procedure name"}
-                  inputLimit={16}
+                  inputLimit={24}
                   value={name}
                   onChange={(ev) => setName(ev.target.value)}
                 />
-              </div>
-              <div className="flex flex-col">
-                <InputFilter
-                  htmlFor={"description"}
-                  labelName={"Procedure description"}
-                  type={"text"}
-                  name={"description"}
-                  id={"description"}
-                  placeholder={"Type your description"}
-                  inputLimit={48}
-                  value={description}
-                  onChange={(ev) => setDescription(ev.target.value)}
-                />
-                <div className="relative">
-                  <div>
-                    <InputFilter
-                      htmlFor={"canPerform"}
-                      labelName={"Procedure performed by"}
-                      type={"text"}
-                      name={"canPerform"}
-                      id={"canPerform"}
-                      placeholder={"Who can perform the procedure?"}
-                      inputLimit={12}
-                      value={valcanPerform}
-                      onChange={(ev) => setValCanPerform(ev.target.value)}
-                      onClick={toggleWhoPerforms}
-                    />
-                  </div>
-                  {whoPerforms === true && (
-                    <div className="absolute left-0 right-0 top-0.5 rounded-md py-1.5 px-4 text-md text-gray-400 bg-white border">
-                      <div>Assistant</div>
-                    </div>
-                  )}
-                </div>
-                <div className="mt-4">
-                  <label htmlFor="demandResources">
-                    Does it demand resources?
-                  </label>
-                  <div className="flex p-4 group text-md">
+
+                <div className="mt-4 sm:text-start text-center">
+                  <div className="flex mt-2 group text-md justify-center items-center">
                     <button
                       onClick={toggleCanPerform}
                       type="button"
@@ -128,23 +87,49 @@ export default function CreateProcedure() {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center items-center">
-                <button className="text-gray-400 bg-gray-100 rounded-lg hover:text-sky-400 group w-9 h-9">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="group-hover:-translate-x-0.5 group-hover:translate-y-0.5 rounded-lg bg-white w-full h-full transition duration-300"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 4.5v15m7.5-7.5h-15"
-                    />
-                  </svg>
-                </button>
+              <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-col gap-2 mb-8">
+                  <div className="flex flex-col gap-2 select-none">
+                    <div className="flex flex-col gap-2 justify-center w-full">
+                      <label htmlFor="canPerform">Procedure performed by</label>
+                      <RoleDropdown
+                        selected={selectedProcedure}
+                        onSelect={(option) => setSelectedProcedure(option)}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2 mt-2">
+                    <label htmlFor="description">Procedure Description</label>
+                    <textarea
+                      name="description"
+                      id="description"
+                      cols="30"
+                      rows="3"
+                      value={description}
+                      onChange={(ev) => setDescription(ev.target.value)}
+                      className="border-2 rounded-md shadow-sm py-2 px-4"
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div className="flex justify-center items-center w-full h-full mt-4">
+                  <button className="text-gray-400 bg-gray-100 rounded-lg hover:text-sky-400 group w-11 h-11">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="group-hover:-translate-x-0.5 group-hover:translate-y-0.5 rounded-lg bg-white w-full h-full transition duration-300"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 4.5v15m7.5-7.5h-15"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </form>
