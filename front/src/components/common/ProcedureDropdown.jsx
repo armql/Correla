@@ -9,12 +9,12 @@ const ProcedureDropdown = ({ options, selected, onSelect }) => {
   };
 
   return (
-    <div className="relative w-full inline-block text-left">
+    <div className="relative w-full inline-block text-left mt-4">
       <div className="relative w-full h-full flex justify-center items-center">
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className={`py-1.5 px-4 w-full flex flex-row justify-between items-center active:bg-gray-300 transition bg-gray-50 text-start border border-gray-200 rounded-md shadow-sm`}
+          className={`py-1.5 px-4 w-full flex flex-row justify-between items-center active:bg-gray-300 transition bg-gray-50 text-start border-gray-200 rounded-md shadow-sm border-2`}
         >
           {selected ? selected.label : "Select a procedure"}
           <svg

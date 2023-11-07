@@ -53,13 +53,13 @@ export default function InputFilter({
           placeholder={placeholder}
           className="w-full border-2 ring-2 transition ring-transparent shadow-sm rounded-md py-1.5 px-4"
           onChange={handleInputChange}
-          value={value}
+          value={value.slice(0, inputLimit)}
         />
         <div className="absolute h-7 rounded-full rotate-180 right-1.5 top-1.5 w-2 bg-gray-100">
           <div
             className={`${
-              activa || chars > 0 ? "bg-emerald-200 block" : "bg-red-400"
-            } transition duration-1000 rounded-full ${progressBarHeight()} w-2 ${
+              activa || chars > 0 ? "bg-emerald-200 block" : "bg-red-500 h-2"
+            } transition duration-1000 rounded-full w-2 ${progressBarHeight()} ${
               chars === inputLimit ? "bg-emerald-500" : ""
             } `}
           ></div>
