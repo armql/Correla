@@ -10,16 +10,16 @@ import Swal from "sweetalert2";
 export default function CreateProcedure() {
   const { currentUser, userToken, setCurrentUser } = useStateContext();
   const [loadingUser, setLoadingUser] = useState(true);
-  const [name, setName] = useState("");
-  const [uniqueValue, setUniqueValue] = useState("");
-  const [type, setType] = useState("");
-  const [description, setDescription] = useState("");
-  const [selectedRole, setSelectedRole] = useState(null);
-  const [selectedProcedure, setSelectedProcedure] = useState(null);
-  const [demandResources, setDemandResources] = useState(false);
   const navigate = useNavigate();
+  const [inputData, setInputData] = useState({
+    name: "",
+    uniqueValue: "",
+    type: "",
+    description: "",
+    selectedRole: null,
+    demandResources: false,
+  });
   const [inputErrorList, setInputErrorList] = useState({});
-
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
@@ -33,29 +33,43 @@ export default function CreateProcedure() {
         setLoadingUser(false);
       });
   }, []);
-  if (loadingUser) {
-    return <div className="font-bold text-3xl">Loading</div>;
-  }
+
   if (!userToken) {
     navigate("../123/login");
   } else {
+    const handleInputChange = (event) => {
+      const { name, value } = event.target;
+      setInputData({
+        ...inputData,
+        [name]: value,
+      });
+    };
+
+    const toggleCanPerform = () => {
+      setInputData({ ...inputData, demandResources: true });
+    };
+
+    const toggleCannotPerform = () => {
+      setInputData({ ...inputData, demandResources: false });
+    };
+
     const createProcedure = (event) => {
       event.preventDefault();
       setSubmitting(true);
-      const demandResourcesValue = demandResources ? 1 : 0;
+      const demandResourcesValue = inputData.demandResources ? 1 : 0;
 
       const formData = new FormData();
-      formData.append("value", uniqueValue);
-      formData.append("label", name);
-      formData.append("description", description);
-      formData.append("type", type);
+      formData.append("value", inputData.uniqueValue);
+      formData.append("label", inputData.name);
+      formData.append("description", inputData.description);
+      formData.append("type", inputData.type);
       formData.append("demandResources", demandResourcesValue);
       formData.append(
         "canPerform",
-        selectedRole ? selectedRole.canPerform : ""
+        inputData.selectedRole ? inputData.selectedRole.canPerform : ""
       );
       formData.append("created_by", currentUser.id);
-      console.log();
+
       axiosClient
         .post(`/createprocedure`, formData)
         .then((res) => {
@@ -63,7 +77,7 @@ export default function CreateProcedure() {
             icon: "success",
             text: res.data.message,
           }).then(() => {
-            navigate("../procedurelist");
+            navigate("../procedureslist");
           });
         })
         .catch(function (error) {
@@ -81,13 +95,9 @@ export default function CreateProcedure() {
         });
     };
 
-    const toggleCanPerform = () => {
-      setDemandResources(true);
-    };
-
-    const toggleCannotPerform = () => {
-      setDemandResources(false);
-    };
+    if (loadingUser) {
+      return <div className="font-bold text-3xl">Loading</div>;
+    }
 
     return (
       <div className="w-screen h-screen mt-10 bg-gray-100">
@@ -105,15 +115,15 @@ export default function CreateProcedure() {
               <div className="flex flex-col sm:flex-row mt-4 items-center gap-4 sm:gap-10 justify-start">
                 <div className="flex flex-col">
                   <InputFilter
-                    htmlFor={"value"}
+                    htmlFor={"uniqueValue"}
                     labelName={"Procedure unique value"}
                     type={"text"}
                     name={"uniqueValue"}
                     id={"uniqueValue"}
                     placeholder={"Type your procedure UV"}
                     inputLimit={12}
-                    value={uniqueValue}
-                    onChange={(ev) => setUniqueValue(ev.target.value)}
+                    value={inputData.uniqueValue}
+                    onChange={handleInputChange}
                   />
                   <InputFilter
                     htmlFor={"type"}
@@ -123,20 +133,20 @@ export default function CreateProcedure() {
                     id={"type"}
                     placeholder={"Type your procedure type"}
                     inputLimit={24}
-                    value={type}
-                    onChange={(ev) => setType(ev.target.value)}
+                    value={inputData.type}
+                    onChange={handleInputChange}
                   />
 
                   <InputFilter
-                    htmlFor={"procedure"}
+                    htmlFor={"name"}
                     labelName={"Procedure name"}
                     type={"text"}
                     name={"name"}
                     id={"name"}
                     placeholder={"Type your procedure name"}
                     inputLimit={24}
-                    value={name}
-                    onChange={(ev) => setName(ev.target.value)}
+                    value={inputData.name}
+                    onChange={handleInputChange}
                   />
 
                   <div className="mt-4 sm:text-start text-center">
@@ -145,7 +155,7 @@ export default function CreateProcedure() {
                         onClick={toggleCanPerform}
                         type="button"
                         className={`py-1 px-4 transition duration-300 ${
-                          demandResources
+                          inputData.demandResources
                             ? "bg-teal-100 text-teal-400"
                             : "bg-white"
                         } `}
@@ -156,7 +166,7 @@ export default function CreateProcedure() {
                         onClick={toggleCannotPerform}
                         type="button"
                         className={`py-1 px-4 transition duration-300 ${
-                          demandResources
+                          inputData.demandResources
                             ? "bg-white"
                             : "bg-red-100 text-red-400"
                         } `}
@@ -170,13 +180,14 @@ export default function CreateProcedure() {
                   <div className="flex flex-col gap-2 mb-8 mt-4">
                     <div className="flex flex-col gap-2 select-none">
                       <div className="flex flex-col gap-2 justify-center w-full">
-                        <label htmlFor="canPerform">
+                        <label htmlFor="selectedRole">
                           Procedure performed by
                         </label>
                         <RoleDropdown
-                          selected={selectedProcedure}
-                          onSelect={(option) => setSelectedRole(option)} // Use setSelectedRole
-                          onChange={(ev) => setSelectedRole(ev.target.value)}
+                          selected={inputData.selectedRole}
+                          onSelect={(option) =>
+                            setInputData({ ...inputData, selectedRole: option })
+                          }
                         />
                       </div>
                     </div>
@@ -187,8 +198,8 @@ export default function CreateProcedure() {
                         id="description"
                         cols="30"
                         rows="3"
-                        value={description}
-                        onChange={(ev) => setDescription(ev.target.value)}
+                        value={inputData.description}
+                        onChange={handleInputChange}
                         className="border-2 rounded-md shadow-sm py-2 px-4"
                       ></textarea>
                     </div>

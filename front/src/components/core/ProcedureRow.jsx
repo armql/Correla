@@ -1,6 +1,7 @@
 import React from "react";
 
 function ProcedureRow({
+  procedureType,
   procedureName,
   creationDate,
   createdBy,
@@ -8,7 +9,10 @@ function ProcedureRow({
   onDelete,
 }) {
   return (
-    <div className="grid grid-cols-5 text-gray-600 text-center">
+    <div className="grid grid-cols-6 text-gray-600 text-center items-center lg:overflow-y-auto">
+      <div className="shadow-sm p-4 tracking-wide text-sky-500">
+        {procedureType}
+      </div>
       <div className="shadow-sm p-4 font-light tracking-wide">
         {procedureName}
       </div>
@@ -16,7 +20,7 @@ function ProcedureRow({
         {creationDate}
       </div>
       <div className="shadow-sm p-4 font-light tracking-wide">{createdBy}</div>
-      <div className="shadow-sm px-2 font-light text-gray-600 tracking-wide flex justify-center items-center">
+      <div className="shadow-sm p-3 font-light text-gray-600 tracking-wide flex justify-center items-center">
         <div className="flex justify-center items-center">
           <button
             type="button"
@@ -41,7 +45,7 @@ function ProcedureRow({
           </button>
         </div>
       </div>
-      <div className="shadow-sm px-2 font-light text-gray-600 tracking-wide flex justify-center items-center">
+      <div className="shadow-sm p-3 font-light text-gray-600 tracking-wide flex justify-center items-center">
         <div className="flex justify-center items-center">
           <button
             type="button"
