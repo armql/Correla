@@ -28,7 +28,8 @@ export default function InputFilter({
     }
   };
 
-  // Calculate the height of the progress bar based on the character count
+  // Ensure that value is a string or provide a default value if it's undefined
+  const sanitizedValue = value ? value.toString() : "";
   const progressBarHeight = () => {
     const maxChars = inputLimit;
     const maxHeight = 7;
@@ -39,7 +40,6 @@ export default function InputFilter({
     ).toFixed(0);
     return `h-${calculatedHeight}`;
   };
-
   return (
     <div className="flex gap-2 flex-col mt-4">
       <label htmlFor={htmlFor}>{labelName}</label>
@@ -53,7 +53,7 @@ export default function InputFilter({
           placeholder={placeholder}
           className="w-full border-2 ring-2 transition ring-transparent shadow-sm rounded-md py-1.5 px-4"
           onChange={handleInputChange}
-          value={value.slice(0, inputLimit)}
+          value={sanitizedValue.slice(0, inputLimit)}
         />
         <div className="absolute h-7 rounded-full rotate-180 right-1.5 top-1.5 w-2 bg-gray-100">
           <div
