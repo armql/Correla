@@ -87,10 +87,10 @@ export default function EmployeeTable() {
           Created by
         </div>
         <div className="shadow-sm p-4 font-normal tracking-wide">
-          Edit Patient Data
+          Edit Employee Data
         </div>
         <div className="shadow-sm p-4 font-normal tracking-wide">
-          Delete Patient
+          Delete Employee
         </div>
       </div>
 
