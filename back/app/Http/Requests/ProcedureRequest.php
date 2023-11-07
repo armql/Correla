@@ -11,7 +11,7 @@ class ProcedureRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class ProcedureRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'label' => 'required|string',
+            'description' => 'required|string',
+            'value' => 'required|string',
+            'type' => 'required|string',
+            'canPerform' => 'required|string',
+            'demandResources'=> 'required|boolean',
+            'created_by'=> 'required|int',
+
         ];
     }
 }

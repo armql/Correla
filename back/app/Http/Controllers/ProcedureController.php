@@ -16,12 +16,13 @@ class ProcedureController extends Controller
 
         /** @var \App\Models\Procedure $procedure */
         $procedure = Procedure::create([
-            "name"=> $data["name"],
+            "label"=> $data["label"],
             "value"=> $data["value"],
+            "description"=> $data["description"],
             "canPerform"=> $data["canPerform"],
             "type"=> $data["type"],
             "demandResources"=> $data["demandResources"],
-            'user_id' => $data['user_id'],
+            'created_by' => $data['created_by'],
 
             "creation_date"=> $currentTimeStamp,
         ]);

@@ -9,7 +9,7 @@ class Procedure extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['type', 'value', 'label', 'description', 'canPerform', 'demandsResources', 'creation_date', 'created_by'];
+    protected $fillable = ['type', 'value', 'label', 'description', 'canPerform', 'demandResources', 'creation_date', 'created_by'];
 
     public function createdByEmployee()
     {
