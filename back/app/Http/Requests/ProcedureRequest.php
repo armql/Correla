@@ -29,7 +29,6 @@ class ProcedureRequest extends FormRequest
             'canPerform' => 'required|string',
             'demandResources'=> 'required|boolean',
             'created_by'=> 'required|int',
-
         ];
     }
 }

@@ -25,3 +25,8 @@ Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/createprocedure', [ProcedureController::class, 'create']);
+Route::get('/procedures', [ProcedureController::class, 'display'])->name('procedures')->middleware('web');
+Route::get('/users/{id}/name', [ProcedureController::class, 'creator']);
+Route::get('procedure/{id}', [ProcedureController::class, 'find']);
+Route::put('procedure/{id}/edit', [ProcedureController::class, 'update']);
+Route::delete('procedure/{id}/delete', [ProcedureController::class, 'destroy']);
