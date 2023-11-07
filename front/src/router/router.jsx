@@ -15,6 +15,7 @@ import PatientHistory from "../components/post/PatientHistory";
 import Create from "../components/common/Create";
 import Signup from "../views/auth/Signup";
 import CreateProcedure from "../components/crud/CreateProcedure";
+import TFa from "../views/managing/TFa";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
         element: <Create />,
       },
     ],
+  },
+  {
+    path: "tfa",
+    element: <TFa />,
   },
   {
     path: "*",

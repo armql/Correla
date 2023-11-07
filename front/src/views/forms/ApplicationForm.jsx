@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import joyride from "../../assets/svg/joyride.svg";
 import Calendar from "../../components/common/Calendar";
 import ProcedureDropdown from "../../components/common/ProcedureDropdown";
+import InputFilter from "../../components/common/InputFilter";
 
 export default function ApplicationForm() {
   const [isCalendar, setIsCalendar] = useState(false);
@@ -75,29 +76,31 @@ export default function ApplicationForm() {
         <form onSubmit={handleSubmit}>
           <div className="flex flex-row gap-12 justify-center p-4">
             <div className="gap-2 flex flex-col">
-              <div className="flex flex-col justify-center gap-2">
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  type="text"
-                  name="firstName"
-                  id="firstName"
-                  placeholder="Your first name"
-                  className="py-1.5 px-2.5 border shadow-sm text-sm rounded-md"
-                />
-              </div>
-              <div className="flex flex-col gap-2 justify-center">
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  type="text"
-                  name="lastName"
-                  id="lastName"
-                  placeholder="Last Name"
-                  className="py-1.5 px-2.5 border shadow-sm text-sm rounded-md"
-                />
-              </div>
+              <InputFilter
+                htmlFor={"firstName"}
+                labelName={"First Name"}
+                type={"text"}
+                name={"firstName"}
+                id={"firstName"}
+                placeholder={"Type your first name"}
+                inputLimit={8}
+                // value={password}
+                // onChange={(ev) => setPassword(ev.target.value)}
+              />
+              <InputFilter
+                htmlFor={"lastName"}
+                labelName={"Last Name"}
+                type={"text"}
+                name={"lastName"}
+                id={"lastName"}
+                placeholder={"Type your last name"}
+                inputLimit={10}
+                // value={password}
+                // onChange={(ev) => setPassword(ev.target.value)}
+              />
             </div>
             <div className="gap-2 flex flex-col">
-              <div className="flex flex-col gap-2 justify-center">
+              <div className="flex flex-col gap-2 justify-center ">
                 <label htmlFor="procedure">Procedure</label>
                 <ProcedureDropdown
                   options={procedureOptions}
@@ -105,16 +108,17 @@ export default function ApplicationForm() {
                   onSelect={(option) => setSelectedProcedure(option)}
                 />
               </div>
-              <div className="flex flex-col justify-center gap-2">
-                <label htmlFor="phoneNumber">Phone Number</label>
-                <input
-                  type="text"
-                  name="phoneNumber"
-                  id="phoneNumber"
-                  placeholder="Your phone number"
-                  className="py-1.5 px-2.5 border text-sm shadow-sm rounded-md"
-                />
-              </div>
+              <InputFilter
+                htmlFor={"phoneNumber"}
+                labelName={"Phone Number"}
+                type={"number"}
+                name={"phoneNumber"}
+                id={"phoneNumber"}
+                placeholder={"Type your last name"}
+                inputLimit={12}
+                // value={password}
+                // onChange={(ev) => setPassword(ev.target.value)}
+              />
             </div>
           </div>
           <div
