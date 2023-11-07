@@ -16,6 +16,7 @@ import Create from "../components/common/Create";
 import Signup from "../views/auth/Signup";
 import CreateProcedure from "../components/crud/CreateProcedure";
 import TFa from "../views/managing/TFa";
+import EditProcedure from "../components/crud/EditProcedure";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
       {
         path: "create",
         element: <Create />,
+      },
+      {
+        path: "procedureslist/edit/:id",
+        element: <EditProcedure />,
       },
     ],
   },
