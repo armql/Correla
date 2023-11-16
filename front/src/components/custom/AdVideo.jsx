@@ -65,7 +65,7 @@ export default function HeroSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentServiceIndex((prevIndex) =>
-        prevIndex === serviceItems.length - 1 ? 0 : prevIndex + 1
+        prevIndex === serviceItems.length - 1 ? 0 : prevIndex + 1,
       );
     }, 4000); // Change this to adjust slide duration
 

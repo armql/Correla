@@ -202,7 +202,7 @@ export default function Sidebar() {
                         }`}
                         onClick={() => {
                           const updatedLinks = recentLinks.filter(
-                            (recentLink) => recentLink.to !== linkItem.to
+                            (recentLink) => recentLink.to !== linkItem.to,
                           );
                           setRecentLinks(updatedLinks);
                         }}
