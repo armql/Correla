@@ -42,8 +42,8 @@ export default function ProcedureTable() {
               })
               .catch((error) => {
                 console.error(error);
-              })
-          )
+              }),
+          ),
         ).then(() => {
           setLoadingCreator(false);
         });
