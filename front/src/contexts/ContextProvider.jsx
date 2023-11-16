@@ -10,7 +10,7 @@ const StateContext = createContext({
 export const ContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState({});
   const [userToken, _setUserToken] = useState(
-    localStorage.getItem("TOKEN") || ""
+    localStorage.getItem("TOKEN") || "",
   );
   const lastActivityTimeRef = useRef(new Date().getTime());
 
