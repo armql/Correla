@@ -66,7 +66,7 @@ export default function CreateProcedure() {
       formData.append("demandResources", demandResourcesValue);
       formData.append(
         "canPerform",
-        inputData.selectedRole ? inputData.selectedRole.canPerform : ""
+        inputData.selectedRole ? inputData.selectedRole.canPerform : "",
       );
       formData.append("created_by", currentUser.id);
 
