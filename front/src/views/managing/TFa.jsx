@@ -41,7 +41,7 @@ export default function TFa() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-5 h-5"
+          className="h-5 w-5"
         >
           <path
             strokeLinecap="round"
@@ -55,7 +55,7 @@ export default function TFa() {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-5 h-5"
+          className="h-5 w-5"
         >
           <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
           <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
@@ -72,7 +72,7 @@ export default function TFa() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-5 h-5"
+          className="h-5 w-5"
         >
           <path
             strokeLinecap="round"
@@ -86,7 +86,7 @@ export default function TFa() {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-5 h-5"
+          className="h-5 w-5"
         >
           <path
             fillRule="evenodd"
@@ -107,7 +107,7 @@ export default function TFa() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-5 h-5"
+          className="h-5 w-5"
         >
           <path
             strokeLinecap="round"
@@ -121,7 +121,7 @@ export default function TFa() {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-5 h-5"
+          className="h-5 w-5"
         >
           <path d="M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" />
           <path
@@ -146,16 +146,16 @@ export default function TFa() {
   return (
     <div className="flex flex-row">
       {sidebarOpen && (
-        <div className="flex flex-col border py-2 px-3 h-screen w-52 bg-gray-100">
-          <div className="text-center font-semibold text-indigo-800 text-2xl flex justify-center items-center">
+        <div className="flex h-screen w-52 flex-col border bg-gray-100 px-3 py-2">
+          <div className="flex items-center justify-center text-center text-2xl font-semibold text-indigo-800">
             Traveli Agency
           </div>
           <button
             type="button"
             onClick={toggleCol}
-            className={`mt-4 flex transition duration-300 flex-row justify-between items-center tracking-tighter font-medium px-4 border-b py-2  ${
+            className={`mt-4 flex flex-row items-center justify-between border-b px-4 py-2 font-medium tracking-tighter transition duration-300  ${
               myView
-                ? " text-indigo-500 border-indigo-300"
+                ? " border-indigo-300 text-indigo-500"
                 : "border-indigo-200 text-gray-600"
             }`}
           >
@@ -166,7 +166,7 @@ export default function TFa() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className={`w-5 h-5 transition duration-500 ${
+              className={`h-5 w-5 transition duration-500 ${
                 myView ? "rotate-0" : "-rotate-90"
               }`}
             >
@@ -178,11 +178,11 @@ export default function TFa() {
             </svg>
           </button>
           {myView && (
-            <div className="flex flex-col text-sm gap-2 py-2">
+            <div className="flex flex-col gap-2 py-2 text-sm">
               {linkData.map((linkItem) => (
                 <div
                   key={linkItem.to}
-                  className={`flex flex-row gap-2 rounded-lg px-4 py-0.5 items-center  ${
+                  className={`flex flex-row items-center gap-2 rounded-lg px-4 py-0.5  ${
                     activeLink === linkItem.to
                       ? "bg-indigo-600 text-white"
                       : "text-gray-600"
@@ -196,7 +196,7 @@ export default function TFa() {
                   <Link
                     to={linkItem.to}
                     onClick={() => handleLinkClick(linkItem.to)}
-                    className={`flex flex-row gap-2 px-4 py-2 items-center  ${
+                    className={`flex flex-row items-center gap-2 px-4 py-2  ${
                       activeLink === linkItem.to ? "" : ""
                     }`}
                   >
@@ -208,11 +208,11 @@ export default function TFa() {
           )}
         </div>
       )}
-      <div className="w-full h-full flex-col">
+      <div className="h-full w-full flex-col">
         <button
           type="button"
           onClick={toggleSidebar}
-          className="w-full h-14 flex justify-start px-2 items-center border-b-2 bg-gray-50"
+          className="flex h-14 w-full items-center justify-start border-b-2 bg-gray-50 px-2"
         >
           <img
             src={sidebar}
@@ -223,20 +223,20 @@ export default function TFa() {
           />
         </button>
         <div className="mainPage">
-          <div className="px-2 py-4 flex justify-between items-center shadow-sm">
+          <div className="flex items-center justify-between px-2 py-4 shadow-sm">
             <h1 className="text-2xl font-light">Trips</h1>
-            <div className="flex justify-around items-center gap-10">
+            <div className="flex items-center justify-around gap-10">
               <input
                 type="search"
-                className="border-2 border-indigo-200 rounded-lg py-1.5 px-4"
+                className="rounded-lg border-2 border-indigo-200 px-4 py-1.5"
                 placeholder="Search..."
               />
-              <div className="flex justify-center items-center">
+              <div className="flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-6 h-6 text-gray-600"
+                  className="h-6 w-6 text-gray-600"
                 >
                   <path
                     fillRule="evenodd"
@@ -246,11 +246,11 @@ export default function TFa() {
                 </svg>
               </div>
               <div className="flex flex-row items-center gap-2">
-                <div className="w-10 h-10 bg-indigo-200 border border-indigo-300 shadow-sm rounded-full"></div>
+                <div className="h-10 w-10 rounded-full border border-indigo-300 bg-indigo-200 shadow-sm"></div>
               </div>
             </div>
           </div>
-          <div className="flex flex-row gap-4 p-4 text-md">
+          <div className="text-md flex flex-row gap-4 p-4">
             {tabData.map((linkItem) => (
               <button
                 key={linkItem.to}

@@ -85,7 +85,7 @@ export default function Sidebar() {
 
     return (
       <div className="select-none">
-        <div className="fixed z-40 top-0 right-0 left-0 border-b-2 bg-white h-10 flex group">
+        <div className="group fixed left-0 right-0 top-0 z-40 flex h-10 border-b-2 bg-white">
           {sidebar === false && (
             <button
               type="button"
@@ -95,51 +95,51 @@ export default function Sidebar() {
               <img
                 src={sidebar_inactive}
                 alt=""
-                className="w-6 h-6 opacity-60 hover:scale-105 active:opacity-80"
+                className="h-6 w-6 opacity-60 hover:scale-105 active:opacity-80"
               />
             </button>
           )}
           {sidebar && (
             <div
               onClick={toggleSidebar}
-              className="flex justify-center items-center translate-x-52 top-0 left-0"
+              className="left-0 top-0 flex translate-x-52 items-center justify-center"
             >
               <button className="flex select-none items-center justify-center">
                 <img
                   src={sidebar_active}
                   alt=""
-                  className="w-7 h-7 hover:scale-105 opacity-80 active:opacity-100"
+                  className="h-7 w-7 opacity-80 hover:scale-105 active:opacity-100"
                 />
               </button>
             </div>
           )}
         </div>
         <div
-          className={`fixed flex flex-col border-r-2 shadow-md duration-500 transition justify-between left-0 top-0 bottom-0 bg-white z-40 w-52 ${
+          className={`fixed bottom-0 left-0 top-0 z-40 flex w-52 flex-col justify-between border-r-2 bg-white shadow-md transition duration-500 ${
             sidebar
-              ? "translate-x-0 duration-500 transition"
-              : "-translate-x-52 duration-500 transition"
+              ? "translate-x-0 transition duration-500"
+              : "-translate-x-52 transition duration-500"
           }`}
         >
           <div className="">
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <div
                 type="button"
-                className="flex gap-6 justify-between items-center py-4 px-2"
+                className="flex items-center justify-between gap-6 px-2 py-4"
               >
-                <div className="flex flex-row gap-2 items-center justify-center">
-                  <div className="w-6 h-6 rounded-full bg-sky-200">
+                <div className="flex flex-row items-center justify-center gap-2">
+                  <div className="h-6 w-6 rounded-full bg-sky-200">
                     <img src={maleAvatar} alt="" />
                   </div>
                   <div className="text-[15px] font-light">
                     {currentUser.name}
                   </div>
                 </div>
-                <div className="bg-gray-100 rounded-lg">
+                <div className="rounded-lg bg-gray-100">
                   <button
                     type="button"
                     onClick={logout}
-                    className="flex justify-center items-center hover:border-gray-200 py-1.5 rounded-lg px-2 border bg-white cursor-pointer border-transparent hover:-translate-x-1 duration-300 transition active:-translate-x-1.5 active:shadow-sm"
+                    className="flex cursor-pointer items-center justify-center rounded-lg border border-transparent bg-white px-2 py-1.5 transition duration-300 hover:-translate-x-1 hover:border-gray-200 active:-translate-x-1.5 active:shadow-sm"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +147,7 @@ export default function Sidebar() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-5 h-5"
+                      className="h-5 w-5"
                     >
                       <path
                         strokeLinecap="round"
@@ -161,27 +161,27 @@ export default function Sidebar() {
             </div>
             {recent && recentLinks.length > 0 && (
               <>
-                <div className="px-1.5 text-gray-400 font-light text-sm mt-4">
+                <div className="mt-4 px-1.5 text-sm font-light text-gray-400">
                   Recent Links
                 </div>
-                <div className="flex flex-col gap-2 py-1 px-2">
+                <div className="flex flex-col gap-2 px-2 py-1">
                   {recentLinks.map((linkItem) => (
                     <div
                       key={linkItem.to}
                       onClick={() => setActiveLink(linkItem.to)}
                       className={`${
                         activeLink === linkItem.to ? "" : ""
-                      } relative flex flex-row group justify-between px-2 hover:text-sky-900 rounded-lg`}
+                      } group relative flex flex-row justify-between rounded-lg px-2 hover:text-sky-900`}
                     >
                       <div
                         className={`${
                           activeLink === linkItem.to ? "" : ""
-                        } absolute bottom-0 top-0 left-1.5 duration-300 transition flex justify-center items-center`}
+                        } absolute bottom-0 left-1.5 top-0 flex items-center justify-center transition duration-300`}
                       >
                         <div
                           className={`${
                             activeLink === linkItem.to ? "" : ""
-                          } duration-300 transition absolute w-1.5 h-1.5 rounded-full bg-gray-300 animate-pulse`}
+                          } absolute h-1.5 w-1.5 animate-pulse rounded-full bg-gray-300 transition duration-300`}
                         ></div>
                       </div>
                       <Link
@@ -190,12 +190,12 @@ export default function Sidebar() {
                           activeLink === linkItem.to
                             ? " text-gray-900"
                             : " text-gray-500 group-hover:text-gray-800"
-                        } py-2 px-4 text-[13px] font-normal text-start rounded-lg transition duration-300 `}
+                        } rounded-lg px-4 py-2 text-start text-[13px] font-normal transition duration-300 `}
                       >
                         {linkItem.text}
                       </Link>
                       <div
-                        className={`flex justify-center items-center text-gray-300 hover:text-red-200 cursor-pointer ${
+                        className={`flex cursor-pointer items-center justify-center text-gray-300 hover:text-red-200 ${
                           activeLink === linkItem.to
                             ? "text-gray-900"
                             : "text-transparent "
@@ -211,7 +211,7 @@ export default function Sidebar() {
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
                           fill="currentColor"
-                          className="w-5 h-5 text-transparent group-hover:text-gray-700 hover:text-black"
+                          className="h-5 w-5 text-transparent hover:text-black group-hover:text-gray-700"
                         >
                           <path
                             fillRule="evenodd"
@@ -225,18 +225,18 @@ export default function Sidebar() {
                 </div>
               </>
             )}
-            <div className="px-1.5 text-gray-400 font-light text-sm mt-2">
+            <div className="mt-2 px-1.5 text-sm font-light text-gray-400">
               Dashboard
             </div>
             <button
               type="button"
               onClick={toggleManagement}
-              className={`text-sm px-2 py-2 w-full active:bg-gray-50 select-none flex justify-evenly text-black items-center ${
+              className={`flex w-full select-none items-center justify-evenly px-2 py-2 text-sm text-black active:bg-gray-50 ${
                 management ? "" : ""
               }`}
             >
               <div
-                className={`duration-500 transition ${
+                className={`transition duration-500 ${
                   management ? "rotate-90 text-black" : "text-gray-400"
                 }`}
               >
@@ -244,7 +244,7 @@ export default function Sidebar() {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                 >
                   <path
                     fillRule="evenodd"
@@ -254,16 +254,16 @@ export default function Sidebar() {
                 </svg>
               </div>
               <div
-                className={`flex justify-center items-center gap-1 ${
+                className={`flex items-center justify-center gap-1 ${
                   management ? "text-black" : "text-neutral-600"
                 }`}
               >
-                <img src={managementIcon} alt="" className="w-5 h-5" />
+                <img src={managementIcon} alt="" className="h-5 w-5" />
                 Management
               </div>
             </button>
             {management && (
-              <div className="flex flex-col gap-2 py-1 px-2">
+              <div className="flex flex-col gap-2 px-2 py-1">
                 {linkDashboard.map((linkItem) => (
                   <div
                     key={linkItem.to}
@@ -276,21 +276,21 @@ export default function Sidebar() {
                     <div
                       className={`${
                         activeLink === linkItem.to ? "" : ""
-                      } absolute bottom-0 top-0 left-0.5 duration-300 transition flex justify-center items-center`}
+                      } absolute bottom-0 left-0.5 top-0 flex items-center justify-center transition duration-300`}
                     >
                       <div
                         className={`${
                           activeLink === linkItem.to ? "block" : "hidden"
-                        } absolute h-6 rounded-lg w-1 bg-black`}
+                        } absolute h-6 w-1 rounded-lg bg-black`}
                       ></div>
                     </div>
                     <Link
                       to={linkItem.to}
                       className={`text-black ${
                         activeLink === linkItem.to
-                          ? "translate-x-1 text-gray-900 bg-gray-100"
+                          ? "translate-x-1 bg-gray-100 text-gray-900"
                           : "-translate-x-3 text-gray-600 hover:text-gray-800"
-                      } py-2 px-4 text-[13px] font-normal text-start rounded-lg transition duration-300 `}
+                      } rounded-lg px-4 py-2 text-start text-[13px] font-normal transition duration-300 `}
                     >
                       {linkItem.text}
                     </Link>
@@ -302,12 +302,12 @@ export default function Sidebar() {
             <button
               type="button"
               onClick={toggleData}
-              className={`text-sm px-2 py-2 w-full active:bg-gray-50 select-none flex justify-evenly text-black items-center ${
+              className={`flex w-full select-none items-center justify-evenly px-2 py-2 text-sm text-black active:bg-gray-50 ${
                 data ? "" : ""
               }`}
             >
               <div
-                className={`duration-500 transition ${
+                className={`transition duration-500 ${
                   data ? "rotate-90 text-black" : "text-gray-400"
                 }`}
               >
@@ -315,7 +315,7 @@ export default function Sidebar() {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                 >
                   <path
                     fillRule="evenodd"
@@ -325,16 +325,16 @@ export default function Sidebar() {
                 </svg>
               </div>
               <div
-                className={`flex justify-center items-center gap-1 ${
+                className={`flex items-center justify-center gap-1 ${
                   management ? "text-black" : "text-neutral-600"
                 }`}
               >
-                <img src={dataManage} alt="" className="w-5 h-5" />
+                <img src={dataManage} alt="" className="h-5 w-5" />
                 Data Manage
               </div>
             </button>
             {data && (
-              <div className="flex flex-col gap-2 py-1 px-2">
+              <div className="flex flex-col gap-2 px-2 py-1">
                 {linkData.map((linkItem) => (
                   <div
                     key={linkItem.to}
@@ -347,21 +347,21 @@ export default function Sidebar() {
                     <div
                       className={`${
                         activeLink === linkItem.to ? "" : ""
-                      } absolute bottom-0 top-0 left-0.5 duration-300 transition flex justify-center items-center`}
+                      } absolute bottom-0 left-0.5 top-0 flex items-center justify-center transition duration-300`}
                     >
                       <div
                         className={`${
                           activeLink === linkItem.to ? "block" : "hidden"
-                        } absolute h-6 rounded-lg w-1 bg-black`}
+                        } absolute h-6 w-1 rounded-lg bg-black`}
                       ></div>
                     </div>
                     <Link
                       to={linkItem.to}
                       className={`text-black ${
                         activeLink === linkItem.to
-                          ? "translate-x-1 text-gray-900 bg-gray-100"
+                          ? "translate-x-1 bg-gray-100 text-gray-900"
                           : "-translate-x-3 text-gray-600 hover:text-gray-800"
-                      } py-2 px-4 text-[13px] font-normal text-start rounded-lg transition duration-300 `}
+                      } rounded-lg px-4 py-2 text-start text-[13px] font-normal transition duration-300 `}
                     >
                       {linkItem.text}
                     </Link>
@@ -373,12 +373,12 @@ export default function Sidebar() {
             <button
               type="button"
               onClick={togglePages}
-              className={`text-sm px-2 py-2 w-full active:bg-gray-50 select-none flex justify-evenly text-black items-center ${
+              className={`flex w-full select-none items-center justify-evenly px-2 py-2 text-sm text-black active:bg-gray-50 ${
                 pages ? "" : ""
               }`}
             >
               <div
-                className={`duration-500 transition ${
+                className={`transition duration-500 ${
                   pages ? "rotate-90 text-black" : "text-gray-400"
                 }`}
               >
@@ -386,7 +386,7 @@ export default function Sidebar() {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                 >
                   <path
                     fillRule="evenodd"
@@ -396,16 +396,16 @@ export default function Sidebar() {
                 </svg>
               </div>
               <div
-                className={`flex justify-center duration-300 transition items-center gap-1 ${
+                className={`flex items-center justify-center gap-1 transition duration-300 ${
                   management ? "text-black" : "text-neutral-600"
                 }`}
               >
-                <img src={pageManage} alt="" className="w-5 h-5" />
+                <img src={pageManage} alt="" className="h-5 w-5" />
                 Page Manage
               </div>
             </button>
             {pages && (
-              <div className="flex flex-col gap-2 py-1 px-2">
+              <div className="flex flex-col gap-2 px-2 py-1">
                 {linkPages.map((linkItem) => (
                   <div
                     key={linkItem.to}
@@ -418,21 +418,21 @@ export default function Sidebar() {
                     <div
                       className={`${
                         activeLink === linkItem.to ? "" : ""
-                      } absolute bottom-0 top-0 left-0.5 duration-300 transition flex justify-center items-center`}
+                      } absolute bottom-0 left-0.5 top-0 flex items-center justify-center transition duration-300`}
                     >
                       <div
                         className={`${
                           activeLink === linkItem.to ? "block" : "hidden"
-                        } absolute h-6 rounded-lg w-1 bg-black`}
+                        } absolute h-6 w-1 rounded-lg bg-black`}
                       ></div>
                     </div>
                     <Link
                       to={linkItem.to}
                       className={`text-black ${
                         activeLink === linkItem.to
-                          ? "translate-x-1 text-gray-900 bg-gray-100"
+                          ? "translate-x-1 bg-gray-100 text-gray-900"
                           : "-translate-x-3 text-gray-600 hover:text-gray-800"
-                      } py-2 px-4 text-[13px] font-normal text-start rounded-lg transition duration-300 `}
+                      } rounded-lg px-4 py-2 text-start text-[13px] font-normal transition duration-300 `}
                     >
                       {linkItem.text}
                     </Link>
@@ -441,7 +441,7 @@ export default function Sidebar() {
               </div>
             )}
           </div>
-          <div className="text-md tracking-tight flex justify-center items-center py-2 font-light">
+          <div className="text-md flex items-center justify-center py-2 font-light tracking-tight">
             Your company name ❇︎
           </div>
         </div>
