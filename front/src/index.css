@@ -7,7 +7,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-white h-full overflow-x-hidden;
+  @apply h-full overflow-x-hidden bg-white;
 }
 
 html {
@@ -28,7 +28,7 @@ html {
 input:focus,
 textarea:focus,
 select:focus {
-  @apply focus:outline-none focus:ring-sky-400 focus:ring-2 transition focus:border-sky-200 focus:border-2;
+  @apply transition focus:border-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-transparent;
 }
 
 .appear-transition {
