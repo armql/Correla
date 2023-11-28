@@ -1,22 +1,25 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import NotFound from "../error/NotFound";
 import Home from "../views/home/Home";
 import GuestLayout from "../layouts/GuestLayout";
 import ApplicationForm from "../views/forms/ApplicationForm";
 import AdminLayout from "../layouts/AdminLayout";
-import Dashboard from "../views/managing/Dashboard";
-import Login from "../views/auth/Login";
-import ProcedureList from "../views/managing/ProcedureList";
-import Patient from "../views/managing/Patient";
-import EmployeeList from "../views/managing/EmployeeList";
-import PatientList from "../views/managing/PatientList";
-import ChairCRT from "../views/managing/ChairCRT";
-import PatientHistory from "../components/post/PatientHistory";
-import Create from "../components/common/Create";
-import Signup from "../views/auth/Signup";
-import CreateProcedure from "../components/crud/CreateProcedure";
 import TFa from "../views/managing/TFa";
-import EditProcedure from "../components/crud/EditProcedure";
+import MobileLayout from "../layouts/MobileLayout";
+import MobileHome from "../views/mobile/home/MobileHome";
+import { NotFound, LazyLoading } from "./imports/global/global";
+import {
+  Dashboard,
+  Login,
+  ProcedureList,
+  Patient,
+  EmployeeList,
+  ChairCRT,
+  PatientList,
+  PatientHistory,
+  CreateProcedure,
+  EditProcedure,
+} from "./imports/admin/admin";
+import { Suspense } from "react";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +41,24 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/app",
+    element: <MobileLayout />,
+    children: [
+      {
+        path: "/app",
+        element: <Navigate to={"home"} />,
+      },
+      {
+        path: "home",
+        element: <MobileHome />,
+      },
+      {
+        path: "form",
+        element: <ApplicationForm />,
+      },
+    ],
+  },
+  {
     path: "123",
     element: <AdminLayout />,
     children: [
@@ -47,51 +68,83 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <Dashboard />,
+        element: (
+          <Suspense fallback={<LazyLoading />}>
+            <Dashboard />
+          </Suspense>
+        ),
       },
       {
         path: "login",
-        element: <Login />,
-      },
-      {
-        path: "signup",
-        element: <Signup />,
+        element: (
+          <Suspense fallback={<LazyLoading />}>
+            <Login />
+          </Suspense>
+        ),
       },
       {
         path: "procedureslist",
-        element: <ProcedureList />,
+        element: (
+          <Suspense fallback={<LazyLoading />}>
+            <ProcedureList />
+          </Suspense>
+        ),
       },
       {
         path: "procedureslist/createprocedure",
-        element: <CreateProcedure />,
+        element: (
+          <Suspense fallback={<LazyLoading />}>
+            <CreateProcedure />
+          </Suspense>
+        ),
       },
       {
         path: "employeeslist",
-        element: <EmployeeList />,
+        element: (
+          <Suspense fallback={<LazyLoading />}>
+            <EmployeeList />
+          </Suspense>
+        ),
       },
       {
         path: "patient",
-        element: <Patient />,
+        element: (
+          <Suspense fallback={<LazyLoading />}>
+            <Patient />
+          </Suspense>
+        ),
       },
       {
         path: "patientlist",
-        element: <PatientList />,
+        element: (
+          <Suspense fallback={<LazyLoading />}>
+            <PatientList />
+          </Suspense>
+        ),
       },
       {
         path: "managecrt",
-        element: <ChairCRT />,
+        element: (
+          <Suspense fallback={<LazyLoading />}>
+            <ChairCRT />
+          </Suspense>
+        ),
       },
       {
         path: "patienthistory",
-        element: <PatientHistory />,
-      },
-      {
-        path: "create",
-        element: <Create />,
+        element: (
+          <Suspense fallback={<LazyLoading />}>
+            <PatientHistory />
+          </Suspense>
+        ),
       },
       {
         path: "procedureslist/edit/:id",
-        element: <EditProcedure />,
+        element: (
+          <Suspense fallback={<LazyLoading />}>
+            <EditProcedure />
+          </Suspense>
+        ),
       },
     ],
   },

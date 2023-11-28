@@ -80,26 +80,26 @@ export default function Login() {
   }
 
   return (
-    <div className="parent flex items-center justify-center w-screen h-screen">
+    <div className="parent flex h-screen w-screen items-center justify-center">
       <form
         onSubmit={logging}
-        className="flex lg:flex-row flex-col w-full justify-around bg-gray-100 shadow-sm items-center border py-10 px-4 gap-4"
+        className="flex w-full flex-col items-center justify-around gap-4 border bg-gray-100 px-4 py-10 shadow-sm lg:flex-row"
       >
-        <div className="flex items-center gap-4 justify-start flex-col md:flex-row">
-          <div className="flex items-center justify-center text-center flex-col">
-            <h1 className="text-4xl font-semibold">
+        <div className="flex flex-col items-center justify-start gap-4 md:flex-row">
+          <div className="group flex flex-col items-center justify-center text-center">
+            <h1 className="active select-none text-4xl font-semibold">
               This is where you authenticate mate
             </h1>
-            <p className="text-sky-400 tracking-tighter font-light text-xl">
+            <p className="text-xl font-light tracking-tighter text-sky-400">
               You learn more and more over our company everyday never changes
             </p>
           </div>
           <div className="">
-            <img src={authentication} alt="" className="w-96 h-96" />
+            <img src={authentication} alt="" className="h-96 w-96" />
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <h1 className="font-medium text-4xl text-black">
+          <h1 className="text-4xl font-medium text-black">
             Admin Authentication
           </h1>
           <InputFilter
@@ -127,12 +127,12 @@ export default function Login() {
 
           {error.password && (
             <div
-              class="shadow-sm flex p-2 mt-4 text-sm text-red-600 rounded-md bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              class="mt-4 flex rounded-md bg-red-50 p-2 text-sm text-red-600 shadow-sm dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               <svg
                 aria-hidden="true"
-                class="flex-shrink-0 inline w-5 h-5 mr-3"
+                class="mr-3 inline h-5 w-5 flex-shrink-0"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@ export default function Login() {
               </svg>
               <span class="sr-only">Danger</span>
               <div>
-                <ul class="mt-1.5 ml-4 list-disc list-inside">
+                <ul class="ml-4 mt-1.5 list-inside list-disc">
                   <span class="font-medium">
                     Ensure that these requirements are met:
                   </span>
@@ -163,12 +163,12 @@ export default function Login() {
           )}
           {error.other && (
             <div
-              class="flex p-2 mt-4 text-sm text-red-600 rounded-md bg-red-50"
+              class="mt-4 flex rounded-md bg-red-50 p-2 text-sm text-red-600"
               role="alert"
             >
               <svg
                 aria-hidden="true"
-                class="flex-shrink-0 inline w-5 h-5 mr-3"
+                class="mr-3 inline h-5 w-5 flex-shrink-0"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -181,7 +181,7 @@ export default function Login() {
               </svg>
               <span class="sr-only">Danger</span>
               <div>
-                <ul class="mt-1.5 ml-4 list-disc list-inside">
+                <ul class="ml-4 mt-1.5 list-inside list-disc">
                   <span class="font-medium">
                     Ensure that these requirements are met:
                   </span>
@@ -195,7 +195,7 @@ export default function Login() {
           <div className="">
             <button
               type="submit"
-              className="border mt-6 shadow-sm transition duration-200 border-gray-200 px-12 py-2 w-full font-semibold bg-gray-50 hover:bg-sky-100 hover:text-sky-700 hover:border-sky-200"
+              className="mt-6 w-full border border-gray-200 bg-gray-50 px-12 py-2 font-semibold shadow-sm transition duration-200 hover:border-sky-200 hover:bg-sky-100 hover:text-sky-700"
             >
               Login
             </button>
