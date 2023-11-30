@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import useOnLoad from "../../../hooks/useOnLoad";
 import Content from "./content/Content";
+import useDirective from "../../../hooks/useDirective";
 
 export default function MobileHome() {
   const { isOnLoad } = useOnLoad(false);
+  const { sectionDirector, scroller } = useDirective();
 
   return (
     <div className="relative h-screen w-screen bg-transparent">
@@ -29,26 +31,30 @@ export default function MobileHome() {
         <div className="flex flex-row gap-4">
           <button
             type="button"
+            onClick={() => scroller("get_checkedSection")}
             className={`z-10 cursor-pointer rounded-full border border-amber-100 bg-amber-100 px-4 py-2 text-xs font-light text-amber-800 transition duration-300 hover:border-amber-200 hover:bg-amber-200 hover:text-amber-950 active:bg-opacity-60 ${
               isOnLoad
                 ? "animate-none"
-                : "animate-pulse bg-opacity-70 backdrop-blur-sm"
+                : "animate-bounce bg-opacity-70 backdrop-blur-sm"
             }`}
           >
             Need a checkup?
           </button>
           <button
             type="button"
+            onClick={() => scroller("view_appointmentSection")}
             className={`z-10 rounded-full border border-black bg-transparent px-4 py-2 text-xs font-light text-black transition duration-100 hover:bg-white active:bg-gray-100 ${
-              isOnLoad ? "animate-none" : "animate-pulse "
+              isOnLoad ? "animate-none" : "animate-bounce "
             }`}
           >
             View Appointments
           </button>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0"></div>
-      <Content />
+      <div className="absolute bottom-0 left-0 right-0">
+        <div className="h-40 w-full rounded-tl-full bg-white"></div>
+      </div>
+      <Content sectionDirector={sectionDirector} />
     </div>
   );
 }
