@@ -24,43 +24,43 @@ export default function Clock() {
 
   return (
     <div
-      className={`flex group flex-row justify-between relative text-9xl py-12 tracking-widest text-center font-semibold mb-4 mt-10`}
+      className={`group relative mb-0 mt-0 flex flex-row justify-between py-2 text-center text-8xl font-semibold tracking-widest sm:mb-4 sm:mt-10 sm:py-12 sm:text-9xl`}
     >
       <div>
         <img
           src={molar}
           alt=""
-          className="absolute translate-x-10 translate-y-20 w-14 h-14 group-hover:-rotate-3 rotate-3 duration-300 transition"
+          className="absolute h-10 w-10 translate-x-10 translate-y-20 rotate-3 transition duration-300 group-hover:-rotate-3 sm:h-14 sm:w-14"
         />
         <img
           src={canine}
           alt=""
-          className="absolute translate-x-40 translate-y-10 duration-300 transition group-hover:-rotate-12 rotate-12 w-12 h-12"
+          className="absolute h-10 w-10 translate-x-40 translate-y-10 rotate-12 transition duration-300 group-hover:-rotate-12 sm:h-12 sm:w-12"
         />
         <img
           src={premolar}
           alt=""
-          className="absolute translate-x-20 translate-y-0 duration-300 transition group-hover:-rotate-2 group-hover:scale-110 rotate-2 w-10 h-10"
+          className="absolute h-10 w-10 translate-x-20 translate-y-0 rotate-2 transition duration-300 group-hover:-rotate-2 group-hover:scale-110"
         />
       </div>
-      <div className="group-hover:scale-110 duration-500 transition">
+      <div className="transition duration-500 group-hover:scale-110">
         {currentTime.toFormat("HH:mm")}
       </div>
       <div>
         <img
           src={molar}
           alt=""
-          className="absolute -translate-x-24 translate-y-20 w-14 h-14 group-hover:rotate-3 -rotate-3 duration-300 transition"
+          className="absolute h-10 w-10 -translate-x-24 translate-y-20 -rotate-3 transition duration-300 group-hover:rotate-3 sm:h-14 sm:w-14"
         />
         <img
           src={canine}
           alt=""
-          className="absolute -translate-x-48 translate-y-10 group-hover:rotate-12 duration-300 transition -rotate-12 w-12 h-12"
+          className="absolute h-10 w-10 -translate-x-48 translate-y-10 -rotate-12 transition duration-300 group-hover:rotate-12 sm:h-12 sm:w-12"
         />
         <img
           src={premolar}
           alt=""
-          className="absolute -translate-x-28 translate-y-0 group-hover:rotate-2 group-hover:scale-110 duration-300 transition -rotate-2 w-10 h-10"
+          className="absolute h-8 w-8 -translate-x-28 translate-y-0 -rotate-2 transition duration-300 group-hover:rotate-2 group-hover:scale-110 sm:h-10 sm:w-10"
         />
       </div>
     </div>

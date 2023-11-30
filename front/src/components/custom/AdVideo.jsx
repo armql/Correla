@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import video from "../../assets/videos/ad-video.mp4";
 import ServiceCards from "../card/ServiceCards";
 
-export default function HeroSection() {
+export default function AdVideo() {
   const serviceItems = [
     {
       title: "Dental Checkups",
@@ -56,7 +56,6 @@ export default function HeroSection() {
       title: "Sedation Dentistry",
       description: "Relax and be comfortable during your visit.",
     },
-    // Add more service items as needed
   ];
 
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
@@ -67,7 +66,7 @@ export default function HeroSection() {
       setCurrentServiceIndex((prevIndex) =>
         prevIndex === serviceItems.length - 1 ? 0 : prevIndex + 1,
       );
-    }, 4000); // Change this to adjust slide duration
+    }, 4000);
 
     return () => {
       clearInterval(interval);
@@ -77,7 +76,7 @@ export default function HeroSection() {
   useEffect(() => {
     const changeService = setTimeout(() => {
       setVisibleServiceIndex(currentServiceIndex);
-    }, 300); // Adjust the duration for fading text
+    }, 300);
 
     return () => {
       clearTimeout(changeService);
@@ -89,21 +88,21 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <video
           src={video}
-          className="object-cover w-full h-full"
+          className="h-full w-full object-cover"
           loop
           autoPlay
           muted
         ></video>
       </div>
       <div className="absolute inset-0 bg-black opacity-70"></div>
-      <div className="absolute bg-white bg-opacity-30 backdrop-blur-md inset-0 flex flex-col items-center justify-center text-black">
-        <div className="absolute top-0 p-6 left-0 right-0 text-center text-7xl font-bold bg-white">
+      <div className="absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-30 text-black backdrop-blur-md">
+        <div className="absolute left-0 right-0 top-0 bg-white p-6 text-center text-7xl font-bold">
           Our Services
         </div>
-        <div className="flex flex-col items-center justify-around gap-4 p-4 max-w-2xl mx-auto text-center">
-          <div className="flex flex-col gap-1 items-center justify-center">
+        <div className="mx-auto flex max-w-2xl flex-col items-center justify-around gap-4 p-4 text-center">
+          <div className="flex flex-col items-center justify-center gap-1">
             <h1
-              className={`text-6xl font-semibold text-white tracking-tighter duration-300 ${
+              className={`text-6xl font-semibold tracking-tighter text-white duration-300 ${
                 visibleServiceIndex === currentServiceIndex
                   ? "opacity-100"
                   : "opacity-0"

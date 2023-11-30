@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Support from "../../components/custom/CrewInfo";
-import smiley from "../../assets/svg/smiley.svg";
 import Clock from "../../components/common/Clock";
 import Schedules from "../../components/custom/Schedules";
 import ALLQuestions from "../../components/custom/ALLQuestions";
 import AdVideo from "../../components/custom/AdVideo";
+import Hero from "./hero/Hero";
 
 export default function Home() {
   const initialSchedule = {
@@ -115,7 +115,7 @@ export default function Home() {
   const renderScheduler = (day) => {
     return (
       <div className="">
-        <div className="text-xl grid-cols-1">
+        <div className="grid-cols-1 text-xl">
           {Object.keys(schedule[day]).map((time) => {
             const isBreakTime = time.includes("BREAK");
             const displayedTime = isBreakTime
@@ -126,18 +126,18 @@ export default function Home() {
               <button
                 key={time}
                 type="button"
-                className={`w-full relative tracking-widest transition sm:text-[18px] text-xs sm:p-6 px-0.5 ${
+                className={`relative w-full px-0.5 text-xs tracking-widest transition sm:p-6 sm:text-[18px] ${
                   isReserved(day, time) ? "cursor-default" : "bg-white"
                 } ${isBreakTime ? "bg-rose-50" : ""}`}
                 onClick={() => toggleReservation(day, time)}
               >
                 {isReserved(day, time) && (
-                  <div className="uppercase tracking-tighter absolute text-rose-900 bg-rose-100 px-1 py-0.5 rounded-tl-sm text-sm right-0 bottom-0">
+                  <div className="absolute bottom-0 right-0 rounded-tl-sm bg-rose-100 px-1 py-0.5 text-sm uppercase tracking-tighter text-rose-900">
                     reserved
                   </div>
                 )}
                 {isBreakReserved(day, time) && (
-                  <div className="uppercase absolute text-white bg-red-900 px-1 py-0.5 rounded-tl-sm text-sm right-0 bottom-0">
+                  <div className="absolute bottom-0 right-0 rounded-tl-sm bg-red-900 px-1 py-0.5 text-sm uppercase text-white">
                     break
                   </div>
                 )}
@@ -152,27 +152,15 @@ export default function Home() {
 
   return (
     <div className="parent h-full bg-white">
-      <div className="group flex sm:flex-row flex-col items-center justify-evenly">
-        <div className="text-center p-4 rounded-md">
-          <div className="flex flex-col text-sky-900 tracking-tight justify-center items-center text-2xl">
-            Personalized appointments just a scroll away
-          </div>
-          <h1 className="font-semibold tracking-tighter text-6xl text-sky-500">
-            Seamless smiles your way
-          </h1>
-        </div>
-        <div className="">
-          <img src={smiley} alt="" className="" />
-        </div>
-      </div>
+      <Hero />
       <Clock />
-      <div className="flex items-center flex-col justify-center bg-white">
-        <div className="grid grid-cols-6 items-center justify-center text-center bg-white">
+      <div className="flex flex-col items-center justify-center bg-white">
+        <div className="grid grid-cols-6 items-center justify-center bg-white text-center">
           {Object.keys(schedule).map((day) => (
             <button
               key={day}
               type="button"
-              className={`bg-white px-6 py-2.5 cursor-default sm:text-2xl text-xs text-black font-semibold`}
+              className={`cursor-default bg-white px-6 py-2.5 text-xs font-semibold text-black sm:text-2xl`}
             >
               {day}
             </button>
