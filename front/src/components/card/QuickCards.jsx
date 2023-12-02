@@ -3,23 +3,23 @@ import React from "react";
 export default function QuickCards() {
   return (
     <div>
-      <div className="mt-2 p-4 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2">
-        <div className="bg-white rounded-md flex flex-row justify-around w-full h-full p-2 gap-2 items-center shadow-md">
-          <div className="tracking-wide text-emerald-950 bg-white flex flex-col justify-center items-center text-center py-1 text-[26px]">
+      <div className="grid gap-2 p-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="flex h-full w-full flex-row items-center justify-around gap-2 rounded-md bg-white p-2 shadow-md">
+          <div className="flex flex-col items-center justify-center bg-white py-1 text-center text-[26px] tracking-wide text-emerald-950">
             Schedule
-            <p className="text-xs text-gray-600 font-light tracking-normal">
+            <p className="text-xs font-light tracking-normal text-gray-600">
               Make a schedule
             </p>
           </div>
-          <div className="bg-emerald-50 bg-opacity-40 hover:text-emerald-700 hover:bg-emerald-50 hover:border-emerald-200 py-1.5 text-emerald-950 px-6 select-none text-[12px] cursor-pointer font-light border rounded-md shadow-sm transition">
-            <div className="flex justify-around items-center gap-4">
+          <div className="cursor-pointer select-none rounded-md border bg-emerald-50 bg-opacity-40 px-6 py-1.5 text-[12px] font-light text-emerald-950 shadow-sm transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700">
+            <div className="flex items-center justify-around gap-4">
               <div>Create</div>
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-4 h-4"
+                  className="h-4 w-4"
                 >
                   <path
                     fillRule="evenodd"
@@ -31,22 +31,22 @@ export default function QuickCards() {
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-md flex flex-row justify-around w-full h-full p-2 gap-2 items-center shadow-md">
-          <div className="tracking-wide text-rose-950 bg-white flex flex-col justify-center items-center text-center py-1 text-[26px]">
+        <div className="flex h-full w-full flex-row items-center justify-around gap-2 rounded-md bg-white p-2 shadow-md">
+          <div className="flex flex-col items-center justify-center bg-white py-1 text-center text-[26px] tracking-wide text-rose-950">
             Procedure
-            <p className="text-xs text-gray-600 font-light tracking-normal">
+            <p className="text-xs font-light tracking-normal text-gray-600">
               Create a procedure
             </p>
           </div>
-          <div className="bg-rose-50 bg-opacity-40 hover:text-rose-700 hover:bg-rose-50 hover:border-rose-200 py-1.5 text-rose-950 px-6 select-none text-[12px] cursor-pointer font-light border rounded-md shadow-sm transition">
-            <div className="flex justify-around items-center gap-4">
+          <div className="cursor-pointer select-none rounded-md border bg-rose-50 bg-opacity-40 px-6 py-1.5 text-[12px] font-light text-rose-950 shadow-sm transition hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700">
+            <div className="flex items-center justify-around gap-4">
               <div>Create</div>
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-4 h-4"
+                  className="h-4 w-4"
                 >
                   <path
                     fillRule="evenodd"
@@ -63,22 +63,22 @@ export default function QuickCards() {
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-md flex flex-row justify-around w-full h-full p-2 gap-2 items-center shadow-md">
-          <div className="tracking-wide text-amber-950 bg-white flex flex-col justify-center items-center text-center py-1 text-[26px]">
+        <div className="flex h-full w-full flex-row items-center justify-around gap-2 rounded-md bg-white p-2 shadow-md">
+          <div className="flex flex-col items-center justify-center bg-white py-1 text-center text-[26px] tracking-wide text-amber-950">
             Programme
-            <p className="text-xs text-gray-600 font-light tracking-normal">
+            <p className="text-xs font-light tracking-normal text-gray-600">
               Weekly planprogram
             </p>
           </div>
-          <div className="bg-amber-50 bg-opacity-40 hover:text-amber-700 hover:bg-amber-50 hover:border-amber-200 py-1.5 text-amber-950 px-6 select-none text-[12px] cursor-pointer font-light border rounded-md shadow-sm transition">
-            <div className="flex justify-around items-center gap-4">
+          <div className="cursor-pointer select-none rounded-md border bg-amber-50 bg-opacity-40 px-6 py-1.5 text-[12px] font-light text-amber-950 shadow-sm transition hover:border-amber-200 hover:bg-amber-50 hover:text-amber-700">
+            <div className="flex items-center justify-around gap-4">
               <div>View</div>
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-4 h-4"
+                  className="h-4 w-4"
                 >
                   <path
                     fillRule="evenodd"
@@ -90,22 +90,22 @@ export default function QuickCards() {
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-md flex flex-row justify-around w-full h-full p-2 gap-2 items-center shadow-md">
-          <div className="tracking-wide text-sky-950 bg-white flex flex-col justify-center items-center text-center py-1 text-[26px]">
+        <div className="flex h-full w-full flex-row items-center justify-around gap-2 rounded-md bg-white p-2 shadow-md">
+          <div className="flex flex-col items-center justify-center bg-white py-1 text-center text-[26px] tracking-wide text-sky-950">
             ChairCRT
-            <p className="text-xs text-gray-600 font-light tracking-normal">
+            <p className="text-xs font-light tracking-normal text-gray-600">
               idel System
             </p>
           </div>
-          <div className="bg-sky-50 bg-opacity-40 hover:text-sky-700 hover:bg-sky-50 hover:border-sky-200 py-1.5 text-sky-950 px-6 select-none text-[12px] cursor-pointer font-light border rounded-md shadow-sm transition">
-            <div className="flex justify-around items-center gap-4">
+          <div className="cursor-pointer select-none rounded-md border bg-sky-50 bg-opacity-40 px-6 py-1.5 text-[12px] font-light text-sky-950 shadow-sm transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700">
+            <div className="flex items-center justify-around gap-4">
               <div>View</div>
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-4 h-4"
+                  className="h-4 w-4"
                 >
                   <path
                     fillRule="evenodd"
