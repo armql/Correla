@@ -3,7 +3,6 @@ import Home from "../views/home/Home";
 import GuestLayout from "../layouts/GuestLayout";
 import ApplicationForm from "../views/forms/ApplicationForm";
 import AdminLayout from "../layouts/AdminLayout";
-import TFa from "../views/managing/TFa";
 import MobileLayout from "../layouts/MobileLayout";
 import MobileHome from "../views/mobile/home/MobileHome";
 import { NotFound, LazyLoading } from "./imports/global/global";
@@ -68,19 +67,11 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: (
-          <Suspense fallback={<LazyLoading />}>
-            <Dashboard />
-          </Suspense>
-        ),
+        element: <Dashboard />,
       },
       {
         path: "login",
-        element: (
-          <Suspense fallback={<LazyLoading />}>
-            <Login />
-          </Suspense>
-        ),
+        element: <Login />,
       },
       {
         path: "procedureslist",
@@ -92,11 +83,7 @@ const router = createBrowserRouter([
       },
       {
         path: "procedureslist/createprocedure",
-        element: (
-          <Suspense fallback={<LazyLoading />}>
-            <CreateProcedure />
-          </Suspense>
-        ),
+        element: <CreateProcedure />,
       },
       {
         path: "employeeslist",
@@ -140,17 +127,9 @@ const router = createBrowserRouter([
       },
       {
         path: "procedureslist/edit/:id",
-        element: (
-          <Suspense fallback={<LazyLoading />}>
-            <EditProcedure />
-          </Suspense>
-        ),
+        element: <EditProcedure />,
       },
     ],
-  },
-  {
-    path: "tfa",
-    element: <TFa />,
   },
   {
     path: "*",
