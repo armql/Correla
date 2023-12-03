@@ -6,6 +6,7 @@ import { useStateContext } from "../../contexts/ContextProvider";
 import axiosClient from "../../api/axios";
 import Swal from "sweetalert2";
 import SubmitLogin from "../../components/skeleton/submitLogin";
+import background from "../../assets/svg/form-gray-background.svg";
 
 export default function Login() {
   const { setCurrentUser, setUserToken } = useStateContext();
@@ -75,15 +76,26 @@ export default function Login() {
       });
   };
 
+  const guestLayoutStyle = {
+    backgroundImage: `url(${background})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  };
+
   if (submitting) {
     return <SubmitLogin />;
   }
 
   return (
-    <div className="parent flex h-screen w-screen items-center justify-center">
+    <div className="parent relative flex h-screen w-screen items-center justify-center">
+      <div
+        className="absolute inset-0 z-0 overflow-hidden"
+        style={guestLayoutStyle}
+      ></div>
+      <div className="absolute inset-0 z-0 overflow-hidden backdrop-blur-3xl"></div>
       <form
         onSubmit={logging}
-        className="flex w-full flex-col items-center justify-around gap-4 border bg-gray-100 px-4 py-10 shadow-sm lg:flex-row"
+        className="z-10 flex w-full flex-col items-center justify-around gap-4 border-b-2 border-t-2 border-sky-200 bg-white bg-opacity-80 px-4 py-10 shadow-sm backdrop-blur-sm lg:flex-row"
       >
         <div className="flex flex-col items-center justify-start gap-4 md:flex-row">
           <div className="group flex flex-col items-center justify-center text-center">
