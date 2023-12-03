@@ -1,9 +1,8 @@
 import { lazy } from "react";
 import CreateProcedure from "../../../components/crud/CreateProcedure";
 import EditProcedure from "../../../components/crud/EditProcedure";
-
-const Dashboard = lazy(() => import("../../../views/managing/Dashboard"));
-const Login = lazy(() => import("../../../views/auth/Login"));
+import Dashboard from "../../../views/managing/Dashboard";
+import Login from "../../../views/auth/Login";
 const ProcedureList = lazy(() =>
   import("../../../views/managing/ProcedureList"),
 );
