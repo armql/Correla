@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import CreateProcedure from "../../../components/crud/CreateProcedure";
+import AddEmployee from "../../../components/crud/AddEmployee";
 import EditProcedure from "../../../components/crud/EditProcedure";
 import Dashboard from "../../../views/managing/Dashboard";
 import Login from "../../../views/auth/Login";
@@ -25,4 +26,5 @@ export {
   PatientHistory,
   CreateProcedure,
   EditProcedure,
+  AddEmployee,
 };

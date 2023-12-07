@@ -60,11 +60,8 @@ export default function Navbar() {
 
   return (
     <div className="bg-white">
-      <div className="h-24 flex justify-center text-sky-500 items-center font-bold text-5xl">
-        Your company name
-      </div>
-      <div className="w-full h-full mt-4">
-        <div className="grid grid-cols-2 lg:grid-cols-5 text-center justify-evenly text-black items-center text-2xl">
+      <div className="mt-4 h-full w-full">
+        <div className="grid grid-cols-2 items-center justify-evenly text-center text-2xl text-black lg:grid-cols-5">
           {buttons.map((button, index) => (
             <button
               key={index}
@@ -72,8 +69,8 @@ export default function Navbar() {
               type="button"
               className={`p-4 transition ${
                 activeLink === index
-                  ? "text-sky-800 bg-gray-100"
-                  : "hover:text-sky-950 hover:bg-gray-50"
+                  ? "bg-gray-100 text-sky-800"
+                  : "hover:bg-gray-50 hover:text-sky-950"
               }`}
             >
               {button.text}
@@ -82,44 +79,44 @@ export default function Navbar() {
         </div>
         {activeButtonIndex !== null && (
           <div
-            className={`relative bg-white gap-6 grid grid-cols-1 font-normal ${
+            className={`relative grid grid-cols-1 gap-6 bg-white font-normal ${
               showCheckForm
-                ? "transform translate-x-40 duration-500 transition"
-                : "duration-500 transition"
+                ? "translate-x-40 transform transition duration-500"
+                : "transition duration-500"
             }`}
           >
-            <div className="lg:block hidden h-full w-full bg-sky-50">
+            <div className="hidden h-full w-full bg-sky-50 lg:block">
               <div className="flex flex-col items-center justify-center">
-                <h1 className="text-3xl py-2 px-1.5 text-white bg-sky-500 bg-opacity-90 backdrop-blur-sm tracking-wide w-full text-center">
+                <h1 className="w-full bg-sky-500 bg-opacity-90 px-1.5 py-2 text-center text-3xl tracking-wide text-white backdrop-blur-sm">
                   {buttons[activeButtonIndex].modalTitle}
                 </h1>
-                <p className="tracking-tighter py-2 px-2 text-lg bg-sky-200 bg-opacity-40 backdrop-blur-sm font-light">
+                <p className="bg-sky-200 bg-opacity-40 px-2 py-2 text-lg font-light tracking-tighter backdrop-blur-sm">
                   {buttons[activeButtonIndex].modalContent}
                 </p>
               </div>
             </div>
-            <div className="absolute h-full w-full flex lg:hidden">
-              <div className="p-12 flex flex-col items-center justify-center">
-                <h1 className="text-3xl py-2 px-1.5 text-white bg-sky-500 bg-opacity-90 backdrop-blur-sm tracking-wide w-full text-center">
+            <div className="absolute flex h-full w-full lg:hidden">
+              <div className="flex flex-col items-center justify-center p-12">
+                <h1 className="w-full bg-sky-500 bg-opacity-90 px-1.5 py-2 text-center text-3xl tracking-wide text-white backdrop-blur-sm">
                   {buttons[activeButtonIndex].modalTitle}
                 </h1>
-                <p className="tracking-tighter py-2 px-2 text-lg bg-white bg-opacity-30 backdrop-blur-sm font-light">
+                <p className="bg-white bg-opacity-30 px-2 py-2 text-lg font-light tracking-tighter backdrop-blur-sm">
                   {buttons[activeButtonIndex].modalContent}
                 </p>
               </div>
             </div>
-            <div className="w-full h-fit flex bg-sky-950 justify-center items-center">
-              <img src={buildingbg} alt="" className="lg:hidden block" />
+            <div className="flex h-fit w-full items-center justify-center bg-sky-950">
+              <img src={buildingbg} alt="" className="block lg:hidden" />
             </div>
           </div>
         )}
         {activeButtonIndex === null && (
-          <div className="relative bg-white p-9 text-start gap-2 flex items-start justify-between flex-col font-normal">
+          <div className="relative flex flex-col items-start justify-between gap-2 bg-white p-9 text-start font-normal">
             {showCheckForm && (
-              <div className="absolute top-2 right-2">
+              <div className="absolute right-2 top-2">
                 <button
                   type="button"
-                  className="hover:bg-gray-50 active:scale-105 bg-transparent hover:shadow-sm p-2 rounded-full font-normal cursor-pointer transition"
+                  className="cursor-pointer rounded-full bg-transparent p-2 font-normal transition hover:bg-gray-50 hover:shadow-sm active:scale-105"
                   onClick={() => setShowCheckForm(false)}
                 >
                   <svg
@@ -128,7 +125,7 @@ export default function Navbar() {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="group active:rotate-90 duration-500 w-8 h-8"
+                    className="group h-8 w-8 duration-500 active:rotate-90"
                   >
                     <path
                       strokeLinecap="round"
@@ -142,14 +139,14 @@ export default function Navbar() {
             <div className="flex flex-row justify-between">
               <div className="">
                 <h1
-                  className={`text-3xl transition font-semibold ${
+                  className={`text-3xl font-semibold transition ${
                     showCheckForm ? "translate-y-10 duration-500" : ""
                   }`}
                 >
                   Make a reservation now
                 </h1>
                 <p
-                  className={`text-lg transition tracking-tighter text-gray-800 px-1 ${
+                  className={`px-1 text-lg tracking-tighter text-gray-800 transition ${
                     showCheckForm ? "translate-y-10 duration-500" : ""
                   }`}
                 >
@@ -162,9 +159,9 @@ export default function Navbar() {
                     type="button"
                     className={`${
                       showCheckForm
-                        ? "translate-y-4 duration-100 bg-transparent text-transparent cursor-default border-none shadow-none ring-none ring-transparent"
+                        ? "ring-none translate-y-4 cursor-default border-none bg-transparent text-transparent shadow-none ring-transparent duration-100"
                         : "hover:bg-gray-50"
-                    } rounded-md border transition text-black py-2 px-4 ring-4 ring-transparent active:ring-gray-100 font-light`}
+                    } rounded-md border px-4 py-2 font-light text-black ring-4 ring-transparent transition active:ring-gray-100`}
                   >
                     Get checked
                   </button>
@@ -173,28 +170,28 @@ export default function Navbar() {
 
               <div
                 className={`absolute right-0 z-10 flex items-center justify-center ${
-                  showCheckForm ? "transform translate-y-28 duration-500" : ""
+                  showCheckForm ? "translate-y-28 transform duration-500" : ""
                 }`}
               >
                 <img
                   src={molar}
                   alt=""
-                  className="w-14 h-14 group-hover:rotate-3 -rotate-3 duration-300 transition"
+                  className="h-14 w-14 -rotate-3 transition duration-300 group-hover:rotate-3"
                 />
                 <img
                   src={canine}
                   alt=""
-                  className="translate-x-2 translate-y-10 group-hover:rotate-12 duration-300 transition -rotate-12 w-12 h-12"
+                  className="h-12 w-12 translate-x-2 translate-y-10 -rotate-12 transition duration-300 group-hover:rotate-12"
                 />
                 <img
                   src={premolar}
                   alt=""
-                  className="translate-x-8 group-hover:rotate-2 group-hover:scale-110 duration-300 transition -rotate-2 w-10 h-10"
+                  className="h-10 w-10 translate-x-8 -rotate-2 transition duration-300 group-hover:rotate-2 group-hover:scale-110"
                 />
                 <img
                   src={molar2}
                   alt=""
-                  className="-translate-x-6 translate-y-20 group-hover:rotate-2 group-hover:scale-110 duration-300 transition -rotate-2 w-12 h-12"
+                  className="h-12 w-12 -translate-x-6 translate-y-20 -rotate-2 transition duration-300 group-hover:rotate-2 group-hover:scale-110"
                 />
               </div>
             </div>
