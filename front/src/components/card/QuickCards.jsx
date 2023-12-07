@@ -4,14 +4,17 @@ export default function QuickCards() {
   return (
     <div>
       <div className="grid gap-2 p-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <div className="flex h-full w-full flex-row items-center justify-around gap-2 rounded-md bg-white p-2 shadow-md">
+        <div className="flex h-full w-full flex-row items-center justify-around gap-2 rounded-sm bg-white p-2 shadow-sm">
           <div className="flex flex-col items-center justify-center bg-white py-1 text-center text-[26px] tracking-wide text-emerald-950">
             Schedule
             <p className="text-xs font-light tracking-normal text-gray-600">
               Make a schedule
             </p>
           </div>
-          <div className="cursor-pointer select-none rounded-md border bg-emerald-50 bg-opacity-40 px-6 py-1.5 text-[12px] font-light text-emerald-950 shadow-sm transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700">
+          <button
+            type="button"
+            className="cursor-pointer select-none rounded-md border bg-emerald-50 bg-opacity-40 px-6 py-1.5 text-[12px] font-light text-emerald-950 shadow-sm ring-emerald-200 transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700 active:bg-emerald-100 active:ring-2"
+          >
             <div className="flex items-center justify-around gap-4">
               <div>Create</div>
               <div>
@@ -29,16 +32,19 @@ export default function QuickCards() {
                 </svg>
               </div>
             </div>
-          </div>
+          </button>
         </div>
-        <div className="flex h-full w-full flex-row items-center justify-around gap-2 rounded-md bg-white p-2 shadow-md">
+        <div className="flex h-full w-full flex-row items-center justify-around gap-2 rounded-sm bg-white p-2 shadow-sm">
           <div className="flex flex-col items-center justify-center bg-white py-1 text-center text-[26px] tracking-wide text-rose-950">
             Procedure
             <p className="text-xs font-light tracking-normal text-gray-600">
               Create a procedure
             </p>
           </div>
-          <div className="cursor-pointer select-none rounded-md border bg-rose-50 bg-opacity-40 px-6 py-1.5 text-[12px] font-light text-rose-950 shadow-sm transition hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700">
+          <button
+            type="button"
+            className="cursor-pointer select-none rounded-md border bg-rose-50 bg-opacity-40 px-6 py-1.5 text-[12px] font-light text-rose-950 shadow-sm ring-rose-200 transition hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700 active:bg-rose-100 active:ring-2"
+          >
             <div className="flex items-center justify-around gap-4">
               <div>Create</div>
               <div>
@@ -61,9 +67,9 @@ export default function QuickCards() {
                 </svg>
               </div>
             </div>
-          </div>
+          </button>
         </div>
-        <div className="flex h-full w-full flex-row items-center justify-around gap-2 rounded-md bg-white p-2 shadow-md">
+        <div className="flex h-full w-full flex-row items-center justify-around gap-2 rounded-sm bg-white p-2 shadow-sm">
           <div className="flex flex-col items-center justify-center bg-white py-1 text-center text-[26px] tracking-wide text-amber-950">
             Programme
             <p className="text-xs font-light tracking-normal text-gray-600">
@@ -90,7 +96,7 @@ export default function QuickCards() {
             </div>
           </div>
         </div>
-        <div className="flex h-full w-full flex-row items-center justify-around gap-2 rounded-md bg-white p-2 shadow-md">
+        <div className="flex h-full w-full flex-row items-center justify-around gap-2 rounded-sm bg-white p-2 shadow-sm">
           <div className="flex flex-col items-center justify-center bg-white py-1 text-center text-[26px] tracking-wide text-sky-950">
             ChairCRT
             <p className="text-xs font-light tracking-normal text-gray-600">

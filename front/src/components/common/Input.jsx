@@ -7,17 +7,19 @@ export default function Input({
   name,
   id,
   placeholder,
+  className,
 }) {
   return (
-    <div className="flex gap-2 flex-col mt-4">
+    <div className="mt-4 flex flex-col gap-2">
       <label htmlFor={htmlFor}>{labelName}</label>
       <input
         type={type}
         name={name}
         id={id}
         placeholder={placeholder}
-        className="border-2 ring-2 transition ring-transparent shadow-sm rounded-md py-1.5 px-4"
+        className={className}
       />
     </div>
   );
 }
+// "border-2 ring-2 transition ring-transparent shadow-sm rounded-md py-1.5 px-4"

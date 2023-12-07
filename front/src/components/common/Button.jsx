@@ -1,13 +1,9 @@
 import React from "react";
 
-export default function Button({ type, name, onClick }) {
+export default function Button({ type, name, onClick, className }) {
   return (
-    <div className="flex justify-center items-center mt-7">
-      <button
-        onClick={onClick}
-        type={type}
-        className="py-2 px-6 border rounded-md w-80 hover:bg-gray-50"
-      >
+    <div className="mt-7 flex items-center justify-center">
+      <button onClick={onClick} type={type} className={className}>
         {name}
       </button>
     </div>

@@ -1,13 +1,14 @@
 import React, { useState, useMemo } from "react";
+import { ArrowLeft, ArrowRight } from "../../assets/svg/arrows/arrows";
 
 const DateCell = ({ day, isSelected, isPassedDay, onClick }) => (
   <li
-    className={`py-3 bg-white tracking-wide font-light px-6 shadow-sm select-none ${
+    className={`select-none bg-white px-6 py-3 font-light tracking-wide shadow-sm ${
       isSelected
-        ? "bg-gray-50 font-bold border border-slate-300"
+        ? "border border-slate-300 bg-gray-50 font-bold"
         : isPassedDay
-        ? "opacity-50 bg-gray-50 hover:cursor-not-allowed"
-        : "hover:bg-gray-50 hover:cursor-pointer border border-transparent hover:border-gray-200"
+        ? "bg-gray-50 opacity-50 hover:cursor-not-allowed"
+        : "border border-transparent hover:cursor-pointer hover:border-gray-200 hover:bg-gray-50"
     } `}
     onClick={onClick}
   >
@@ -84,15 +85,15 @@ const Calendar = ({ toggleCalendar }) => {
   };
 
   return (
-    <div className="absolute right-0 left-0 parent bg-gray-100 border-t-2">
+    <div className="parent absolute left-0 right-0 border-t-2 bg-gray-100">
       <div onClick={toggleCalendar} className="absolute right-4 top-4 text-sm">
-        <button className="hover:text-black text-gray-600">Close</button>
+        <button className="text-gray-600 hover:text-black">Close</button>
       </div>
-      <div className="flex w-full mt-6 flex-col p-4">
-        <div className="flex lg:flex-row flex-col items-center gap-6 justify-between mb-4">
-          <h1 className="text-5xl font-semibold text-center">Calendar</h1>
-          <div className="flex lg:flex-row flex-col justify-center bg-gray-100 p-4 items-center">
-            <div className="text-lg py-2 px-4">
+      <div className="mt-6 flex w-full flex-col p-4">
+        <div className="mb-4 flex flex-col items-center justify-between gap-6 lg:flex-row">
+          <h1 className="text-center text-5xl font-semibold">Calendar</h1>
+          <div className="flex flex-col items-center justify-center bg-gray-100 p-4 lg:flex-row">
+            <div className="px-4 py-2 text-lg">
               {selectedDate.toLocaleDateString("en-US", {
                 weekday: "long",
                 year: "numeric",
@@ -100,123 +101,45 @@ const Calendar = ({ toggleCalendar }) => {
                 day: "numeric",
               })}
             </div>
-            <div className="flex flex-row gap-1 justify-center items-center">
-              <div className="flex gap-2 bg-white border border-gray-300 w-28 items-center justify-between font-light text-sm py-1.5 px-4 hover:bg-gray-50 cursor-pointer rounded-md shadow-sm">
-                <div className="flex justify-center items-center">
+            <div className="flex flex-row items-center justify-center gap-1">
+              <div className="flex w-28 cursor-pointer items-center justify-between gap-2 rounded-md border border-gray-300 bg-white px-4 py-1.5 text-sm font-light shadow-sm hover:bg-gray-50">
+                <div className="flex items-center justify-center">
                   <button onClick={() => changeDay(selectedDate.getDate() - 1)}>
-                    <svg
-                      xmlns="http://w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-4 h-4 transition hover:-translate-x-1 duration-300 active:-translate-x-2 hover:scale-105 active:scale-110"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15.75 19.5L8.25 12l7.5-7.5"
-                      />
-                    </svg>
+                    <ArrowLeft />
                   </button>
                 </div>
                 {selectedDate.getDate()}th
-                <div className="flex justify-center items-center">
+                <div className="flex items-center justify-center">
                   <button onClick={() => changeDay(selectedDate.getDate() + 1)}>
-                    <svg
-                      xmlns="http://w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-4 h-4 transition hover:translate-x-1 duration-300 active:translate-x-2 hover:scale-105 active:scale-110"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                      ></path>
-                    </svg>
+                    <ArrowRight />
                   </button>
                 </div>
               </div>
 
-              <div className="flex gap-2 bg-white border border-gray-300 font-light w-40 items-center justify-between text-sm py-1.5 px-4 hover:bg-gray-50 cursor-pointer rounded-md shadow-sm">
-                <div className="flex justify-center items-center">
+              <div className="flex w-40 cursor-pointer items-center justify-between gap-2 rounded-md border border-gray-300 bg-white px-4 py-1.5 text-sm font-light shadow-sm hover:bg-gray-50">
+                <div className="flex items-center justify-center">
                   <button onClick={() => changeMonth(-1)}>
-                    <svg
-                      xmlns="http://w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-4 h-4 transition hover:-translate-x-1 duration-300 active:-translate-x-2 hover:scale-105 active:scale-110"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15.75 19.5L8.25 12l7.5-7.5"
-                      />
-                    </svg>
+                    <ArrowLeft />
                   </button>
                 </div>
                 {monthNames[selectedDate.getMonth()]}
-                <div className="flex justify-center items-center">
+                <div className="flex items-center justify-center">
                   <button onClick={() => changeMonth(1)}>
-                    <svg
-                      xmlns="http://w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-4 h-4 transition hover:translate-x-1 duration-300 active:translate-x-2 hover:scale-105 active:scale-110"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                      />
-                    </svg>
+                    <ArrowRight />
                   </button>
                 </div>
               </div>
 
-              <div className="flex gap-2 bg-white border border-gray-300 w-32 items-center justify-center font-light text-sm py-1.5 px-4 hover:bg-gray-50 cursor-pointer rounded-md shadow-sm">
-                <div className="flex justify-center items-center ">
+              <div className="flex w-32 cursor-pointer items-center justify-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-1.5 text-sm font-light shadow-sm hover:bg-gray-50">
+                <div className="flex items-center justify-center ">
                   <button onClick={() => changeYear(-1)}>
-                    <svg
-                      xmlns="http://w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-4 h-4 transition hover:-translate-x-1 duration-300 active:-translate-x-2 hover:scale-105 active:scale-110"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15.75 19.5L8.25 12l7.5-7.5"
-                      />
-                    </svg>
+                    <ArrowLeft />
                   </button>
                 </div>
                 {selectedDate.getFullYear()}
-                <div className="flex justify-center items-center">
+                <div className="flex items-center justify-center">
                   <button onClick={() => changeYear(1)}>
-                    <svg
-                      xmlns="http://w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-4 h-4 transition hover:translate-x-1 duration-300 active:translate-x-2 hover:scale-105 active:scale-110"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                      />
-                    </svg>
+                    <ArrowRight />
                   </button>
                 </div>
               </div>
@@ -224,14 +147,14 @@ const Calendar = ({ toggleCalendar }) => {
           </div>
         </div>
       </div>
-      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 p-6">
+      <div className="grid gap-4 p-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {monthsData.map((monthData, index) => (
           <div key={index} className="search-center">
-            <header className="px-1.5 tracking-tighter text-3xl p-2 font-semibold">
+            <header className="p-2 px-1.5 text-3xl font-semibold tracking-tighter">
               {monthNames[index]}
             </header>
             <div className="text-center">
-              <ul className="grid grid-cols-4 text-md border bg-gray-50">
+              <ul className="text-md grid grid-cols-4 border bg-gray-50">
                 {monthData.map((day) => {
                   const isPassedDay =
                     year < currentDate.getFullYear() ||
