@@ -39,12 +39,14 @@ const InputDropdown = ({ options, selected, onSelect }) => {
   }, {});
 
   return (
-    <div className="relative w-full inline-block text-left">
-      <div className="relative w-full h-full flex justify-center items-center">
+    <div className="relative inline-block w-full text-left">
+      <div className="relative flex h-full w-full items-center justify-center">
         <button
           type="button"
           onClick={toggleDropdown}
-          className={`py-1.5 px-4 w-full flex flex-row justify-between items-center active:bg-gray-300 transition bg-gray-50 text-start border border-gray-200 rounded-md shadow-sm`}
+          className={`flex w-full flex-row items-center justify-between rounded-md border-2 border-gray-200 px-4 py-2 text-start text-sm shadow-sm transition active:bg-gray-50 ${
+            selected === selectedGroup ? "text-gray-400" : "text-black"
+          }`}
         >
           {selected
             ? selected.label
@@ -57,7 +59,7 @@ const InputDropdown = ({ options, selected, onSelect }) => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className={`w-5 h-5 transition duration-500 ${
+            className={`h-5 w-5 transition duration-500 ${
               isOpen ? "rotate-180 text-transparent" : "rotate-0"
             }`}
           >
@@ -71,28 +73,28 @@ const InputDropdown = ({ options, selected, onSelect }) => {
         <ul
           className={`absolute z-10 ${
             isOpen ? "" : "hidden"
-          }  bg-sky-50 border border-sky-200 top-11 w-full rounded-md`}
+          }  top-11 w-full rounded-md border border-sky-200 bg-sky-50 transition-all duration-300`}
         >
           {Object.keys(groupedOptions).map((group) => (
             <div key={group}>
               <button
                 type="button"
                 onClick={() => handleSelect({ type: group })}
-                className={`block w-full text-start hover:cursor-pointer px-4 py-2 font-medium active:bg-sky-50 text-sky-900 transition duration-300`}
+                className={`block w-full px-4 py-2 text-start font-medium text-sky-900 transition duration-300 hover:cursor-pointer active:bg-sky-50`}
               >
                 {group}
               </button>
               {openGroup === group && (
-                <div className="bg-white">
+                <div className={`bg-white`}>
                   {groupedOptions[group].map((option) => (
                     <li key={option.value}>
                       <button
                         type="button"
                         onClick={() => handleSelect(option)}
-                        className="block w-full hover:bg-sky-100 text-start hover:text-sky-900 hover:cursor-pointer px-4 py-2"
+                        className="block w-full px-4 py-2 text-start hover:cursor-pointer hover:bg-sky-100 hover:text-sky-900"
                       >
                         {option.label}
-                        <div className="font-light text-xs text-gray-500">
+                        <div className="text-xs font-light text-gray-500">
                           {option.description}
                         </div>
                       </button>

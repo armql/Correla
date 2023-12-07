@@ -10,27 +10,27 @@ function PatientRow({
   onDelete,
 }) {
   return (
-    <div className="grid overflow-y-auto grid-cols-7 text-gray-600 text-center">
-      <div className="shadow-sm p-4 font-light tracking-wide">
+    <div className="grid grid-cols-7 overflow-y-auto text-center text-gray-600">
+      <div className="p-4 font-light tracking-wide shadow-sm">
         {patientName}
       </div>
-      <div className="shadow-sm p-4 font-light tracking-wide underline">
-        <Link to="#" className="hover:text-black text-gray-600">
+      <div className="p-4 font-light tracking-wide underline shadow-sm">
+        <Link to="#" className="text-gray-600 hover:text-black">
           View History
         </Link>
       </div>
-      <div className="shadow-sm p-4 font-light tracking-wide">
+      <div className="p-4 font-light tracking-wide shadow-sm">
         {creationDate}
       </div>
-      <div className="shadow-sm p-4 font-light tracking-wide">
+      <div className="p-4 font-light tracking-wide shadow-sm">
         {phoneNumber}
       </div>
-      <div className="shadow-sm p-4 font-light tracking-wide">{createdBy}</div>
-      <div className="shadow-sm px-2 font-light text-gray-600 tracking-wide flex justify-center items-center">
-        <div className="flex justify-center items-center">
+      <div className="p-4 font-light tracking-wide shadow-sm">{createdBy}</div>
+      <div className="flex items-center justify-center px-2 font-light tracking-wide text-gray-600 shadow-sm">
+        <div className="flex items-center justify-center">
           <button
             type="button"
-            className="border shadow-sm rounded-md py-1 px-6 text-center bg-amber-50 bg-opacity-40 hover:bg-amber-50 hover:text-amber-500 hover:border-amber-100 active:border-amber-200 active:bg-amber-100 flex justify-between items-center gap-2"
+            className="flex items-center justify-between gap-2 rounded-md border bg-amber-50 bg-opacity-40 px-6 py-1 text-center shadow-sm hover:border-amber-100 hover:bg-amber-50 hover:text-amber-500 active:border-amber-200 active:bg-amber-100"
             onClick={onEdit}
           >
             <svg
@@ -39,7 +39,7 @@ function PatientRow({
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-4 h-4"
+              className="h-4 w-4"
             >
               <path
                 strokeLinecap="round"
@@ -51,11 +51,11 @@ function PatientRow({
           </button>
         </div>
       </div>
-      <div className="shadow-sm px-2 font-light text-gray-600 tracking-wide flex justify-center items-center">
-        <div className="flex justify-center items-center">
+      <div className="flex items-center justify-center px-2 font-light tracking-wide text-gray-600 shadow-sm">
+        <div className="flex items-center justify-center">
           <button
             type="button"
-            className="border shadow-sm rounded-md py-1 px-6 text-center bg-red-50 bg-opacity-40 hover:bg-red-50 hover:text-red-500 hover:border-red-100 active:border-red-200 active:bg-red-100 flex justify-between items-center gap-2"
+            className="flex items-center justify-between gap-2 rounded-md border bg-red-50 bg-opacity-40 px-6 py-1 text-center shadow-sm hover:border-red-100 hover:bg-red-50 hover:text-red-500 active:border-red-200 active:bg-red-100"
             onClick={onDelete}
           >
             <svg
@@ -64,7 +64,7 @@ function PatientRow({
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-5 h-5"
+              className="h-5 w-5"
             >
               <path
                 strokeLinecap="round"

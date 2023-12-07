@@ -10,6 +10,7 @@ export default function InputFilter({
   inputLimit,
   onChange,
   value,
+  extraStyling,
 }) {
   const [activa, setActiva] = useState(false);
   const [chars, setChars] = useState(0);
@@ -28,7 +29,6 @@ export default function InputFilter({
     }
   };
 
-  // Ensure that value is a string or provide a default value if it's undefined
   const sanitizedValue = value ? value.toString() : "";
   const progressBarHeight = () => {
     const maxChars = inputLimit;
@@ -41,7 +41,7 @@ export default function InputFilter({
     return `h-${calculatedHeight}`;
   };
   return (
-    <div className="flex gap-2 flex-col mt-4">
+    <div className="mt-4 flex flex-col gap-2 text-sm">
       <label htmlFor={htmlFor}>{labelName}</label>
       <div className="relative">
         <input
@@ -51,15 +51,18 @@ export default function InputFilter({
           name={name}
           id={id}
           placeholder={placeholder}
-          className="w-full border-2 ring-2 transition ring-transparent shadow-sm rounded-md py-1.5 px-4"
+          className={
+            "w-full rounded-md border-2 px-4 py-2 shadow-sm ring-2 ring-transparent transition active:border-sky-200 active:ring-sky-200" +
+            extraStyling
+          }
           onChange={handleInputChange}
           value={sanitizedValue.slice(0, inputLimit)}
         />
-        <div className="absolute h-7 rounded-full rotate-180 right-1.5 top-1.5 w-2 bg-gray-100">
+        <div className="absolute right-1.5 top-1.5 h-7 w-2 rotate-180 rounded-full bg-gray-100">
           <div
             className={`${
-              activa || chars > 0 ? "bg-emerald-200 block" : "bg-red-500 h-2"
-            } transition duration-1000 rounded-full w-2 ${progressBarHeight()} ${
+              activa || chars > 0 ? "block bg-emerald-200" : "h-2 bg-red-500"
+            } w-2 rounded-full transition duration-1000 ${progressBarHeight()} ${
               chars === inputLimit ? "bg-emerald-500" : ""
             } `}
           ></div>
