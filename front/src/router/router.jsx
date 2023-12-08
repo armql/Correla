@@ -17,6 +17,7 @@ import {
   PatientHistory,
   CreateProcedure,
   EditProcedure,
+  AddEmployee,
 } from "./imports/admin/admin";
 import { Suspense } from "react";
 
@@ -128,6 +129,10 @@ const router = createBrowserRouter([
       {
         path: "procedureslist/edit/:id",
         element: <EditProcedure />,
+      },
+      {
+        path: "employeeslist/addemployee",
+        element: <AddEmployee />,
       },
     ],
   },
