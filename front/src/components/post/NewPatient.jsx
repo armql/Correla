@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Input from "../common/Input";
 import Calendar from "../common/Calendar";
 import InputDropdown from "../common/InputDropdown";
@@ -8,6 +8,7 @@ import VeneersCard from "../card/VeneersCard";
 import RootCanalCard from "../card/RootCanalCard";
 import FillingCrownsCard from "../card/FillingCrownsCard";
 import FillingToothCard from "../card/FillingToothCard";
+import InputFilter from "../common/InputFilter";
 
 export default function NewPatient({
   toggleNewPatient,
@@ -118,9 +119,9 @@ export default function NewPatient({
   const CardComponent = determineCardComponent(card);
 
   return (
-    <>
-      <div className="relative flex items-center justify-center shadow-sm border bg-white w-full h-full">
-        <div className="absolute top-0 right-0 p-4">
+    <Fragment>
+      <div className="relative flex h-full w-full items-center justify-center border bg-white shadow-sm">
+        <div className="absolute right-0 top-0 p-4">
           <button type="button" onClick={toggleNewPatient}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +129,7 @@ export default function NewPatient({
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className={`w-6 h-6 active:rotate-90 hover:text-red-800 hover:scale-110 duration-500 transition`}
+              className={`h-6 w-6 transition duration-500 hover:scale-110 hover:text-red-800 active:rotate-90`}
             >
               <path
                 strokeLinecap="round"
@@ -138,24 +139,28 @@ export default function NewPatient({
             </svg>
           </button>
         </div>
-        <form action="">
+        <form action="" className="">
           <h1 className="text-2xl font-semibold">Patient Application Form</h1>
-          <div className="flex flex-row gap-4">
-            <Input
+          <div className="flex w-full flex-row gap-4">
+            <InputFilter
               htmlFor={"firstName"}
               labelName={"First Name"}
               type={"text"}
               name={"firstName"}
               id={"firstName"}
               placeholder={"Enter your first name"}
+              inputLimit={10}
+              extraStyling={"w-80"}
             />
-            <Input
+            <InputFilter
               htmlFor={"lastName"}
               labelName={"Last Name"}
               type={"text"}
               name={"lastName"}
               id={"lastName"}
               placeholder={"Enter your last name"}
+              inputLimit={10}
+              extraStyling={"w-80"}
             />
           </div>
           <div className="flex flex-row gap-4">
@@ -166,9 +171,12 @@ export default function NewPatient({
               name={"phoneNumber"}
               id={"phoneNumber"}
               placeholder={"Enter your phone number"}
+              className={
+                "rounded-md border-2 px-4 py-1.5 shadow-sm ring-2 ring-transparent transition"
+              }
             />
 
-            <div className="flex flex-col gap-2 justify-center mt-4 w-full">
+            <div className="mt-4 flex w-full flex-col justify-center gap-2">
               <label htmlFor="procedure">Procedure</label>
               <InputDropdown
                 options={procedureOptions}
@@ -177,44 +185,44 @@ export default function NewPatient({
               />
             </div>
           </div>
-          <div className="flex flex-row gap-4 w-full h-full">
+          <div className="flex h-full w-full flex-row gap-4">
             <div
-              className={`flex mb-4 transition w-full h-full mt-4 justify-center items-center py-8 ${
+              className={`mb-4 mt-4 flex h-full w-full items-center justify-center py-8 transition ${
                 isCalendar ? "bg-gray-50" : "bg-white"
               }`}
             >
               <button
                 type="button"
                 onClick={toggleCalendar}
-                className={`p-2 text-gray-500 bg-gray-200 py-2 px-4  transition ${
+                className={`bg-gray-200 p-2 px-4 py-2 text-gray-500  transition ${
                   isCalendar
-                    ? "active:scale-100 hover:scale-90 "
-                    : "hover:bg-gray-300 duration-100"
+                    ? "hover:scale-90 active:scale-100 "
+                    : "duration-100 hover:bg-gray-300"
                 }`}
               >
                 Choose a date
               </button>
             </div>
           </div>
-          <div className="border-2 overflow-y-auto rounded-md w-full h-60 grid grid-cols-3 gap-2 p-2 justify-center items-center bg-white">
+          <div className="grid h-60 w-full grid-cols-3 items-center justify-center gap-2 overflow-y-auto rounded-md border-2 bg-white p-2">
             {filteredDoctors.map((doctor) => (
               <button
                 key={doctor.doctorName}
                 type="button"
                 onClick={() => toggleDoctor(doctor.doctorName)}
-                className={`flex text-select w-full h-52 rounded-sm transition duration-300 cursor-pointer justify-evenly items-center shadow-sm flex-col ${
+                className={`text-select flex h-52 w-full cursor-pointer flex-col items-center justify-evenly rounded-sm shadow-sm transition duration-300 ${
                   doctor.doctorName === selectedDoctor
-                    ? "bg-teal-100 border border-teal-200"
+                    ? "border border-teal-200 bg-teal-100"
                     : "bg-teal-50 hover:bg-teal-100"
                 }`}
               >
-                <div className="w-24 h-24 rounded-full bg-teal-900"></div>
+                <div className="h-24 w-24 rounded-full bg-teal-900"></div>
                 <div className="text-teal-900">{doctor.doctorName}</div>
                 <div className="flex">
                   {doctor.canPerform.slice(0, 2).map((performTitle, index) => (
                     <p
                       key={index}
-                      className="px-0.5 font-light text-teal-400 text-xs truncate-text"
+                      className="truncate-text px-0.5 text-xs font-light text-teal-400"
                     >
                       {performTitle.length > 12
                         ? `${performTitle.slice(0, 12)}...`
@@ -232,10 +240,10 @@ export default function NewPatient({
               </div>
             </div>
           )}
-          <div className="flex justify-center items-center mt-7">
+          <div className="mt-7 flex items-center justify-center">
             <button
               type="submit"
-              className="py-2 px-6 border rounded-md w-80 hover:bg-gray-50"
+              className="w-80 rounded-md border px-6 py-2 hover:bg-gray-50"
             >
               Create
             </button>
@@ -243,10 +251,10 @@ export default function NewPatient({
         </form>
       </div>
       {isCalendar && (
-        <div className={`right-0 left-0 `}>
+        <div className={`absolute left-0 right-0`}>
           <Calendar toggleCalendar={toggleCalendar} />
         </div>
       )}
-    </>
+    </Fragment>
   );
 }
