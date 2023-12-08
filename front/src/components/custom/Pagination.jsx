@@ -13,19 +13,11 @@ export default function Pagination({
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <nav
-      className="bottom-0 left-0 right-0 flex items-center justify-between rounded-md bg-white bg-opacity-90 p-1 backdrop-blur-lg backdrop-filter"
-      aria-label="Table navigation"
-    >
-      <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+    <nav className="flex w-full items-center justify-between bg-white p-1">
+      <span className="text-sm font-normal text-gray-500">
         Showing{" "}
-        <span className="font-semibold text-gray-900 dark:text-white">
-          {currentPage}
-        </span>{" "}
-        of{" "}
-        <span className="font-semibold text-gray-900 dark:text-white">
-          {totalPages}
-        </span>
+        <span className="font-semibold text-gray-900">{currentPage}</span> of{" "}
+        <span className="font-semibold text-gray-900">{totalPages}</span>
       </span>
       <ul className="inline-flex items-center -space-x-px">
         <li>
@@ -60,7 +52,7 @@ export default function Pagination({
               onClick={() => handlePageChange(page)}
               className={`z-10 px-3 py-2 leading-tight ${
                 currentPage === page
-                  ? "border border-red-300 bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700"
+                  ? "border border-gray-300 bg-gray-50 text-gray-600 hover:bg-gray-100 hover:text-gray-700"
                   : "border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-700"
               }`}
             >
