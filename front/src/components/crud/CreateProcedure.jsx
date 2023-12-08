@@ -100,7 +100,7 @@ export default function CreateProcedure() {
     }
 
     return (
-      <div className="mt-10 h-screen w-screen bg-gray-100">
+      <div className="h-screen w-full bg-gray-100">
         <div className="flex h-full w-full items-center justify-center">
           <div className="rounded-md border-4 border-sky-200 bg-white p-10">
             <h1 className="text-center text-2xl text-sky-400">

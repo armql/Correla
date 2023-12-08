@@ -131,23 +131,23 @@ export default function EditProcedure() {
     };
 
     if (loadingUser) {
-      return <div className="font-bold text-3xl">Loading</div>;
+      return <div className="text-3xl font-bold">Loading</div>;
     }
 
     return (
-      <div className="w-screen h-screen mt-10 bg-gray-100">
-        <div className="flex justify-center items-center w-full h-full">
-          <div className="bg-white p-10 border-4 border-sky-200 rounded-md">
-            <h1 className="text-2xl text-sky-400 text-center">
+      <div className="h-screen w-full bg-gray-100">
+        <div className="flex h-full w-full items-center justify-center">
+          <div className="rounded-md border-4 border-sky-200 bg-white p-10">
+            <h1 className="text-center text-2xl text-sky-400">
               Edit Procedure
             </h1>
             <form
               onSubmit={(event) =>
                 editProcedure(event, currentUser ? currentUser.id : "")
               }
-              className="w-full h-full"
+              className="h-full w-full"
             >
-              <div className="flex flex-col sm:flex-row mt-4 items-center gap-4 sm:gap-10 justify-start">
+              <div className="mt-4 flex flex-col items-center justify-start gap-4 sm:flex-row sm:gap-10">
                 <div className="flex flex-col">
                   <InputFilter
                     htmlFor={"value"}
@@ -184,12 +184,12 @@ export default function EditProcedure() {
                     onChange={handleInputChange}
                   />
 
-                  <div className="mt-4 sm:text-start text-center">
-                    <div className="flex mt-2 group text-md justify-center items-center">
+                  <div className="mt-4 text-center sm:text-start">
+                    <div className="text-md group mt-2 flex items-center justify-center">
                       <button
                         onClick={toggleCanPerform}
                         type="button"
-                        className={`py-1 px-4 transition duration-300 ${
+                        className={`px-4 py-1 transition duration-300 ${
                           inputData.demandResources
                             ? "bg-teal-100 text-teal-400"
                             : "bg-white"
@@ -200,7 +200,7 @@ export default function EditProcedure() {
                       <button
                         onClick={toggleCannotPerform}
                         type="button"
-                        className={`py-1 px-4 transition duration-300 ${
+                        className={`px-4 py-1 transition duration-300 ${
                           inputData.demandResources
                             ? "bg-white"
                             : "bg-red-100 text-red-400"
@@ -211,10 +211,10 @@ export default function EditProcedure() {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col justify-center items-center">
-                  <div className="flex flex-col gap-2 mb-8 mt-4">
-                    <div className="flex flex-col gap-2 select-none">
-                      <div className="flex flex-col gap-2 justify-center w-full">
+                <div className="flex flex-col items-center justify-center">
+                  <div className="mb-8 mt-4 flex flex-col gap-2">
+                    <div className="flex select-none flex-col gap-2">
+                      <div className="flex w-full flex-col justify-center gap-2">
                         <label htmlFor="selectedRole">
                           Procedure performed by
                         </label>
@@ -226,7 +226,7 @@ export default function EditProcedure() {
                         />
                       </div>
                     </div>
-                    <div className="flex flex-col gap-2 mt-2">
+                    <div className="mt-2 flex flex-col gap-2">
                       <label htmlFor="description">Procedure Description</label>
                       <textarea
                         name="description"
@@ -235,20 +235,20 @@ export default function EditProcedure() {
                         rows="3"
                         value={inputData.description}
                         onChange={handleInputChange}
-                        className="border-2 rounded-md shadow-sm py-2 px-4"
+                        className="rounded-md border-2 px-4 py-2 shadow-sm"
                       ></textarea>
                     </div>
                   </div>
 
-                  <div className="flex justify-center items-center w-full h-full mt-4">
-                    <button className="text-gray-400 bg-gray-100 rounded-lg hover:text-sky-400 group w-11 h-11">
+                  <div className="mt-4 flex h-full w-full items-center justify-center">
+                    <button className="group h-11 w-11 rounded-lg bg-gray-100 text-gray-400 hover:text-sky-400">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="group-hover:-translate-x-0.5 group-hover:translate-y-0.5 rounded-lg bg-white w-full h-full transition duration-300"
+                        className="h-full w-full rounded-lg bg-white transition duration-300 group-hover:-translate-x-0.5 group-hover:translate-y-0.5"
                       >
                         <path
                           strokeLinecap="round"
