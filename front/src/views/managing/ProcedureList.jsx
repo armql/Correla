@@ -21,31 +21,31 @@ export default function ProcedureList() {
       });
   }, []);
   if (loadingUser) {
-    return <div className="font-bold text-3xl">Loading</div>;
+    return <div className="text-3xl font-bold">Loading</div>;
   }
   if (!userToken) {
     navigate("123/login");
   } else {
     return (
-      <div className="w-full h-screen mt-10 bg-gray-200">
-        <div className="bg-white p-4 flex justify-between">
-          <div className="flex justify-start items-center flex-row">
+      <div className="h-full w-full bg-gray-200">
+        <div className="flex justify-between bg-white p-4">
+          <div className="flex flex-row items-center justify-start">
             <input
               type="search"
               name="search"
               id="search"
               placeholder="Search for procedure"
-              className="border-2 py-[7px] z-10 px-2 shadow-sm rounded-l-md bg-white font-light ring-2 ring-transparent"
+              className="z-10 rounded-l-md border-2 bg-white px-2 py-[7px] font-light shadow-sm ring-2 ring-transparent"
             />
-            <button className="bg-gray-200 border ring-2 ring-transparent text-black py-2 px-4 rounded-r-md hover:bg-sky-100 hover:ring-sky-100 hover:border-sky-100">
+            <button className="rounded-r-md border bg-gray-200 px-4 py-2 text-black ring-2 ring-transparent hover:border-sky-100 hover:bg-sky-100 hover:ring-sky-100">
               Search
             </button>
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex items-center justify-center">
             <div className="">
               <Link
                 to="createprocedure"
-                className="border shadow-sm rounded-md py-2 px-4 text-sky-400 border-sky-200 bg-white hover:bg-sky-50 active:bg-white duration-300 transition"
+                className="rounded-md border border-sky-200 bg-white px-4 py-2 text-sky-400 shadow-sm transition duration-300 hover:bg-sky-50 active:bg-white"
               >
                 Create procedure
               </Link>

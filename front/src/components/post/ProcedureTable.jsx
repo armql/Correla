@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import ProcedureRow from "../core/ProcedureRow";
 import Swal from "sweetalert2";
 import axiosClient from "../../api/axios";
@@ -123,68 +123,73 @@ export default function ProcedureTable() {
   }
 
   return (
-    <div className="bg-white">
-      <div className="grid grid-cols-6 text-center border-t-2 border-b-2">
-        <div className="shadow-sm p-4 font-normal tracking-wide">Type</div>
-        <div className="shadow-sm p-4 font-normal tracking-wide">
-          Procedure Name
+    <Fragment>
+      <div className="flex h-full w-full flex-col justify-between bg-white">
+        <div className="grid grid-cols-6 border-b-2 border-t-2 text-center">
+          <div className="p-4 font-normal tracking-wide shadow-sm">Type</div>
+          <div className="p-4 font-normal tracking-wide shadow-sm">
+            Procedure Name
+          </div>
+          <div className="p-4 font-normal tracking-wide shadow-sm">
+            Creation Date
+          </div>
+          <div className="p-4 font-normal tracking-wide shadow-sm">
+            Created by
+          </div>
+          <div className="p-4 font-normal tracking-wide shadow-sm">
+            Edit Procedure
+          </div>
+          <div className="p-4 font-normal tracking-wide shadow-sm">
+            Delete Procedure
+          </div>
         </div>
-        <div className="shadow-sm p-4 font-normal tracking-wide">
-          Creation Date
-        </div>
-        <div className="shadow-sm p-4 font-normal tracking-wide">
-          Created by
-        </div>
-        <div className="shadow-sm p-4 font-normal tracking-wide">
-          Edit Procedure
-        </div>
-        <div className="shadow-sm p-4 font-normal tracking-wide">
-          Delete Procedure
+        {loadingCreator ? (
+          <div className="h-[75vh] overflow-y-auto bg-gray-100">
+            {procedure.map((row, index) => {
+              const createdDate = new Date(row.created_at);
+
+              return (
+                <ProcedureRow
+                  key={index}
+                  procedureType={row.type}
+                  procedureName={row.label}
+                  creationDate={createdDate.toDateString()}
+                  createdBy={"Loading creator"}
+                  onEdit={() => handleEdit(row.id)}
+                  onDelete={() => handleDelete(row.id)}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <div className="h-[75vh] overflow-y-auto bg-gray-100">
+            {procedure.map((row, index) => {
+              const createdDate = new Date(row.created_at);
+
+              return (
+                <ProcedureRow
+                  key={index}
+                  procedureType={row.type}
+                  procedureName={row.label}
+                  creationDate={createdDate.toDateString()}
+                  createdBy={users[row.user_id]}
+                  onEdit={() => handleEdit(row.id)}
+                  onDelete={(e) => handleDelete(e, row.id)}
+                />
+              );
+            })}
+          </div>
+        )}
+      </div>
+      <div className="flex h-full w-full items-end justify-end">
+        <div className="w-full">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            paginate={paginate}
+          />
         </div>
       </div>
-      {loadingCreator ? (
-        <>
-          {procedure.map((row, index) => {
-            const createdDate = new Date(row.created_at);
-
-            return (
-              <ProcedureRow
-                key={index}
-                procedureType={row.type}
-                procedureName={row.label}
-                creationDate={createdDate.toDateString()}
-                createdBy={"Loading creator"}
-                onEdit={() => handleEdit(row.id)}
-                onDelete={() => handleDelete(row.id)}
-              />
-            );
-          })}
-        </>
-      ) : (
-        <>
-          {procedure.map((row, index) => {
-            const createdDate = new Date(row.created_at);
-
-            return (
-              <ProcedureRow
-                key={index}
-                procedureType={row.type}
-                procedureName={row.label}
-                creationDate={createdDate.toDateString()}
-                createdBy={users[row.user_id]}
-                onEdit={() => handleEdit(row.id)}
-                onDelete={(e) => handleDelete(e, row.id)}
-              />
-            );
-          })}
-        </>
-      )}
-
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        paginate={paginate}
-      />
-    </div>
+    </Fragment>
   );
 }

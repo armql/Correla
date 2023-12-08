@@ -1,6 +1,5 @@
 import React from "react";
 import PatientRow from "../core/PatientRow";
-import Pagination from "../common/Pagination";
 
 export default function PatientTable() {
   const rows = [
@@ -85,26 +84,26 @@ export default function PatientTable() {
 
   return (
     <div className="bg-white">
-      <div className="grid grid-cols-7 text-center border-t-2 border-b-2">
-        <div className="shadow-sm p-4 font-normal tracking-wide">
+      <div className="grid grid-cols-7 border-b-2 border-t-2 text-center">
+        <div className="p-4 font-normal tracking-wide shadow-sm">
           Patient Name
         </div>
-        <div className="shadow-sm p-4 font-normal tracking-wide">
+        <div className="p-4 font-normal tracking-wide shadow-sm">
           Patient History
         </div>
-        <div className="shadow-sm p-4 font-normal tracking-wide">
+        <div className="p-4 font-normal tracking-wide shadow-sm">
           Creation Date
         </div>
-        <div className="shadow-sm p-4 font-normal tracking-wide">
+        <div className="p-4 font-normal tracking-wide shadow-sm">
           Phone Number
         </div>
-        <div className="shadow-sm p-4 font-normal tracking-wide">
+        <div className="p-4 font-normal tracking-wide shadow-sm">
           Created by
         </div>
-        <div className="shadow-sm p-4 font-normal tracking-wide">
+        <div className="p-4 font-normal tracking-wide shadow-sm">
           Edit Patient Data
         </div>
-        <div className="shadow-sm p-4 font-normal tracking-wide ">
+        <div className="p-4 font-normal tracking-wide shadow-sm ">
           Delete Patient
         </div>
       </div>
@@ -120,7 +119,6 @@ export default function PatientTable() {
           onDelete={() => handleDelete(row.id)}
         />
       ))}
-      <Pagination />
     </div>
   );
 }

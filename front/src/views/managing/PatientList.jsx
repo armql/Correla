@@ -27,7 +27,7 @@ export default function PatientList() {
     navigate("123/login");
   } else {
     return (
-      <div className="mt-10 h-screen w-full bg-gray-200">
+      <div className="h-screen w-full bg-gray-200">
         <div className="bg-white p-4">
           <div className="flex flex-row items-center justify-start">
             <input
