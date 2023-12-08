@@ -26,9 +26,12 @@ export default function GuestLayout() {
           className="absolute inset-0 z-0 overflow-hidden"
           style={guestLayoutStyle}
         ></div>
-        <div className="relative">
-          <CustomerSupport />
-          <Navbar />
+        <div className="relative bg-white">
+          <div className="flex h-24 items-center justify-center bg-white text-5xl font-bold text-sky-500">
+            Your company name
+          </div>
+          {/* <CustomerSupport /> */}
+          {/* <Navbar /> */}
           <Outlet />
           <Footer />
         </div>
