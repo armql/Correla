@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import Backdrop from "../backdrop/Backdrop";
+import {
+  ArrowLeft,
+  ArrowRight,
+  DefArrowLeft,
+  DefArrowRight,
+} from "../../../assets/svg/arrows/arrows";
 const monthNames = [
   "January",
   "February",
@@ -96,6 +102,40 @@ export default function Calendar({ close }) {
     }
   };
 
+  const changeDate = (type, direction) => {
+    const { day, month, year } = currentDMY;
+
+    if (type === "day") {
+      const newDay = direction === "increment" ? day + 1 : day - 1;
+      setCurrentDMY({ ...currentDMY, day: newDay });
+    } else if (type === "month") {
+      const currentMonthIndex = monthNames.indexOf(month);
+      const newMonthIndex =
+        direction === "increment"
+          ? currentMonthIndex + 1
+          : currentMonthIndex - 1;
+
+      let newYear = year;
+      let newMonth = monthNames[newMonthIndex];
+
+      if (newMonthIndex === 12) {
+        newMonth = monthNames[0];
+        newYear++;
+      } else if (newMonthIndex === -1) {
+        newMonth = monthNames[11];
+        newYear--;
+      }
+
+      setCurrentDMY({ day, month: newMonth, year: newYear });
+
+      const newDays = generateDays(newYear, newMonthIndex);
+      setDaysOfMonth(newDays);
+    } else if (type === "year") {
+      const newYear = direction === "increment" ? year + 1 : year - 1;
+      setCurrentDMY({ ...currentDMY, year: newYear });
+    }
+  };
+
   // const [selectedDMY, setSelectedDMY] = useState({
   //   day: setCurrentDMY(day),
   //   month: setCurrentDMY(month),
@@ -111,54 +151,108 @@ export default function Calendar({ close }) {
             <button
               type="button"
               onClick={close}
-              className="rounded-sm bg-sky-100 px-4 py-2 text-sm text-sky-900 active:bg-sky-200"
+              className="rounded-full px-1 py-1 text-sm text-black hover:bg-red-100 hover:text-red-800 active:bg-red-200"
             >
-              Done
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                className="h-5 w-5"
+              >
+                <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+              </svg>
             </button>
           </div>
           <div className="grid h-24 grid-cols-1">
             <div className="flex flex-col">
-              <div className="flex flex-row justify-between px-2 py-1 text-[15px]">
-                <div className="">Started in</div>
-                <div className="text-sky-900">
-                  {currentDMY.day}th {currentDMY.month} {currentDMY.year}
+              <div className="flex flex-row justify-between py-1 text-[15px]">
+                <div className="flex items-center justify-center px-2">
+                  Started in
+                </div>
+                <div className="flex items-center justify-center">
+                  <button className="rounded-sm border border-gray-300 bg-gray-50 px-2.5 py-1.5 text-sm text-black transition duration-100 hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900 active:bg-sky-100">
+                    Apply
+                  </button>
                 </div>
               </div>
               <div className="flex h-full flex-row items-center justify-center gap-2 text-sm">
                 <div
-                  className={`w-10 rounded-sm border p-1 text-center ${
+                  className={`group flex w-[4vw] gap-1 rounded-sm border p-1 text-center ${
                     currentDMY.day === defaultDate.day &&
                     currentDMY.year === defaultDate.year
                       ? "border-sky-200"
                       : "border-sky-300"
                   }`}
                 >
+                  <button
+                    type="button"
+                    onClick={() => changeDate("day", "decrement")}
+                    className={`h-5 w-5 text-gray-200 transition duration-100 group-hover:text-black`}
+                  >
+                    <ArrowLeft />
+                  </button>
                   {currentDMY.day === defaultDate.day
                     ? currentDMY.day
                     : currentDMY.day}
+                  <button
+                    type="button"
+                    onClick={() => changeDate("day", "increment")}
+                    className={`h-5 w-5 text-gray-200 transition duration-100 group-hover:text-black`}
+                  >
+                    <ArrowRight />
+                  </button>
                 </div>
                 <div
-                  className={`w-24 rounded-sm border p-1 text-center ${
+                  className={`group flex w-[7vw] items-center justify-center gap-1 rounded-sm border p-1 text-center ${
                     currentDMY.month === defaultDate.month &&
                     currentDMY.year === defaultDate.year
                       ? "border-sky-200"
                       : "border-sky-300"
                   }`}
                 >
+                  <button
+                    type="button"
+                    onClick={() => changeDate("month", "decrement")}
+                    className={`flex h-5 w-5 items-center justify-between text-gray-200 transition duration-100 group-hover:text-black`}
+                  >
+                    <ArrowLeft />
+                  </button>
                   {currentDMY.month === defaultDate.month
                     ? currentDMY.month
                     : currentDMY.month}
+                  <button
+                    type="button"
+                    onClick={() => changeDate("month", "increment")}
+                    className={`h-5 w-5 text-gray-200 transition duration-100 group-hover:text-black`}
+                  >
+                    <ArrowRight />
+                  </button>
                 </div>
                 <div
-                  className={`w-14 rounded-sm border p-1 text-center ${
-                    currentDMY.year === defaultDate.year
+                  className={`group flex w-[5vw] items-center justify-center gap-1 rounded-sm border p-1 text-center ${
+                    currentDMY.year === defaultDate.year &&
+                    currentDMY.month === defaultDate.month
                       ? "border-sky-200"
                       : "border-sky-300"
                   }`}
                 >
+                  <button
+                    type="button"
+                    onClick={() => changeDate("year", "decrement")}
+                    className={`h-5 w-5 text-gray-200 transition duration-100 group-hover:text-black`}
+                  >
+                    <ArrowLeft />
+                  </button>
                   {currentDMY.year === defaultDate.year
                     ? currentDMY.year
                     : currentDMY.year}
+                  <button
+                    type="button"
+                    onClick={() => changeDate("year", "increment")}
+                    className={`h-5 w-5 text-gray-200 transition duration-100 group-hover:text-black`}
+                  >
+                    <ArrowRight />
+                  </button>
                 </div>
               </div>
             </div>
@@ -170,20 +264,7 @@ export default function Calendar({ close }) {
               onClick={prevMonth}
               className={`${currentDMY.month === defaultDate.month ? "" : ""}`}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-5 w-5 "
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
+              <DefArrowLeft extraStyling="active:-translate-x-1 transition duration-100" />
             </button>
             <div className="flex h-full w-full flex-col items-center justify-center gap-2">
               <div className="grid w-full grid-cols-7 items-center text-center text-xs">
@@ -218,20 +299,7 @@ export default function Calendar({ close }) {
               </div>
             </div>
             <div type="button" className="cursor-pointer" onClick={nextMonth}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-5 w-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
+              <DefArrowRight extraStyling="active:translate-x-1 transition duration-100" />
             </div>
           </div>
         </div>
