@@ -25,50 +25,48 @@ export default function Dashboard() {
       });
   }, []);
   if (loadingUser) {
-    return <div className="font-bold text-3xl">Loading</div>;
+    return <div className="text-3xl font-bold">Loading</div>;
   }
   if (!userToken) {
     navigate("123/login");
   } else {
     return (
-      <div className="w-full h-full mt-10 bg-gray-100">
+      <div className="h-[100vh] w-full bg-gray-100">
         <QuickCards />
-        <div className="flex justify-between items-center py-4 px-2">
-          <div className="flex flex-col tracking-wide text-3xl text-center">
+        {/* <div className="flex items-center justify-between bg-white px-4 py-4">
+          <div className="flex flex-col text-center text-3xl tracking-wide">
             <h1>Statistics containing our activity and overall in clinic.</h1>
-            <p className="text-sm font-light text-gray-700 tracking-normal">
+            <p className="text-sm font-light tracking-normal text-gray-700">
               For more statistics go into{" "}
-              <Link className="underline hover:text-gray-600">
+              <div className="underline hover:text-gray-600">
                 Statistics Page
-              </Link>{" "}
+              </div>
               employees can fully manage their activity ambient by ChairCRT.
             </p>
           </div>
           <img src={teamwork} alt="" />
-        </div>
-        <div className="w-full h-full">
-          {/* TODO: Charts */}
+        </div> */}
+        {/* TODO: Charts */}
 
-          <div className="p-4 grid xl:grid-cols-3 grid-cols-1 gap-2 font-light text-2xl">
-            <div className="flex flex-col gap-3 border justify-center p-4 bg-white items-center rounded-lg shadow-sm">
+        <div className="grid grid-cols-1 gap-2 p-4 text-2xl font-light xl:grid-cols-3">
+          {/* <div className="flex flex-col items-center justify-center gap-3 rounded-lg border bg-white p-4 shadow-sm">
               <h1>Activity Chart</h1>
               <ActivityChart />
             </div>
-            <div className="flex border flex-col gap-3 justify-center p-4 bg-white items-center rounded-lg shadow-sm">
+            <div className="flex flex-col items-center justify-center gap-3 rounded-lg border bg-white p-4 shadow-sm">
               <h1>Procedure Chart</h1>
               <ProcedureChart />
-            </div>
-            <div className="flex border flex-col gap-3 justify-center bg-white items-center rounded-lg shadow-sm">
-              <h1 className="p-4 text-black">Incoming Emergencies</h1>
-              <div className="w-full h-full p-2">
-                <EmergencyCard />
-              </div>
+            </div> */}
+          <div className="flex flex-col items-center justify-center gap-3 rounded-lg border bg-white shadow-sm">
+            <h1 className="p-4 text-black">Incoming Emergencies</h1>
+            <div className="h-[30vh] w-full p-2">
+              <EmergencyCard />
             </div>
           </div>
-          <div className="p-4 h-full w-full">
-            <div className="border p-4 bg-white items-center rounded-lg shadow-sm w-full h-full">
-              <h1>CRT System</h1>
-            </div>
+        </div>
+        <div className="w-full p-4">
+          <div className="h-full w-full items-center rounded-lg border bg-white p-4 shadow-sm">
+            <h1>CRT System</h1>
           </div>
         </div>
       </div>
