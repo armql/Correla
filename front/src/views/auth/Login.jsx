@@ -95,7 +95,7 @@ export default function Login() {
       <div className="absolute inset-0 z-0 overflow-hidden backdrop-blur-3xl"></div>
       <form
         onSubmit={logging}
-        className="z-10 flex w-full flex-col items-center justify-around gap-4 border-b-2 border-t-2 border-sky-200 bg-white bg-opacity-80 px-4 py-10 shadow-sm backdrop-blur-sm lg:flex-row"
+        className="z-10 flex w-full flex-col items-center justify-around gap-4 border-b-2 border-t-2 border-sky-200 bg-gray-200 px-4 py-10 shadow-sm lg:flex-row"
       >
         <div className="flex flex-col items-center justify-start gap-4 md:flex-row">
           <div className="group flex flex-col items-center justify-center text-center">
@@ -124,6 +124,7 @@ export default function Login() {
             inputLimit={28}
             value={email}
             onChange={(ev) => setEmail(ev.target.value)}
+            extraStyling={"w-full"}
           />
           <InputFilter
             htmlFor={"password"}
@@ -135,6 +136,7 @@ export default function Login() {
             inputLimit={14}
             value={password}
             onChange={(ev) => setPassword(ev.target.value)}
+            extraStyling={"w-full"}
           />
 
           {error.password && (
