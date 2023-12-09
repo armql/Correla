@@ -66,7 +66,6 @@ export default function Home() {
   const [schedule, setSchedule] = useState(initialSchedule);
   const [breakSchedule, setBreakSchedule] = useState({});
 
-  // Load the break schedule from local storage when the component mounts
   useEffect(() => {
     const storedBreakSchedule = localStorage.getItem("breakSchedule");
     if (storedBreakSchedule) {
@@ -151,7 +150,7 @@ export default function Home() {
   };
 
   return (
-    <div className="parent h-full bg-white">
+    <div className="parent mt-10 flex h-full flex-col gap-10 bg-white">
       <Hero />
       <Clock />
       <div className="flex flex-col items-center justify-center bg-white">
