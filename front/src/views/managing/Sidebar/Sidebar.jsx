@@ -111,9 +111,9 @@ export default function Sidebar({ children }) {
 
   if (userToken) {
     return (
-      <div className="z-40 flex flex-row bg-white">
+      <div className="z-10 flex flex-row bg-white">
         <div
-          className={`border-r-2 transition-all duration-300 ${
+          className={`z-40 border-r-2 transition-all duration-300 ${
             sidebarOpen ? "w-56" : "h-0 w-0"
           }`}
         >
@@ -285,19 +285,21 @@ export default function Sidebar({ children }) {
             ))}
         </div>
         <div className="h-full w-full flex-col">
-          <button
-            type="button"
-            onClick={toggleSidebar}
-            className="flex h-14 w-full items-center justify-start border-b-2 bg-gray-50 px-2"
-          >
-            <img
-              src={sidebarIcon}
-              alt=""
-              className={`transition duration-300 ${
-                sidebarOpen ? "opacity-100" : "opacity-70"
-              }`}
-            />
-          </button>
+          <div className="z-40 h-14 w-full">
+            <button
+              type="button"
+              onClick={toggleSidebar}
+              className="z-40 flex h-14 w-full items-center justify-start border-b-2 bg-gray-50 px-2"
+            >
+              <img
+                src={sidebarIcon}
+                alt=""
+                className={`transition duration-300 ${
+                  sidebarOpen ? "opacity-100" : "opacity-70"
+                }`}
+              />
+            </button>
+          </div>
           {children}
         </div>
       </div>
