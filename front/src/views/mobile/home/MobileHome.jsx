@@ -14,7 +14,7 @@ export default function MobileHome() {
   return (
     <div className="relative h-screen w-screen bg-transparent">
       <div
-        className={`absolute top-14 z-10 h-96 w-96 rounded-full bg-white transition duration-100 ${
+        className={`absolute top-14 z-10 h-96 w-96 rounded-full border-2 border-black bg-white transition duration-100 ${
           isOnLoad ? "-translate-x-20 ease-in" : "-translate-x-40"
         }`}
       ></div>
@@ -47,20 +47,13 @@ export default function MobileHome() {
           <button
             type="button"
             onClick={() => scroller("view_appointmentSection")}
-            className={`z-10 rounded-full border border-black bg-transparent px-4 py-2 text-xs font-light text-black transition duration-100 hover:bg-black hover:text-white active:bg-opacity-70 ${
+            className={`z-10 rounded-full border border-black bg-transparent bg-white bg-opacity-20 px-4 py-2 text-xs font-light text-black backdrop-blur-sm transition duration-100 hover:bg-black hover:text-white active:bg-opacity-70 ${
               isOnLoad ? "animate-none" : "animate-bounce "
             }`}
           >
             View Appointments
           </button>
         </div>
-      </div>
-      <div className="absolute bottom-0 left-0 right-0">
-        <div
-          className={`"transition w-full bg-white duration-500 ${
-            isOnLoad ? "h-40 rounded-tl-full" : "h-0"
-          }`}
-        ></div>
       </div>
       <div className="mt-20">
         <div className="flex flex-col gap-4">
@@ -81,7 +74,7 @@ export default function MobileHome() {
         <Schedules />
         {/* <HeroSection />
         <Clock /> */}
-        {/* <Content sectionDirector={sectionDirector} /> */}
+        <Content sectionDirector={sectionDirector} />
       </div>
     </div>
   );
