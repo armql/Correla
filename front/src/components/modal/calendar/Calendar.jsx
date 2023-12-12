@@ -86,6 +86,12 @@ export default function Calendar({ close }) {
 
   const [currentDMY, setCurrentDMY] = useState(getCurrentDate());
   const [defaultDate] = useState(getCurrentDate());
+  const [startedDMY, setStartedDMY] = useState(getCurrentDate());
+  const [finishedDMY, setFinishedDMY] = useState(getCurrentDate());
+  const [setting, setSetting] = useState({
+    started: false,
+    finished: false,
+  });
   const [daysOfMonth, setDaysOfMonth] = useState(
     generateDays(currentDMY.year, monthNames.indexOf(currentDMY.month)),
   );
@@ -127,12 +133,26 @@ export default function Calendar({ close }) {
       }
 
       setCurrentDMY({ day, month: newMonth, year: newYear });
+      setStartedDMY({ day, month: newMonth, year: newYear });
+      setFinishedDMY({ day, month: newMonth, year: newYear });
 
       const newDays = generateDays(newYear, newMonthIndex);
       setDaysOfMonth(newDays);
     } else if (type === "year") {
       const newYear = direction === "increment" ? year + 1 : year - 1;
       setCurrentDMY({ ...currentDMY, year: newYear });
+    }
+  };
+
+  const inputHandler = (type) => {
+    if (type === "started") {
+      setStartedDMY({ ...currentDMY });
+      setSetting({ ...setting, started: true });
+      console.log("active started");
+    } else if (type === "finished") {
+      console.log("active finished");
+      setFinishedDMY({ ...currentDMY });
+      setSetting({ ...setting, finished: true });
     }
   };
 
@@ -145,7 +165,7 @@ export default function Calendar({ close }) {
   return (
     <Backdrop opacity={"0"}>
       <div className="z-10 flex h-full w-full select-none items-center justify-center">
-        <div className="flex flex-col gap-2 border-2 border-gray-200 bg-white p-2">
+        <div className="flex flex-col gap-2 border-2 border-gray-200 bg-white p-2 p-6">
           <div className="flex flex-row items-center justify-between">
             <div className="px-2 py-1.5">Work timespan table</div>
             <button
@@ -167,12 +187,42 @@ export default function Calendar({ close }) {
             <div className="flex flex-col">
               <div className="flex flex-row justify-between py-1 text-[15px]">
                 <div className="flex items-center justify-center px-2">
-                  Started in
+                  {setting.finished
+                    ? `Finished in ${
+                        finishedDMY.day +
+                        "th " +
+                        finishedDMY.month +
+                        " " +
+                        finishedDMY.year
+                      }`
+                    : `Started in ${
+                        startedDMY.day +
+                        "th " +
+                        startedDMY.month +
+                        " " +
+                        startedDMY.year
+                      }`}
                 </div>
                 <div className="flex items-center justify-center">
-                  <button className="rounded-sm border border-gray-300 bg-gray-50 px-2.5 py-1.5 text-sm text-black transition duration-100 hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900 active:bg-sky-100">
-                    Apply
-                  </button>
+                  {!setting.started && !setting.finished && (
+                    <button
+                      type="button"
+                      onClick={() => inputHandler("started")}
+                      className="rounded-sm border border-gray-300 bg-gray-50 px-2.5 py-1.5 text-sm text-black transition duration-100 hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900 active:bg-sky-100"
+                    >
+                      Apply
+                    </button>
+                  )}
+
+                  {setting.started && !setting.finished && (
+                    <button
+                      type="button"
+                      onClick={() => inputHandler("finished")}
+                      className="rounded-sm border border-gray-300 bg-gray-50 px-2.5 py-1.5 text-sm text-black transition duration-100 hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900 active:bg-sky-100"
+                    >
+                      Apply
+                    </button>
+                  )}
                 </div>
               </div>
               <div className="flex h-full flex-row items-center justify-center gap-2 text-sm">
@@ -262,9 +312,28 @@ export default function Calendar({ close }) {
             <button
               type="button"
               onClick={prevMonth}
-              className={`${currentDMY.month === defaultDate.month ? "" : ""}`}
+              className={`${
+                setting.started &&
+                currentDMY.month === startedDMY.month &&
+                currentDMY.year === startedDMY.year
+                  ? "cursor-not-allowed opacity-40"
+                  : ""
+              }`}
+              disabled={
+                setting.started &&
+                currentDMY.month === startedDMY.month &&
+                currentDMY.year === startedDMY.year
+                  ? true
+                  : false
+              }
             >
-              <DefArrowLeft extraStyling="active:-translate-x-1 transition duration-100" />
+              <DefArrowLeft
+                extraStyling={`${
+                  setting.started
+                    ? ""
+                    : "active:-translate-x-1 transition duration-100"
+                }`}
+              />
             </button>
             <div className="flex h-full w-full flex-col items-center justify-center gap-2">
               <div className="grid w-full grid-cols-7 items-center text-center text-xs">
@@ -291,7 +360,40 @@ export default function Calendar({ close }) {
                       currentDMY.month === defaultDate.month
                         ? ""
                         : ""
-                    }`}
+                    } ${
+                      setting.finished &&
+                      currentDMY.month === finishedDMY.month &&
+                      currentDMY.year === finishedDMY.year
+                        ? day === finishedDMY.day &&
+                          finishedDMY.month === currentDMY.month
+                          ? "border-sky-300 bg-sky-100"
+                          : ""
+                        : ""
+                    } ${
+                      setting.started &&
+                      currentDMY.month === startedDMY.month &&
+                      currentDMY.year === startedDMY.year
+                        ? day === startedDMY.day &&
+                          startedDMY.month === currentDMY.month
+                          ? "border-sky-200 bg-sky-50"
+                          : ""
+                        : ""
+                    } ${
+                      setting.started &&
+                      currentDMY.month === startedDMY.month &&
+                      currentDMY.year === startedDMY.year
+                        ? day < startedDMY.day
+                          ? "cursor-not-allowed opacity-40"
+                          : ""
+                        : ""
+                    } :  }`}
+                    disabled={
+                      setting.started &&
+                      currentDMY.month === startedDMY.month &&
+                      currentDMY.year === startedDMY.year
+                        ? day <= startedDMY.day || day >= finishedDMY
+                        : false
+                    }
                   >
                     {day}
                   </button>
