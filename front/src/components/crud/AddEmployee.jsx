@@ -176,7 +176,11 @@ export default function AddEmployee() {
             </form>
           </div>
         </div>
-        {effect && <Calendar close={close} />}
+        {effect ? (
+          <Calendar close={close} />
+        ) : (
+          <div className="border shadow-sm"></div>
+        )}
       </div>
     );
   }

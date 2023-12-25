@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Backdrop from "../backdrop/Backdrop";
+import { useDispatch, useSelector } from "react-redux";
 import {
   ArrowLeft,
   ArrowRight,
