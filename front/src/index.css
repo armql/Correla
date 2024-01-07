@@ -6,6 +6,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "SF Pro";
+  src:
+    local("SF Pro"),
+    local("SF-Pro"),
+    url("/Users/am/Library/Fonts/SF-Pro.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   @apply h-full overflow-x-hidden bg-white;
 }
@@ -20,7 +30,7 @@ html {
 }
 
 * {
-  font-family: "Inter", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   margin: 0;
   padding: 0;
 }
