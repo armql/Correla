@@ -12,9 +12,10 @@ export default function Navbar() {
   return (
     <nav className="center">
       <div className="nav-box">
-        <div className="flex h-full items-center justify-between px-6">
-          <div className="flex flex-row gap-4">
-            <p className="text-2xl font-bold text-zinc-600">Correla</p>
+        <p className="nav-logo-mobile">Correla</p>
+        <div className="flex w-full items-center justify-center sm:gap-4 gap-2 px-4 sm:justify-between sm:px-4">
+          <div className="flex flex-row justify-between gap-4">
+            <p className="nav-logo">Correla</p>
             <div className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
               {dataLinks.map((items) => (
                 <NavLink
@@ -44,6 +45,7 @@ export default function Navbar() {
           </div>
           <div className="nav-side-btn">Appoint a Checkup</div>
         </div>
+        <div className="nav-side-mobile-btn">Appoint a Checkup</div>
       </div>
     </nav>
   );

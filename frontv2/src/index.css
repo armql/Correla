@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+::selection {
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+}
+
+.main {
+  @apply w-screen h-screen bg-white relative;
+}
+
+.center {
+  @apply flex w-full h-full items-center justify-center;
+}
+
+.header {
+  @apply fixed left-0 right-0 top-2 z-20;
+}
+
+.nav-box {
+  @apply h-36 w-[500px] xl:w-[900px] lg:w-[850px] md:w-[800px] sm:w-[700px] rounded-3xl border border-zinc-50 bg-white shadow-2xl flex flex-col justify-center items-center sm:h-14 gap-4;
+}
+
+.nav-logo {
+  @apply xl:text-2xl lg:text-xl md:text-lg sm:text-base text-sm font-bold text-zinc-600 flex justify-center items-center  sm:block hidden;
+}
+
+.nav-logo-mobile {
+  @apply text-2xl font-bold text-zinc-600 flex justify-center items-center  block sm:hidden;
+}
+
+.nav-link {
+  @apply cursor-pointer flex justify-center items-center text-center rounded-full bg-white px-2 py-1 shadow-sm transition-all sm:text-xs md:text-sm lg:text-base xl:text-base text-xs;
+}
+
+.nav-link-back {
+  @apply cursor-pointer rounded-full border border-black bg-transparent px-2 py-1 text-xs text-black shadow-sm transition-all hover:border-transparent hover:bg-black hover:text-white;
+}
+
+.nav-side-btn {
+  @apply cursor-pointer rounded-full bg-gradient-to-r from-teal-950 to-teal-800 px-3 py-1.5 text-white shadow-sm transition-all hover:ring-teal-200 ring-2 ring-transparent active:ring-4 text-xs sm:text-sm md:text-base lg:text-base xl:text-base text-center w-auto sm:block hidden;
+}
+
+.nav-side-mobile-btn {
+  @apply cursor-pointer rounded-full bg-gradient-to-r from-teal-950 to-teal-800 px-3 py-2 text-white shadow-sm transition-all hover:ring-teal-200 ring-2 ring-transparent active:ring-4 text-xs sm:text-sm md:text-base lg:text-base xl:text-base text-center w-auto sm:hidden block flex justify-center items-center;
+}
+
+.hero-header {
+  @apply font-bold bg-clip-text bg-gradient-to-tr from-zinc-900 to-zinc-700 text-transparent pb-2 xl:text-6xl lg:text-5xl md:text-4xl sm:text-4xl text-4xl;
+}
