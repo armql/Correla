@@ -96,7 +96,7 @@ export default function ALLQuestions() {
       <Questions
         questionTitle={"How long does a typical dental appointment take?"}
         questionAnswer={
-          "The duration of a dental appointment can vary depending on the type of service needed. A routine check-up usually takes around 30 minutes, while more complex procedures may require longer appointments. Our team will inform you of the estimated time for your visit."
+          "The duration of a dental appointment can vary depending on the type of service needed. A routine check-up usually takes around 30 minutes."
         }
       />
 

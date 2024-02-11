@@ -24,16 +24,16 @@ export default function Dashboard() {
         setLoadingUser(false);
       });
   }, []);
-  if (loadingUser) {
-    return <div className="text-3xl font-bold">Loading</div>;
-  }
-  if (!userToken) {
-    navigate("123/login");
-  } else {
-    return (
-      <div className="h-[100vh] w-full bg-gray-100">
-        <QuickCards />
-        {/* <div className="flex items-center justify-between bg-white px-4 py-4">
+  // if (loadingUser) {
+  //   return <div className="text-3xl font-bold">Loading</div>;
+  // }
+  // if (!userToken) {
+  //   navigate("123/login");
+  // } else {
+  return (
+    <div className="h-[100vh] w-full bg-gray-100">
+      <QuickCards />
+      {/* <div className="flex items-center justify-between bg-white px-4 py-4">
           <div className="flex flex-col text-center text-3xl tracking-wide">
             <h1>Statistics containing our activity and overall in clinic.</h1>
             <p className="text-sm font-light tracking-normal text-gray-700">
@@ -46,10 +46,10 @@ export default function Dashboard() {
           </div>
           <img src={teamwork} alt="" />
         </div> */}
-        {/* TODO: Charts */}
+      {/* TODO: Charts */}
 
-        <div className="grid grid-cols-1 gap-2 p-4 text-2xl font-light xl:grid-cols-3">
-          {/* <div className="flex flex-col items-center justify-center gap-3 rounded-lg border bg-white p-4 shadow-sm">
+      <div className="grid grid-cols-1 gap-2 p-4 text-2xl font-light xl:grid-cols-3">
+        {/* <div className="flex flex-col items-center justify-center gap-3 rounded-lg border bg-white p-4 shadow-sm">
               <h1>Activity Chart</h1>
               <ActivityChart />
             </div>
@@ -57,19 +57,19 @@ export default function Dashboard() {
               <h1>Procedure Chart</h1>
               <ProcedureChart />
             </div> */}
-          <div className="flex flex-col items-center justify-center gap-3 rounded-lg border bg-white shadow-sm">
-            <h1 className="p-4 text-black">Incoming Emergencies</h1>
-            <div className="h-[30vh] w-full p-2">
-              <EmergencyCard />
-            </div>
-          </div>
-        </div>
-        <div className="w-full p-4">
-          <div className="h-full w-full items-center rounded-lg border bg-white p-4 shadow-sm">
-            <h1>CRT System</h1>
+        <div className="flex flex-col items-center justify-center gap-3 rounded-lg border bg-white shadow-sm">
+          <h1 className="p-4 text-black">Incoming Emergencies</h1>
+          <div className="h-[30vh] w-full p-2">
+            <EmergencyCard />
           </div>
         </div>
       </div>
-    );
-  }
+      <div className="w-full p-4">
+        <div className="h-full w-full items-center rounded-lg border bg-white p-4 shadow-sm">
+          <h1>CRT System</h1>
+        </div>
+      </div>
+    </div>
+  );
 }
+// }

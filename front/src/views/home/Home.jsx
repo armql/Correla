@@ -113,44 +113,40 @@ export default function Home() {
 
   const renderScheduler = (day) => {
     return (
-      <div className="">
-        <div className="grid-cols-1 text-xl">
-          {Object.keys(schedule[day]).map((time) => {
-            const isBreakTime = time.includes("BREAK");
-            const displayedTime = isBreakTime
-              ? time.replace("BREAK", "")
-              : time;
+      <div className="grid-cols-1 text-xl">
+        {Object.keys(schedule[day]).map((time) => {
+          const isBreakTime = time.includes("BREAK");
+          const displayedTime = isBreakTime ? time.replace("BREAK", "") : time;
 
-            return (
-              <button
-                key={time}
-                type="button"
-                className={`relative w-full px-0.5 text-xs tracking-widest transition sm:p-6 sm:text-[18px] ${
-                  isReserved(day, time) ? "cursor-default" : "bg-white"
-                } ${isBreakTime ? "bg-rose-50" : ""}`}
-                onClick={() => toggleReservation(day, time)}
-              >
-                {isReserved(day, time) && (
-                  <div className="absolute bottom-0 right-0 rounded-tl-sm bg-rose-100 px-1 py-0.5 text-sm uppercase tracking-tighter text-rose-900">
-                    reserved
-                  </div>
-                )}
-                {isBreakReserved(day, time) && (
-                  <div className="absolute bottom-0 right-0 rounded-tl-sm bg-red-900 px-1 py-0.5 text-sm uppercase text-white">
-                    break
-                  </div>
-                )}
-                {displayedTime}
-              </button>
-            );
-          })}
-        </div>
+          return (
+            <button
+              key={time}
+              type="button"
+              className={`relative w-full px-0.5 text-xs tracking-widest transition sm:p-6 sm:text-[18px] ${
+                isReserved(day, time) ? "cursor-default" : "bg-white"
+              } ${isBreakTime ? "bg-rose-50" : ""}`}
+              onClick={() => toggleReservation(day, time)}
+            >
+              {isReserved(day, time) && (
+                <div className="absolute bottom-0 right-0 rounded-tl-sm bg-rose-100 px-1 py-0.5 text-sm uppercase tracking-tighter text-rose-900">
+                  reserved
+                </div>
+              )}
+              {isBreakReserved(day, time) && (
+                <div className="absolute bottom-0 right-0 rounded-tl-sm bg-red-900 px-1 py-0.5 text-sm uppercase text-white">
+                  break
+                </div>
+              )}
+              {displayedTime}
+            </button>
+          );
+        })}
       </div>
     );
   };
 
   return (
-    <div className="parent mt-10 flex h-full flex-col gap-10 bg-white">
+    <div className="parent mt-10 flex h-full flex-col bg-white">
       <Hero />
       <Clock />
       <div className="flex flex-col items-center justify-center bg-white">

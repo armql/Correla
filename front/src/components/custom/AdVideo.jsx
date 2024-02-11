@@ -84,7 +84,7 @@ export default function AdVideo() {
   }, [currentServiceIndex]);
 
   return (
-    <div className="relative h-screen">
+    <div className="relative h-[700px]">
       <div className="absolute inset-0">
         <video
           src={video}
